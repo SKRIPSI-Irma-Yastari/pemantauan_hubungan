@@ -18,9 +18,13 @@ import { cn } from "@/lib/utils"
 import Link from "next/link"
 
 export default function SurveyInputForm() {
-  const [compliance, setCompliance] = useState(85)
-  const [rating, setRating] = useState(4)
-  const [hoverRating, setHoverRating] = useState(0)
+  const [kkks, setKkks] = useState("")
+  const [year, setYear] = useState("2024")
+  const [month, setMonth] = useState("")
+  const [compliance, setCompliance] = useState("")
+  const [attendance, setAttendance] = useState("")
+  const [responseSpeed, setResponseSpeed] = useState("")
+  const [relationshipRating, setRelationshipRating] = useState("")
 
   return (
     <div className="p-8 pb-20 max-w-[1000px] mx-auto min-h-screen">
@@ -44,30 +48,22 @@ export default function SurveyInputForm() {
       {/* Main Form */}
       <form className="space-y-8">
         {/* Section 1: Entity Identification */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-8 p-10 bg-surface-container-low rounded-3xl border border-outline-variant/5 shadow-sm">
+        <section className="p-10 bg-surface-container-low rounded-3xl border border-outline-variant/5 shadow-sm">
           <div className="space-y-4">
             <label className="flex items-center gap-2 text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-widest">
               <Building2 className="h-3 w-3" /> Nama Stakeholder KKKS
             </label>
-            <select className="w-full h-12 bg-surface-container border-none rounded-xl px-4 text-sm font-bold focus:ring-2 focus:ring-primary/20 transition-all outline-none">
-              <option>Select KKKS Entity</option>
-              <option>Pertamina EP</option>
-              <option>Medco E&P Malaka</option>
-              <option>Mubadala Energy</option>
-              <option>Triangle Pase</option>
-            </select>
-          </div>
-          <div className="space-y-4">
-            <label className="flex items-center gap-2 text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-widest">
-              <MapPin className="h-3 w-3" /> Wilayah Operasional
-            </label>
-            <select className="w-full h-12 bg-surface-container border-none rounded-xl px-4 text-sm font-bold focus:ring-2 focus:ring-primary/20 transition-all outline-none">
-              <option>Select Region</option>
-              <option>Aceh Timur</option>
-              <option>Aceh Utara</option>
-              <option>Aceh Tamiang</option>
-              <option>Pidie Jaya</option>
-              <option>Bireuen</option>
+            <select 
+              value={kkks}
+              onChange={(e) => setKkks(e.target.value)}
+              className="w-full h-12 bg-surface-container border-none rounded-xl px-4 text-sm font-bold focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+            >
+              <option value="">Select KKKS Entity</option>
+              <option value="PT Medco E&P Malaka">PT Medco E&P Malaka</option>
+              <option value="PT Pema Global Energi (PGE)">PT Pema Global Energi (PGE)</option>
+              <option value="Triangle Pase">Triangle Pase</option>
+              <option value="Conrad Asia Energy">Conrad Asia Energy</option>
+              <option value="Zaratex N.V">Zaratex N.V</option>
             </select>
           </div>
         </section>
@@ -78,121 +74,132 @@ export default function SurveyInputForm() {
             <label className="flex items-center gap-2 text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-widest">
               <Calendar className="h-3 w-3" /> Tahun Pelaporan
             </label>
-            <select className="w-full h-12 bg-surface-container border-none rounded-xl px-4 text-sm font-bold focus:ring-2 focus:ring-primary/20 transition-all outline-none">
-              <option>2024</option>
-              <option>2023</option>
-              <option>2022</option>
+            <select 
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+              className="w-full h-12 bg-surface-container border-none rounded-xl px-4 text-sm font-bold focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+            >
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+              <option value="2026">2026</option>
             </select>
           </div>
           <div className="space-y-4">
             <label className="flex items-center gap-2 text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-widest">
               <Clock className="h-3 w-3" /> Bulan Pelaporan
             </label>
-            <select className="w-full h-12 bg-surface-container border-none rounded-xl px-4 text-sm font-bold focus:ring-2 focus:ring-primary/20 transition-all outline-none">
-              <option>Januari</option>
-              <option>Februari</option>
-              <option>Maret</option>
-              <option>April</option>
+            <select 
+              value={month}
+              onChange={(e) => setMonth(e.target.value)}
+              className="w-full h-12 bg-surface-container border-none rounded-xl px-4 text-sm font-bold focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+            >
+              <option value="">Select Month</option>
+              {[
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+              ].map(m => (
+                <option key={m} value={m}>{m}</option>
+              ))}
             </select>
           </div>
         </section>
 
-        {/* Section 3: Performance Metrics (Slider) */}
+        {/* Section 3: Performance Metrics (Radio) */}
         <section className="p-10 bg-surface-container-lowest rounded-3xl border-2 border-primary/5 shadow-xl shadow-primary/5 relative overflow-hidden group">
           <div className="absolute top-0 right-0 p-8 opacity-[0.03] pointer-events-none group-hover:scale-110 transition-transform duration-1000">
             <CheckCircle2 size={120} />
           </div>
 
-          <div className="flex justify-between items-end mb-8">
-            <div>
-              <label className="block text-[11px] font-extrabold text-primary uppercase tracking-[0.2em] mb-1">Kepatuhan Laporan</label>
-              <p className="text-xs text-on-surface-variant/70 font-medium">Percentage of reporting deadlines met within the cycle.</p>
-            </div>
-            <div className="text-right">
-              <span className="text-4xl font-heading font-extrabold text-primary">{compliance}</span>
-              <span className="text-xl font-bold text-primary/40 ml-1">%</span>
-            </div>
+          <div className="mb-8">
+            <label className="block text-[11px] font-extrabold text-primary uppercase tracking-[0.2em] mb-1">Kepatuhan Laporan</label>
+            <p className="text-xs text-on-surface-variant/70 font-medium">Reporting compliance based on deadlines.</p>
           </div>
           
-          <div className="relative h-12 flex items-center group">
-            <input 
-              type="range"
-              min="0"
-              max="100"
-              value={compliance}
-              onChange={(e) => setCompliance(parseInt(e.target.value))}
-              className="w-full h-2 bg-surface-container rounded-full appearance-none cursor-pointer accent-primary hover:accent-secondary transition-all"
-            />
-          </div>
-          <div className="flex justify-between mt-2">
-            <span className="text-[10px] font-bold text-on-surface-variant/30 uppercase">Minimal</span>
-            <span className="text-[10px] font-bold text-primary/60 uppercase">Target: 85%+</span>
-            <span className="text-[10px] font-bold text-on-surface-variant/30 uppercase">Optimal</span>
+          <div className="flex flex-wrap gap-4">
+            {["Sangat Patuh", "Cukup Patuh", "Kurang Patuh"].map((option) => (
+              <button
+                key={option}
+                type="button"
+                onClick={() => setCompliance(option)}
+                className={cn(
+                  "px-6 py-3 rounded-2xl text-sm font-bold transition-all border-2",
+                  compliance === option 
+                    ? "bg-primary text-on-primary border-primary shadow-lg shadow-primary/20 scale-105" 
+                    : "bg-surface-container text-on-surface-variant/60 border-transparent hover:border-primary/20"
+                )}
+              >
+                {option}
+              </button>
+            ))}
           </div>
         </section>
 
-        {/* Section 4: Quantitative Input */}
+        {/* Section 4: Qualitative Inputs */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="p-10 bg-surface-container-low rounded-3xl space-y-4 border border-outline-variant/5">
+          <div className="p-10 bg-surface-container-low rounded-3xl space-y-6 border border-outline-variant/5">
             <label className="block text-[11px] font-bold text-on-surface-variant/60 uppercase tracking-widest">Kehadiran Rapat</label>
-            <div className="relative flex items-center">
-              <input 
-                type="number"
-                placeholder="0"
-                className="w-full h-14 bg-surface-container border-none rounded-2xl px-6 text-xl font-bold focus:ring-2 focus:ring-primary/20 outline-none transition-all pr-24"
-              />
-              <span className="absolute right-6 text-[10px] font-bold text-on-surface-variant/40 tracking-widest uppercase">Sessions</span>
-            </div>
-          </div>
-          <div className="p-10 bg-surface-container-low rounded-3xl space-y-4 border border-outline-variant/5">
-            <label className="block text-[11px] font-bold text-on-surface-variant/60 uppercase tracking-widest">Respons Komunikasi</label>
-            <div className="relative flex items-center">
-              <input 
-                type="number"
-                placeholder="0"
-                className="w-full h-14 bg-surface-container border-none rounded-2xl px-6 text-xl font-bold focus:ring-2 focus:ring-primary/20 outline-none transition-all pr-20"
-              />
-              <span className="absolute right-6 text-[10px] font-bold text-on-surface-variant/40 tracking-widest uppercase">Days</span>
-            </div>
-          </div>
-        </section>
-
-        {/* Section 5: Relationship Evaluation (Stars) */}
-        <section className="p-10 bg-surface-container-low rounded-3xl border border-outline-variant/5">
-          <label className="block text-[11px] font-bold text-on-surface-variant uppercase tracking-[0.1em] mb-6">Penilaian Hubungan Kerja Sama</label>
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8">
-            <div className="flex gap-2 p-1 bg-surface-container rounded-2xl">
-              {[1, 2, 3, 4, 5].map((star) => (
+            <div className="flex flex-col gap-3">
+              {["Selalu Hadir", "Kadang Hadir", "Jarang Hadir"].map((option) => (
                 <button
-                  key={star}
+                  key={option}
                   type="button"
-                  onMouseEnter={() => setHoverRating(star)}
-                  onMouseLeave={() => setHoverRating(0)}
-                  onClick={() => setRating(star)}
-                  className="p-3 rounded-xl transition-all duration-300"
+                  onClick={() => setAttendance(option)}
+                  className={cn(
+                    "w-full px-6 py-4 rounded-xl text-left text-sm font-bold transition-all border-2",
+                    attendance === option 
+                      ? "bg-primary/10 text-primary border-primary" 
+                      : "bg-surface-container/50 text-on-surface-variant/60 border-transparent hover:bg-surface-container"
+                  )}
                 >
-                  <Star 
-                    size={28} 
-                    className={cn(
-                      "transition-all duration-300",
-                      (hoverRating || rating) >= star 
-                        ? "fill-primary text-primary drop-shadow-[0_0_10px_rgba(var(--color-primary-rgb),0.2)]" 
-                        : "text-on-surface-variant/20 hover:text-primary/40"
-                    )} 
-                  />
+                  {option}
                 </button>
               ))}
             </div>
-            <div>
-              <p className="text-xl font-heading font-extrabold text-primary">
-                {rating === 5 && "Institutional Standard"}
-                {rating === 4 && "Strong Institutional Alignment"}
-                {rating === 3 && "Stable Collaboration"}
-                {rating === 2 && "Minor Friction"}
-                {rating === 1 && "Critical Review Required"}
-              </p>
-              <p className="text-xs font-medium text-on-surface-variant mt-1 opacity-60 italic">Current rating based on historical qualitative data.</p>
+          </div>
+          <div className="p-10 bg-surface-container-low rounded-3xl space-y-6 border border-outline-variant/5">
+            <label className="block text-[11px] font-bold text-on-surface-variant/60 uppercase tracking-widest">Kecepatan Respons Komunikasi</label>
+            <div className="flex flex-col gap-3">
+              {["Sangat Cepat", "Cukup Cepat", "Lambat"].map((option) => (
+                <button
+                  key={option}
+                  type="button"
+                  onClick={() => setResponseSpeed(option)}
+                  className={cn(
+                    "w-full px-6 py-4 rounded-xl text-left text-sm font-bold transition-all border-2",
+                    responseSpeed === option 
+                      ? "bg-secondary/10 text-secondary border-secondary" 
+                      : "bg-surface-container/50 text-on-surface-variant/60 border-transparent hover:bg-surface-container"
+                  )}
+                >
+                  {option}
+                </button>
+              ))}
             </div>
+          </div>
+        </section>
+
+        {/* Section 5: Relationship Evaluation (Qualitative) */}
+        <section className="p-10 bg-surface-container-low rounded-3xl border border-outline-variant/5">
+          <label className="block text-[11px] font-bold text-on-surface-variant uppercase tracking-[0.1em] mb-6">Penilaian Hubungan Kerja Sama</label>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {["Sangat Baik", "Cukup", "Kurang Baik"].map((option) => (
+              <button
+                key={option}
+                type="button"
+                onClick={() => setRelationshipRating(option)}
+                className={cn(
+                  "p-6 rounded-2xl text-center transition-all duration-300 border-2",
+                  relationshipRating === option 
+                    ? "bg-primary text-on-primary border-primary shadow-xl scale-105" 
+                    : "bg-surface-container text-on-surface-variant/40 border-transparent hover:border-primary/20"
+                )}
+              >
+                <div className="text-sm font-bold uppercase tracking-wider mb-2">{option}</div>
+                {option === "Sangat Baik" && <Star className="mx-auto fill-current" size={20} />}
+                {option === "Cukup" && <CheckCircle2 className="mx-auto" size={20} />}
+                {option === "Kurang Baik" && <Info className="mx-auto" size={20} />}
+              </button>
+            ))}
           </div>
         </section>
 
