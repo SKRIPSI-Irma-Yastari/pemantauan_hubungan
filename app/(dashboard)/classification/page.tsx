@@ -18,13 +18,42 @@ import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { StabilityGauge } from "@/components/ui/stability-gauge"
 
-const performanceMetrics = [
+// Data Models
+export interface PerformanceMetric {
+  label: string;
+  value: number;
+  color: string;
+}
+
+export interface RuleLogicLine {
+  type: "IF" | "AND" | "THEN";
+  text: string;
+  variant?: "success" | "error";
+}
+
+export interface DecisionRule {
+  id: string;
+  title: string;
+  logic: RuleLogicLine[];
+}
+
+export interface ConfusionMatrixData {
+  truePositive: number;
+  falseNegative: number;
+  falsePositive: number;
+  trueNegative: number;
+  f1Score: number;
+  aucRoc: number;
+  totalRecords: number;
+}
+
+const performanceMetrics: PerformanceMetric[] = [
   { label: "Accuracy", value: 98.4, color: "var(--color-primary)" },
   { label: "Precision", value: 97.1, color: "var(--color-tertiary)" },
   { label: "Recall", value: 99.0, color: "var(--color-secondary)" },
 ]
 
-const decisionRules = [
+const decisionRules: DecisionRule[] = [
   { 
     id: "01", 
     title: "High Stability", 
@@ -52,6 +81,17 @@ const decisionRules = [
     ]
   }
 ]
+
+// Mock data to demonstrate the model usage
+const confusionMatrix: ConfusionMatrixData = {
+  truePositive: 920,
+  falseNegative: 12,
+  falsePositive: 8,
+  trueNegative: 510,
+  f1Score: 0.985,
+  aucRoc: 0.992,
+  totalRecords: 1450
+}
 
 export default function ClassificationPage() {
   return (

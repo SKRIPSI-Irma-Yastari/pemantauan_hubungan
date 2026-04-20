@@ -89,6 +89,7 @@ export default function SurveyManagementPage() {
     if (!confirm("Are you sure you want to delete this record?")) return
 
     try {
+      setIsLoading(true)
       const { error } = await supabase
         .from('surveys')
         .delete()
@@ -98,6 +99,8 @@ export default function SurveyManagementPage() {
       setSurveys(prev => prev.filter(s => s.id !== id))
     } catch (err: any) {
       alert("Error deleting record: " + err.message)
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -178,6 +181,13 @@ export default function SurveyManagementPage() {
                 <Loader2 className="h-8 w-8 animate-spin text-primary" />
                 <span className="text-xs font-bold uppercase tracking-widest text-primary">Synchronizing Core Data...</span>
               </div>
+            </div>
+          )}
+          
+          {error && (
+            <div className="p-4 bg-error-container/20 text-error border border-error/20 rounded-xl m-4 text-sm font-bold flex items-center gap-2">
+              <AlertCircle className="h-4 w-4" />
+              {error}
             </div>
           )}
 

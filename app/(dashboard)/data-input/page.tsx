@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { 
   Save, 
   Trash2, 
@@ -11,16 +11,12 @@ import {
   Calendar,
   Building2,
   Percent,
-  Timer
+  Timer,
+  Loader2
 } from "lucide-react"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
-
-const recentSubmissions = [
-  { id: 1, kkks: "PetroChina Ltd.", period: "Sem I 2024", compliance: "92%", time: "2h ago" },
-  { id: 2, kkks: "Medco E&P", period: "Sem I 2024", compliance: "78%", time: "5h ago" },
-  { id: 3, kkks: "ENI Indonesia", period: "Sem II 2023", compliance: "85%", time: "Yesterday" },
-]
+import { supabase } from "@/lib/supabase"
 
 export default function DataInputPage() {
   const [formData, setFormData] = useState({
@@ -31,6 +27,79 @@ export default function DataInputPage() {
     response: "",
     participation: "Aktif (Diatas 80%)",
   })
+
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [status, setStatus] = useState<{ type: 'success' | 'error' | null, message: string }>({ type: null, message: "" })
+  const [recentSubmissions, setRecentSubmissions] = useState<any[]>([])
+
+  useEffect(() => {
+    fetchRecentSubmissions()
+  }, [])
+
+  const fetchRecentSubmissions = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('interaction_data')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .limit(3)
+      
+      if (error) throw error
+      if (data) {
+        setRecentSubmissions(data.map(item => ({
+          id: item.id,
+          kkks: item.stakeholder,
+          period: item.period.split(' ')[0] + ' ' + item.period.split(' ').pop(), // Shorten period
+          compliance: item.compliance ? `${item.compliance}%` : "N/A",
+          time: new Date(item.created_at).toLocaleDateString()
+        })))
+      }
+    } catch (err) {
+      console.error("Error fetching recent submissions:", err)
+    }
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    
+    if (!formData.compliance || !formData.attendance || !formData.response) {
+      setStatus({ type: 'error', message: "Please fill in all numerical fields." })
+      return
+    }
+
+    setIsSubmitting(true)
+    setStatus({ type: null, message: "" })
+
+    try {
+      const { error } = await supabase
+        .from('interaction_data')
+        .insert([{
+          period: formData.period,
+          stakeholder: formData.stakeholder,
+          compliance: parseFloat(formData.compliance),
+          attendance: parseInt(formData.attendance),
+          response_speed: parseFloat(formData.response),
+          participation: formData.participation
+        }])
+
+      if (error) throw error
+
+      setStatus({ type: 'success', message: "Data successfully submitted!" })
+      setFormData({
+        period: "Semester I (Januari - Juni 2024)",
+        stakeholder: "Pertamina Hulu Rokan",
+        compliance: "",
+        attendance: "",
+        response: "",
+        participation: "Aktif (Diatas 80%)",
+      })
+      fetchRecentSubmissions() // Refresh recent list
+    } catch (err: any) {
+      setStatus({ type: 'error', message: err.message || "An error occurred during submission." })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <div className="p-8 space-y-8 max-w-[1200px] mx-auto">
@@ -108,6 +177,8 @@ export default function DataInputPage() {
                     <input 
                       type="number"
                       placeholder="0 - 100"
+                      value={formData.compliance}
+                      onChange={(e) => setFormData({...formData, compliance: e.target.value})}
                       className="w-full h-11 bg-surface-container-low border border-transparent rounded-xl px-4 text-sm font-medium outline-none focus:ring-2 focus:ring-primary/20 focus:bg-surface-container transition-all"
                     />
                   </div>
@@ -120,6 +191,8 @@ export default function DataInputPage() {
                     <input 
                       type="number"
                       placeholder="Jumlah sesi"
+                      value={formData.attendance}
+                      onChange={(e) => setFormData({...formData, attendance: e.target.value})}
                       className="w-full h-11 bg-surface-container-low border border-transparent rounded-xl px-4 text-sm font-medium outline-none focus:ring-2 focus:ring-primary/20 focus:bg-surface-container transition-all"
                     />
                   </div>
@@ -133,6 +206,8 @@ export default function DataInputPage() {
                     <input 
                       type="number"
                       placeholder="Rata-rata hari"
+                      value={formData.response}
+                      onChange={(e) => setFormData({...formData, response: e.target.value})}
                       className="w-full h-11 bg-surface-container-low border border-transparent rounded-xl px-4 text-sm font-medium outline-none focus:ring-2 focus:ring-primary/20 focus:bg-surface-container transition-all"
                     />
                   </div>
@@ -142,6 +217,8 @@ export default function DataInputPage() {
                 <div className="space-y-2">
                   <label className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Partisipasi Kegiatan</label>
                   <select 
+                    value={formData.participation}
+                    onChange={(e) => setFormData({...formData, participation: e.target.value})}
                     className="w-full h-11 bg-surface-container-low border border-transparent rounded-xl px-4 text-sm font-medium outline-none focus:ring-2 focus:ring-primary/20 focus:bg-surface-container transition-all"
                   >
                     <option>Aktif (Diatas 80%)</option>
@@ -152,15 +229,41 @@ export default function DataInputPage() {
                 </div>
               </div>
 
+              {/* Status Messages */}
+              {status.type && (
+                <div className={cn(
+                  "p-4 rounded-xl text-sm font-bold flex items-center gap-2",
+                  status.type === 'error' ? "bg-error/10 text-error border border-error/20" : "bg-tertiary/10 text-tertiary border border-tertiary/20"
+                )}>
+                  {status.type === 'error' ? <Info className="h-4 w-4" /> : <CheckCircle2 className="h-4 w-4" />}
+                  {status.message}
+                </div>
+              )}
+
               {/* Form Buttons */}
               <div className="pt-6 flex items-center justify-end gap-3">
-                <button className="flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-bold text-on-surface-variant hover:bg-surface-container-high transition-all active:scale-95">
+                <button 
+                  type="button"
+                  onClick={() => setFormData({
+                    period: "Semester I (Januari - Juni 2024)",
+                    stakeholder: "Pertamina Hulu Rokan",
+                    compliance: "",
+                    attendance: "",
+                    response: "",
+                    participation: "Aktif (Diatas 80%)",
+                  })}
+                  className="flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-bold text-on-surface-variant hover:bg-surface-container-high transition-all active:scale-95"
+                >
                   <Trash2 className="h-4 w-4" />
                   Discard
                 </button>
-                <button className="flex items-center gap-2 rounded-xl bg-primary px-8 py-2.5 text-sm font-bold text-on-primary shadow-lg shadow-primary/20 hover:opacity-90 transition-all active:scale-95">
-                  <Save className="h-4 w-4" />
-                  Submit Data
+                <button 
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="flex items-center gap-2 rounded-xl bg-primary px-8 py-2.5 text-sm font-bold text-on-primary shadow-lg shadow-primary/20 hover:opacity-90 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
+                  {isSubmitting ? "Submitting..." : "Submit Data"}
                 </button>
               </div>
             </form>
