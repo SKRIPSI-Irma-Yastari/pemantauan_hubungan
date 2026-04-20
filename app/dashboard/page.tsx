@@ -30,7 +30,7 @@ import {
 } from 'recharts'
 
 // Dynamic data helpers
-const getComplianceScore = (compliance: string) => {
+const getComplianceNumericScore = (compliance: string) => {
   if (!compliance) return 0
   if (compliance.includes("Sangat")) return 100
   if (compliance.includes("Cukup")) return 75
@@ -90,8 +90,12 @@ export default function DashboardPage() {
     const criticalCount = surveys.filter(s => s.relationship_rating === "Kurang Baik").length
     const stableCount = surveys.length - harmonisCount - criticalCount
 
-    const avgCompliance = surveys.reduce((acc, s) => acc + getComplianceScore(s.compliance), 0) / surveys.length
+    const avgScore = surveys.reduce((acc, s) => acc + getComplianceNumericScore(s.compliance), 0) / surveys.length
     
+    let complianceStatus = "Kurang Patuh"
+    if (avgScore > 85) complianceStatus = "Sangat Patuh"
+    else if (avgScore > 65) complianceStatus = "Cukup Patuh"
+
     // Overall stability score based on relationship rating
     const totalScore = surveys.reduce((acc, s) => {
       if (s.relationship_rating === "Sangat Baik") return acc + 100
@@ -116,14 +120,14 @@ export default function DashboardPage() {
       action: `Survey submitted for ${s.month} ${s.year}`,
       time: new Date(s.created_at).toLocaleDateString(),
       status: s.relationship_rating === "Kurang Baik" ? "warning" : "success",
-      score: `${getComplianceScore(s.compliance)}%`
+      score: s.compliance || "N/A"
     }))
 
     return {
       totalKKKS: uniqueKKKS,
       harmonis: harmonisCount,
       attention: criticalCount,
-      compliance: `${avgCompliance.toFixed(1)}%`,
+      compliance: complianceStatus,
       stabilityScore: Math.round(stabilityScore),
       stabilityStatus,
       chartData,
@@ -273,7 +277,7 @@ export default function DashboardPage() {
                           ? "bg-tertiary-container/20 text-tertiary border-tertiary/10" 
                           : "bg-error-container/20 text-error border-error/10"
                       )}>
-                        {activity.score} Reliability
+                        {activity.score}
                       </span>
                     </div>
                   </div>

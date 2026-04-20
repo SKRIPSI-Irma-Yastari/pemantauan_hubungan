@@ -33,8 +33,16 @@ const getRegion = (kkks: string) => {
   return mapping[kkks] || "Wilayah Aceh"
 }
 
-// Mapping helper for compliance score
-const getComplianceScore = (compliance: string) => {
+// Mapping helper for compliance status label and styling
+const getComplianceStatus = (compliance: string) => {
+  if (!compliance) return { label: "Unknown", class: "bg-surface-container text-on-surface-variant/40" }
+  if (compliance.includes("Sangat")) return { label: "Sangat Patuh", class: "bg-tertiary-container/30 text-tertiary border-tertiary/10" }
+  if (compliance.includes("Cukup")) return { label: "Cukup Patuh", class: "bg-primary-container/30 text-primary border-primary/10" }
+  if (compliance.includes("Kurang")) return { label: "Kurang Patuh", class: "bg-error-container/30 text-error border-error/10" }
+  return { label: compliance, class: "bg-surface-container text-on-surface-variant" }
+}
+
+const getComplianceNumericScore = (compliance: string) => {
   if (!compliance) return 0
   if (compliance.includes("Sangat")) return 100
   if (compliance.includes("Cukup")) return 75
@@ -102,13 +110,17 @@ export default function SurveyManagementPage() {
 
     const totalSubmissions = surveys.length
     const uniqueKKKS = new Set(surveys.map(s => s.kkks)).size
-    const avgCompliance = surveys.reduce((acc, s) => acc + getComplianceScore(s.compliance), 0) / totalSubmissions
+    const avgScore = surveys.reduce((acc, s) => acc + getComplianceNumericScore(s.compliance), 0) / totalSubmissions
+
+    let complianceLabel = "Kurang Patuh"
+    if (avgScore > 85) complianceLabel = "Sangat Patuh"
+    else if (avgScore > 65) complianceLabel = "Cukup Patuh"
 
     return [
       { 
-        label: "Average Compliance", 
-        value: `${avgCompliance.toFixed(1)}%`, 
-        trend: `${surveys.length > 1 ? "Calculated from aggregate data" : "Single record baseline"}`, 
+        label: "Compliance Status", 
+        value: complianceLabel, 
+        trend: `${surveys.length > 1 ? "Aggregate Performance" : "Initial Record"}`, 
         icon: TrendingUp, 
         color: "primary" 
       },
@@ -175,7 +187,7 @@ export default function SurveyManagementPage() {
                 <th className="px-8 py-5">Nama KKKS</th>
                 <th className="px-6 py-5">Wilayah</th>
                 <th className="px-6 py-5">Periode</th>
-                <th className="px-6 py-5">Skor Kepatuhan</th>
+                <th className="px-6 py-5">Tingkat Kepatuhan</th>
                 <th className="px-6 py-5 text-center">Kehadiran</th>
                 <th className="px-6 py-5 text-center">Respons</th>
                 <th className="px-6 py-5">Penilaian</th>
@@ -191,7 +203,6 @@ export default function SurveyManagementPage() {
                 </tr>
               ) : (
                 surveys.map((row, idx) => {
-                  const complianceScore = getComplianceScore(row.compliance)
                   const ratingLabel = getRatingLabel(row.relationship_rating)
                   return (
                     <tr key={row.id} className={cn(
@@ -209,17 +220,12 @@ export default function SurveyManagementPage() {
                         </span>
                       </td>
                       <td className="px-6 py-6">
-                        <div className="flex items-center gap-3 min-w-[120px]">
-                          <div className="flex-1 h-1.5 bg-surface-container rounded-full overflow-hidden">
-                            <motion.div 
-                              initial={{ width: 0 }}
-                              animate={{ width: `${complianceScore}%` }}
-                              transition={{ duration: 1, delay: idx * 0.05 }}
-                              className="h-full bg-primary rounded-full shadow-[0_0_8px_rgba(var(--color-primary-rgb),0.3)]"
-                            />
-                          </div>
-                          <span className="font-bold text-primary">{complianceScore}%</span>
-                        </div>
+                        <span className={cn(
+                          "text-[9px] font-extrabold px-2.5 py-1 rounded uppercase tracking-tighter border",
+                          getComplianceStatus(row.compliance).class
+                        )}>
+                          {getComplianceStatus(row.compliance).label}
+                        </span>
                       </td>
                       <td className="px-6 py-6 text-center font-bold text-on-surface">{row.attendance}</td>
                       <td className="px-6 py-6 text-center font-mono text-[11px] text-on-surface-variant">{row.response_speed}</td>
@@ -299,7 +305,7 @@ export default function SurveyManagementPage() {
               {stat.label}
             </p>
             <h3 className="text-4xl font-heading font-extrabold tracking-tight">
-              {stat.value.includes('%') ? stat.value.split('%')[0] : stat.value}<span className="text-2xl font-medium opacity-50 px-0.5">{stat.value.includes('%') ? '%' : ''}</span>
+              {stat.value}
             </h3>
             
             <div className="mt-6 flex items-center gap-2">
