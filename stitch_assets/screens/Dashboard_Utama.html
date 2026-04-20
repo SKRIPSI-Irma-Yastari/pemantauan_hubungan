@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BPMA Luminary - Dashboard Utama</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#618bff",
+                    "on-background": "#2a3439",
+                    "surface-dim": "#cfdce3",
+                    "secondary-fixed": "#d3e4fe",
+                    "inverse-surface": "#0b0f10",
+                    "outline-variant": "#a9b4b9",
+                    "on-surface": "#2a3439",
+                    "surface-variant": "#d9e4ea",
+                    "on-tertiary": "#e6ffee",
+                    "primary-dim": "#0048c1",
+                    "on-primary": "#f8f7ff",
+                    "on-error-container": "#752121",
+                    "primary-fixed": "#dbe1ff",
+                    "surface-container": "#e8eff3",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#f7f9ff",
+                    "secondary-fixed-dim": "#c5d6f0",
+                    "on-error": "#fff7f6",
+                    "surface-container-high": "#e1e9ee",
+                    "on-tertiary-fixed-variant": "#006544",
+                    "surface-tint": "#0053db",
+                    "tertiary-container": "#69f6b8",
+                    "tertiary-fixed-dim": "#58e7ab",
+                    "secondary": "#506076",
+                    "on-primary-fixed-variant": "#0050d4",
+                    "on-secondary-fixed-variant": "#4d5d73",
+                    "background": "#f7f9fb",
+                    "tertiary-fixed": "#69f6b8",
+                    "surface-container-highest": "#d9e4ea",
+                    "on-primary-fixed": "#003798",
+                    "surface": "#f7f9fb",
+                    "surface-bright": "#f7f9fb",
+                    "secondary-dim": "#44546a",
+                    "primary": "#0053db",
+                    "on-tertiary-container": "#005a3c",
+                    "on-secondary-container": "#435368",
+                    "primary-container": "#dbe1ff",
+                    "tertiary": "#006d4a",
+                    "secondary-container": "#d3e4fe",
+                    "on-tertiary-fixed": "#00452d",
+                    "primary-fixed-dim": "#c7d3ff",
+                    "on-secondary-fixed": "#314055",
+                    "on-surface-variant": "#566166",
+                    "outline": "#717c82",
+                    "error-container": "#fe8983",
+                    "inverse-on-surface": "#9a9d9f",
+                    "on-primary-container": "#0048bf",
+                    "error": "#9f403d",
+                    "tertiary-dim": "#005f40",
+                    "surface-container-low": "#f0f4f7",
+                    "error-dim": "#4e0309"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .stability-gauge {
+            background: conic-gradient(from 180deg at 50% 100%, #006d4a 0deg, #69f6b8 180deg, #e8eff3 180deg);
+            mask: radial-gradient(farthest-side, transparent 75%, black 76%);
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background antialiased flex overflow-hidden h-screen">
+<!-- SideNavBar Component -->
+<aside class="hidden md:flex flex-col h-screen w-64 bg-slate-50 dark:bg-slate-950 border-r border-slate-200/50 dark:border-slate-800/50 transition-all duration-200 ease-in-out py-6">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<h1 class="text-blue-700 dark:text-blue-400 font-manrope font-extrabold text-lg leading-none">BPMA</h1>
+<p class="text-[10px] text-slate-500 font-medium tracking-wider uppercase mt-1">Institutional Luminary</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<!-- Active: Dashboard -->
+<a class="flex items-center gap-3 px-4 py-3 text-blue-700 dark:text-blue-400 bg-white dark:bg-slate-900 border-r-2 border-blue-700 dark:border-blue-400 font-inter text-sm font-medium transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-100 dark:hover:bg-slate-900/50 font-inter text-sm font-medium transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span>Stakeholders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-100 dark:hover:bg-slate-900/50 font-inter text-sm font-medium transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+<span>Data Input</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-100 dark:hover:bg-slate-900/50 font-inter text-sm font-medium transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span>Algorithms</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-100 dark:hover:bg-slate-900/50 font-inter text-sm font-medium transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span>Classification</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-100 dark:hover:bg-slate-900/50 font-inter text-sm font-medium transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>History</span>
+</a>
+</nav>
+<div class="px-4 mt-auto border-t border-slate-200/50 pt-4">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-100 dark:hover:bg-slate-900/50 font-inter text-sm font-medium transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/20 font-inter text-sm font-medium transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col h-screen overflow-y-auto">
+<!-- TopNavBar Component -->
+<header class="w-full sticky top-0 z-50 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md flex justify-between items-center px-6 py-3 shadow-sm border-b border-slate-200/50 dark:border-slate-800/50">
+<div class="flex items-center flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800/50 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary/20" placeholder="Search KKKS or data point..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer active:scale-95 rounded-full relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer active:scale-95 rounded-full">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200 dark:bg-slate-800 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-bold text-on-surface">Admin BPMA</p>
+<p class="text-[10px] text-on-surface-variant">System Overseer</p>
+</div>
+<img alt="Stakeholder profile" class="w-8 h-8 rounded-full border border-slate-200" data-alt="Close-up portrait of a professional man in a business suit with a friendly and authoritative expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSEnlPhGLKxNOC4DP4wImbr3kU_u8p4sKA-4XJeVad3XN1ABzK8Se4svDrDhy3hpJo4XctOU_CrawxQsmpw2AlLuTM-bhFnmG7rhOEO59458XBpwGVEqeiPKEN-rWVh12exJgLhE5CLJ58stzeJuzE8ciOolHnWK6hSwh-x--PQaWRksBOYLX0NhXZkIgbqi3Rmgfo3R_UDERpImr3rPxNADTg7raW8emiRjckGRrnu5sdtYZlV3AlqFWKtd5rSqgzqRa8lU1NS0w6"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<section class="p-8 space-y-8 max-w-[1400px] mx-auto w-full">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<span class="text-[10px] font-bold text-primary tracking-[0.2em] uppercase">Executive Overview</span>
+<h2 class="text-3xl font-headline font-extrabold text-on-surface tracking-tight mt-1">Sovereign Clarity</h2>
+<p class="text-on-surface-variant text-sm mt-1">Real-time collaboration and stability monitoring for Aceh upstream industry.</p>
+</div>
+<div class="flex gap-3">
+<button class="bg-surface-container-high px-4 py-2 rounded-xl text-sm font-semibold text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+                        Download Report
+                    </button>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-xl text-sm font-semibold shadow-[0_4px_12px_rgba(0,83,219,0.25)] hover:shadow-[0_4px_16px_rgba(0,83,219,0.35)] transition-all">
+                        Refresh Insights
+                    </button>
+</div>
+</div>
+<!-- Main Dashboard Grid (Asymmetric Bento) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- KPI Highlights: Left Column -->
+<div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
+<!-- Total KKKS -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10 group">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="factory">factory</span>
+</div>
+<span class="text-[10px] font-bold text-tertiary px-2 py-1 bg-tertiary-container/30 rounded-full">+4%</span>
+</div>
+<p class="text-on-surface-variant text-xs font-medium uppercase tracking-wider">Total KKKS</p>
+<h3 class="text-3xl font-headline font-extrabold mt-1">42</h3>
+<p class="text-[10px] text-on-surface-variant mt-2 italic">Active Operators in Aceh</p>
+</div>
+<!-- Harmonis -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 rounded-lg bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="handshake">handshake</span>
+</div>
+<span class="text-[10px] font-bold text-tertiary px-2 py-1 bg-tertiary-container/30 rounded-full">Stable</span>
+</div>
+<p class="text-on-surface-variant text-xs font-medium uppercase tracking-wider">Harmonis</p>
+<h3 class="text-3xl font-headline font-extrabold mt-1">36</h3>
+<p class="text-[10px] text-on-surface-variant mt-2 italic">Healthy partnership metrics</p>
+</div>
+<!-- Kurang Harmonis -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 rounded-lg bg-error/10 flex items-center justify-center text-error">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+</div>
+<span class="text-[10px] font-bold text-error px-2 py-1 bg-error-container/20 rounded-full">Alert</span>
+</div>
+<p class="text-on-surface-variant text-xs font-medium uppercase tracking-wider">Kurang Harmonis</p>
+<h3 class="text-3xl font-headline font-extrabold mt-1">06</h3>
+<p class="text-[10px] text-on-surface-variant mt-2 italic">Require immediate intervention</p>
+</div>
+<!-- Signature Component: Stability Gauge -->
+<div class="sm:col-span-3 bg-surface-container-low rounded-xl p-8 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="relative z-10 text-center md:text-left max-w-md">
+<h4 class="text-lg font-headline font-bold text-on-surface">Regional Stability Index</h4>
+<p class="text-sm text-on-surface-variant mt-2">Overall health score of BPMA and KKKS cooperation based on the latest 2024 algorithms.</p>
+<div class="mt-6 flex gap-4 justify-center md:justify-start">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-tertiary"></span>
+<span class="text-[10px] font-bold uppercase">Optimal</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-surface-container-highest"></span>
+<span class="text-[10px] font-bold uppercase">Pending</span>
+</div>
+</div>
+</div>
+<div class="relative w-64 h-32">
+<div class="stability-gauge w-full h-full"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-end pb-2">
+<span class="text-3xl font-headline font-extrabold">85.4%</span>
+<span class="text-[10px] font-bold text-tertiary tracking-widest uppercase">Excellent</span>
+</div>
+</div>
+<!-- Abstract background texture -->
+<div class="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
+<svg class="w-full h-full fill-primary" viewbox="0 0 100 100">
+<path d="M0,100 C30,80 50,20 100,40 L100,100 Z"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- Right Column: Notifications/Activity -->
+<div class="md:col-span-4 space-y-6">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/10 overflow-hidden flex flex-col h-full">
+<div class="px-6 py-4 border-b border-surface-container flex justify-between items-center bg-surface-container-low/30">
+<h4 class="font-headline font-bold text-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">notifications_active</span>
+                                Monitoring Alerts
+                            </h4>
+<span class="bg-error text-on-error text-[10px] font-bold px-2 py-0.5 rounded-full">4 New</span>
+</div>
+<div class="flex-1 divide-y divide-surface-container overflow-y-auto max-h-[460px]">
+<!-- Notification Item -->
+<div class="p-4 hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-xl">pending_actions</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface leading-tight">Mubadala Energy</p>
+<p class="text-[11px] text-on-surface-variant mt-1">Stakeholder has not input Q3 Data submission.</p>
+<p class="text-[10px] text-error font-medium mt-2">Deadline: Tomorrow</p>
+</div>
+</div>
+</div>
+<!-- Notification Item -->
+<div class="p-4 hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-xl">report_problem</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface leading-tight">Medco E&amp;P Malaka</p>
+<p class="text-[11px] text-on-surface-variant mt-1">Classification shifted to "Kurang Harmonis" based on social impact metrics.</p>
+<p class="text-[10px] text-on-surface-variant mt-2 italic">2 hours ago</p>
+</div>
+</div>
+</div>
+<!-- Notification Item -->
+<div class="p-4 hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-xl">edit_document</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface leading-tight">Pertamina EP</p>
+<p class="text-[11px] text-on-surface-variant mt-1">Pending document verification for block exploration extension.</p>
+<p class="text-[10px] text-on-surface-variant mt-2 italic">5 hours ago</p>
+</div>
+</div>
+</div>
+</div>
+<a class="px-6 py-3 text-center text-xs font-bold text-primary hover:bg-surface-container transition-colors border-t border-surface-container" href="#">
+                            View All Monitoring Tasks
+                        </a>
+</div>
+</div>
+</div>
+<!-- Advanced Analytics (Classification Chart) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<div class="md:col-span-12 bg-surface-container-lowest rounded-xl p-8 border border-outline-variant/10 shadow-sm">
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+<div>
+<h4 class="text-lg font-headline font-bold text-on-surface">Classification Distribution</h4>
+<p class="text-xs text-on-surface-variant">Cross-referencing organizational performance vs relationship health</p>
+</div>
+<div class="flex bg-surface-container-low p-1 rounded-lg">
+<button class="px-4 py-1.5 text-[10px] font-bold bg-white shadow-sm rounded-md text-primary uppercase tracking-wider">Relationship</button>
+<button class="px-4 py-1.5 text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">Performance</button>
+<button class="px-4 py-1.5 text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">Compliance</button>
+</div>
+</div>
+<!-- Simplified Visual Representation of a sophisticated chart -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 h-[300px]">
+<div class="col-span-3 flex items-end gap-6 px-4">
+<div class="flex-1 bg-tertiary/20 rounded-t-xl hover:bg-tertiary/30 transition-all flex flex-col justify-end items-center pb-4 relative group" style="height: 85%;">
+<div class="absolute -top-12 bg-on-background text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">85% Harmonis</div>
+<span class="text-[10px] font-bold text-tertiary-dim transform -rotate-90 origin-bottom mb-4">HARMONIS</span>
+<div class="w-1 h-12 bg-tertiary rounded-full"></div>
+</div>
+<div class="flex-1 bg-primary/20 rounded-t-xl hover:bg-primary/30 transition-all flex flex-col justify-end items-center pb-4 relative group" style="height: 45%;">
+<div class="absolute -top-12 bg-on-background text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">45% Transition</div>
+<span class="text-[10px] font-bold text-primary transform -rotate-90 origin-bottom mb-4">STABLE</span>
+<div class="w-1 h-12 bg-primary rounded-full"></div>
+</div>
+<div class="flex-1 bg-secondary/20 rounded-t-xl hover:bg-secondary/30 transition-all flex flex-col justify-end items-center pb-4 relative group" style="height: 25%;">
+<div class="absolute -top-12 bg-on-background text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">25% Observation</div>
+<span class="text-[10px] font-bold text-secondary transform -rotate-90 origin-bottom mb-4">WATCH</span>
+<div class="w-1 h-12 bg-secondary rounded-full"></div>
+</div>
+<div class="flex-1 bg-error/20 rounded-t-xl hover:bg-error/30 transition-all flex flex-col justify-end items-center pb-4 relative group" style="height: 15%;">
+<div class="absolute -top-12 bg-on-background text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">15% Critical</div>
+<span class="text-[10px] font-bold text-error transform -rotate-90 origin-bottom mb-4">CRITICAL</span>
+<div class="w-1 h-12 bg-error rounded-full"></div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-6 flex flex-col justify-center gap-4">
+<div class="space-y-1">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase">Summary Insight</p>
+<p class="text-xs text-on-surface leading-relaxed">The <span class="font-bold text-tertiary">Harmonis</span> category remains dominant at 85.4%, but watch-list items have increased by 2% since last quarter.</p>
+</div>
+<div class="h-[1px] bg-outline-variant/20"></div>
+<button class="flex items-center gap-2 text-xs font-bold text-primary group">
+                                Deep Analysis
+                                <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer / Technical Metadata -->
+<footer class="p-8 mt-auto border-t border-slate-200/50 bg-slate-50 dark:bg-slate-900/20">
+<div class="flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-[11px] text-on-surface-variant uppercase tracking-[0.1em] font-medium">BPMA Institutional Luminary © 2024 • Managed Sovereignty</p>
+<div class="flex gap-6">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span class="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">System Operational</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">Version 2.4.1-Stable</span>
+</div>
+</div>
+</div>
+</footer>
+</main>
+<!-- Mobile BottomNavBar (Suppressed on Web per Anchor rules) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-slate-50/95 dark:bg-slate-900/95 backdrop-blur-md flex justify-around items-center py-3 border-t border-slate-200 dark:border-slate-800 z-50">
+<button class="flex flex-col items-center gap-1 text-blue-700 dark:text-blue-400">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[10px] font-bold">Dashboard</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined text-2xl">groups</span>
+<span class="text-[10px] font-medium">Stakeholders</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined text-2xl">analytics</span>
+<span class="text-[10px] font-medium">Classification</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined text-2xl">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</button>
+</nav>
+<!-- Floating Action Button (Only on Mobile for primary task) -->
+<div class="md:hidden fixed bottom-24 right-6">
+<button class="w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+</body></html>

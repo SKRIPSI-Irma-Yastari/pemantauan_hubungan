@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Survey Management Dashboard - Institutional Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e3e2e6",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-surface-variant": "#45464d",
+                        "tertiary-fixed-dim": "#c3c7cc",
+                        "secondary": "#6f43c0",
+                        "on-secondary-fixed": "#250059",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f1f0f4",
+                        "surface-container-low": "#f4f3f7",
+                        "on-tertiary-fixed": "#181c20",
+                        "outline-variant": "#c6c6cd",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#d3bbff",
+                        "surface": "#faf9fd",
+                        "on-secondary-fixed-variant": "#5727a6",
+                        "primary-container": "#131b2e",
+                        "on-tertiary-fixed-variant": "#43474c",
+                        "on-tertiary-container": "#808489",
+                        "surface-dim": "#dbd9dd",
+                        "outline": "#76777d",
+                        "surface-bright": "#faf9fd",
+                        "inverse-primary": "#bec6e0",
+                        "surface-tint": "#565e74",
+                        "secondary-fixed": "#ebddff",
+                        "on-surface": "#1a1b1e",
+                        "surface-container": "#efedf1",
+                        "background": "#faf9fd",
+                        "on-primary-fixed": "#131b2e",
+                        "primary-fixed": "#dae2fd",
+                        "tertiary": "#000000",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "tertiary-fixed": "#dfe3e8",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#a97efd",
+                        "surface-container-highest": "#e3e2e6",
+                        "inverse-surface": "#2f3033",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#3d0088",
+                        "on-error-container": "#93000a",
+                        "on-background": "#1a1b1e",
+                        "on-primary-container": "#7c839b",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#181c20",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#000000",
+                        "surface-container-high": "#e9e7eb",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .font-headline { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar -->
+<aside class="bg-slate-900 dark:bg-slate-950 h-screen w-64 fixed left-0 top-0 flex flex-col py-8 px-4 shadow-2xl shadow-slate-950/20 z-50">
+<div class="mb-10 px-2">
+<div class="text-xl font-bold text-white tracking-wider font-headline">KKKS Aceh</div>
+<div class="text-[10px] text-slate-400 font-label tracking-widest uppercase mt-1">Sovereign Clarity Portal</div>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ease-in-out text-slate-400 hover:text-slate-100 hover:bg-slate-800 font-['Manrope'] font-semibold tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+<span>Survey Input</span>
+</a>
+<!-- Active State: Survey Management -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ease-in-out text-white bg-purple-600/20 border-r-4 border-purple-500 font-['Manrope'] font-semibold tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span>Survey Management</span>
+</a>
+</nav>
+<div class="mt-auto px-2 flex items-center gap-3">
+<img alt="BPMA Logo" class="w-8 h-8 rounded-lg bg-slate-800 p-1" data-alt="Official BPMA organizational logo with clean professional geometric symbol in white on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_G3sGPDcQaylgwHlDgVTN6iTyGszbsWmh1VsfpKGPeOfjdPd77zibNsyw8oFrvWlLNbzY8CYUp1W3TzqlafcFylfHfgUmcqFqOuUjnSmyffXNTtWiIiYod1S26YWrTXbEirUhzB8mhTNkBwkNRubxHqduqS-B2GARI1n3hTQ2bnI3MUVEgz3mXxP55UsorhDj25oUitvaYZ2vJs_Mx-4rLEV-gMskCUF0uSmxvmwmK7pAEloNe_Fu859gFwpnLS3cLQocGtTvxi3X"/>
+<div class="overflow-hidden">
+<p class="text-xs font-bold text-white truncate">Institutional Analytics</p>
+<p class="text-[10px] text-slate-500 truncate">v2.4.0-Sovereign</p>
+</div>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md flex justify-between items-center px-8 z-40">
+<div class="flex items-center gap-6 flex-1">
+<div class="relative w-full max-w-md group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-purple-500/30 transition-all font-body" placeholder="Search by Stakeholder..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative text-slate-500 dark:text-slate-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-secondary rounded-full border-2 border-surface"></span>
+</button>
+<div class="h-6 w-[1px] bg-outline-variant/30"></div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-sm font-bold text-slate-900 dark:text-white font-body">Admin User</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-tighter">Institutional Admin</p>
+</div>
+<img alt="Admin User Profile" class="w-9 h-9 rounded-full ring-2 ring-purple-500/20" data-alt="Professional headshot of a government official in a dark suit with a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwrZKGJzs83gtACrZyw7FfsHG-GWoFwJf4AGZT7EwB5MglP_yqdlL0hEPz7qqPRFr9YksrYq3gH-p2AX8rrrW__-39JQENwT3FWzy9Y34itYmn_SU0zX5Xx_g3B-mkqFJgujahuPeHUoBKSewUDY8wjCjkE6ATHdIZdm8BkQA1q7rqIuw-Sr7f0yepcV_M_Z6JeejCAW47imBUo07BiflqbgBQ5ReWnHGR6rR5mZqabT1G51hIWJQwxGZnyrnXvx12YllHuNfwPUmU"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 min-h-screen">
+<div class="p-10 max-w-7xl mx-auto">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-10">
+<div>
+<nav class="flex items-center gap-2 text-[10px] font-label tracking-widest text-on-surface-variant uppercase mb-2">
+<span>Analytics</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span class="text-secondary font-bold">Survey Management</span>
+</nav>
+<h1 class="text-3xl font-extrabold font-headline text-primary-container tracking-tight">Institutional Survey Registry</h1>
+<p class="text-on-surface-variant font-body text-sm mt-1 max-w-xl">Monitor and manage the compliance data flow across all KKKS entities in the Aceh region.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex bg-surface-container-low rounded-xl p-1">
+<button class="px-4 py-2 text-xs font-bold font-label bg-surface-container-lowest shadow-sm rounded-lg text-secondary uppercase">All Regions</button>
+<button class="px-4 py-2 text-xs font-bold font-label text-on-surface-variant hover:text-secondary uppercase">Wilayah Aceh</button>
+</div>
+<button class="flex items-center gap-2 bg-secondary hover:bg-on-secondary-fixed-variant text-on-secondary px-6 py-3 rounded-xl transition-all duration-300 scale-95 active:scale-90 font-headline font-bold text-sm shadow-lg shadow-secondary/20">
+<span class="material-symbols-outlined text-sm">add</span>
+                        Add New Survey
+                    </button>
+</div>
+</div>
+<!-- Table Container -->
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-2xl shadow-slate-950/5">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-primary-container text-on-primary">
+<th class="px-6 py-5 font-headline text-xs font-bold uppercase tracking-widest">Nama KKKS</th>
+<th class="px-6 py-5 font-headline text-xs font-bold uppercase tracking-widest">Wilayah</th>
+<th class="px-6 py-5 font-headline text-xs font-bold uppercase tracking-widest">Periode</th>
+<th class="px-6 py-5 font-headline text-xs font-bold uppercase tracking-widest">Skor Kepatuhan</th>
+<th class="px-6 py-5 font-headline text-xs font-bold uppercase tracking-widest text-center">Kehadiran</th>
+<th class="px-6 py-5 font-headline text-xs font-bold uppercase tracking-widest text-center">Respons</th>
+<th class="px-6 py-5 font-headline text-xs font-bold uppercase tracking-widest">Penilaian</th>
+<th class="px-6 py-5 font-headline text-xs font-bold uppercase tracking-widest text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="text-sm font-body">
+<!-- Row 1 -->
+<tr class="bg-surface-container-lowest hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="font-bold text-on-surface">Medco E&amp;P Malaka</div>
+<div class="text-[10px] text-on-surface-variant">ID: KKKS-001-ACEH</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">Aceh Timur</td>
+<td class="px-6 py-4">
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1 rounded-full text-[10px] font-bold">Januari 2024</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="flex-1 h-1.5 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[92%] rounded-full"></div>
+</div>
+<span class="font-bold text-secondary">92%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-center text-on-surface">100%</td>
+<td class="px-6 py-4 text-center text-on-surface">24/24</td>
+<td class="px-6 py-4">
+<span class="text-[10px] font-bold px-2 py-1 bg-green-100 text-green-700 rounded uppercase">Excellent</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 hover:bg-secondary-fixed rounded-lg text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container rounded-lg text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="bg-surface-container-low hover:bg-surface-container-high transition-colors group">
+<td class="px-6 py-4">
+<div class="font-bold text-on-surface">Pertamina EP Asset 1</div>
+<div class="text-[10px] text-on-surface-variant">ID: KKKS-042-ACEH</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">Rantau</td>
+<td class="px-6 py-4">
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1 rounded-full text-[10px] font-bold">Januari 2024</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="flex-1 h-1.5 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[85%] rounded-full"></div>
+</div>
+<span class="font-bold text-secondary">85%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-center text-on-surface">95%</td>
+<td class="px-6 py-4 text-center text-on-surface">22/24</td>
+<td class="px-6 py-4">
+<span class="text-[10px] font-bold px-2 py-1 bg-blue-100 text-blue-700 rounded uppercase">Stable</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 hover:bg-secondary-fixed rounded-lg text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container rounded-lg text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="bg-surface-container-lowest hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="font-bold text-on-surface">Triangle Pase Inc</div>
+<div class="text-[10px] text-on-surface-variant">ID: KKKS-009-ACEH</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">Aceh Utara</td>
+<td class="px-6 py-4">
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1 rounded-full text-[10px] font-bold">Desember 2023</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="flex-1 h-1.5 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[72%] rounded-full"></div>
+</div>
+<span class="font-bold text-secondary">72%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-center text-on-surface">88%</td>
+<td class="px-6 py-4 text-center text-on-surface">18/24</td>
+<td class="px-6 py-4">
+<span class="text-[10px] font-bold px-2 py-1 bg-orange-100 text-orange-700 rounded uppercase">Review Needed</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 hover:bg-secondary-fixed rounded-lg text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container rounded-lg text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="bg-surface-container-low hover:bg-surface-container-high transition-colors group">
+<td class="px-6 py-4">
+<div class="font-bold text-on-surface">Zaratex Energy Ltd</div>
+<div class="text-[10px] text-on-surface-variant">ID: KKKS-015-ACEH</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">Lhokseumawe</td>
+<td class="px-6 py-4">
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1 rounded-full text-[10px] font-bold">Januari 2024</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="flex-1 h-1.5 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[95%] rounded-full"></div>
+</div>
+<span class="font-bold text-secondary">95%</span>
+</div>
+</td>
+<td class="px-6 py-4 text-center text-on-surface">100%</td>
+<td class="px-6 py-4 text-center text-on-surface">24/24</td>
+<td class="px-6 py-4">
+<span class="text-[10px] font-bold px-2 py-1 bg-green-100 text-green-700 rounded uppercase">Excellent</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-2 hover:bg-secondary-fixed rounded-lg text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container rounded-lg text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination Footer -->
+<div class="px-6 py-4 bg-surface-container-lowest border-t border-outline-variant/10 flex justify-between items-center">
+<p class="text-[10px] text-on-surface-variant font-label uppercase tracking-widest">Showing 4 of 12 Institutional Records</p>
+<div class="flex gap-2">
+<button class="px-3 py-1 bg-surface-container-low rounded-lg text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="px-3 py-1 bg-secondary text-on-secondary rounded-lg font-bold text-xs">1</button>
+<button class="px-3 py-1 bg-surface-container-low text-on-surface-variant rounded-lg font-bold text-xs hover:bg-surface-container-high">2</button>
+<button class="px-3 py-1 bg-surface-container-low text-on-surface-variant rounded-lg font-bold text-xs hover:bg-surface-container-high">3</button>
+<button class="px-3 py-1 bg-surface-container-low rounded-lg text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Dashboard Stats (Editorial Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+<div class="bg-primary-container p-8 rounded-2xl relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-700">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">insights</span>
+</div>
+<p class="text-on-primary-container text-[10px] font-label tracking-widest uppercase mb-1">Average Compliance</p>
+<h3 class="text-on-primary text-4xl font-headline font-extrabold tracking-tight">86.4<span class="text-secondary text-2xl">%</span></h3>
+<div class="mt-4 flex items-center gap-2 text-green-400">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="text-xs font-bold font-body">+4.2% since last month</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-8 rounded-2xl relative overflow-hidden group">
+<p class="text-on-surface-variant text-[10px] font-label tracking-widest uppercase mb-1">Total Submissions</p>
+<h3 class="text-primary-container text-4xl font-headline font-extrabold tracking-tight">142</h3>
+<div class="mt-4 flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+<span class="text-xs font-bold font-body">Q1 Fiscal Period 2024</span>
+</div>
+</div>
+<div class="bg-secondary-fixed p-8 rounded-2xl relative overflow-hidden group">
+<p class="text-on-secondary-fixed-variant text-[10px] font-label tracking-widest uppercase mb-1">Pending Reviews</p>
+<h3 class="text-on-secondary-fixed text-4xl font-headline font-extrabold tracking-tight">08</h3>
+<div class="mt-4 flex items-center gap-2 text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined text-sm">priority_high</span>
+<span class="text-xs font-bold font-body">Requires attention in Aceh Utara</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

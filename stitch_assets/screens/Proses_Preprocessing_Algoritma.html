@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BPMA Luminary | Algorithm &amp; Preprocessing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#618bff",
+                    "on-background": "#2a3439",
+                    "surface-dim": "#cfdce3",
+                    "secondary-fixed": "#d3e4fe",
+                    "inverse-surface": "#0b0f10",
+                    "outline-variant": "#a9b4b9",
+                    "on-surface": "#2a3439",
+                    "surface-variant": "#d9e4ea",
+                    "on-tertiary": "#e6ffee",
+                    "primary-dim": "#0048c1",
+                    "on-primary": "#f8f7ff",
+                    "on-error-container": "#752121",
+                    "primary-fixed": "#dbe1ff",
+                    "surface-container": "#e8eff3",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#f7f9ff",
+                    "secondary-fixed-dim": "#c5d6f0",
+                    "on-error": "#fff7f6",
+                    "surface-container-high": "#e1e9ee",
+                    "on-tertiary-fixed-variant": "#006544",
+                    "surface-tint": "#0053db",
+                    "tertiary-container": "#69f6b8",
+                    "tertiary-fixed-dim": "#58e7ab",
+                    "secondary": "#506076",
+                    "on-primary-fixed-variant": "#0050d4",
+                    "on-secondary-fixed-variant": "#4d5d73",
+                    "background": "#f7f9fb",
+                    "tertiary-fixed": "#69f6b8",
+                    "surface-container-highest": "#d9e4ea",
+                    "on-primary-fixed": "#003798",
+                    "surface": "#f7f9fb",
+                    "surface-bright": "#f7f9fb",
+                    "secondary-dim": "#44546a",
+                    "primary": "#0053db",
+                    "on-tertiary-container": "#005a3c",
+                    "on-secondary-container": "#435368",
+                    "primary-container": "#dbe1ff",
+                    "tertiary": "#006d4a",
+                    "secondary-container": "#d3e4fe",
+                    "on-tertiary-fixed": "#00452d",
+                    "primary-fixed-dim": "#c7d3ff",
+                    "on-secondary-fixed": "#314055",
+                    "on-surface-variant": "#566166",
+                    "outline": "#717c82",
+                    "error-container": "#fe8983",
+                    "inverse-on-surface": "#9a9d9f",
+                    "on-primary-container": "#0048bf",
+                    "error": "#9f403d",
+                    "tertiary-dim": "#005f40",
+                    "surface-container-low": "#f0f4f7",
+                    "error-dim": "#4e0309"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-manrope { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-layering { background-color: #f7f9fb; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface flex min-h-screen">
+<!-- SideNavBar Component -->
+<aside class="h-screen w-64 bg-slate-50 border-r border-slate-200/50 flex flex-col py-6 sticky top-0">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+</div>
+<div>
+<h1 class="text-blue-700 font-manrope font-extrabold text-lg leading-none">BPMA</h1>
+<p class="text-[10px] text-slate-500 font-medium tracking-wider uppercase">Institutional Luminary</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<div class="flex items-center px-4 py-3 rounded-xl text-slate-500 hover:text-blue-600 hover:bg-slate-100 transition-all cursor-pointer">
+<span class="material-symbols-outlined mr-3" data-icon="dashboard">dashboard</span>
+<span class="font-inter text-sm font-medium">Dashboard</span>
+</div>
+<div class="flex items-center px-4 py-3 rounded-xl text-slate-500 hover:text-blue-600 hover:bg-slate-100 transition-all cursor-pointer">
+<span class="material-symbols-outlined mr-3" data-icon="groups">groups</span>
+<span class="font-inter text-sm font-medium">Stakeholders</span>
+</div>
+<div class="flex items-center px-4 py-3 rounded-xl text-slate-500 hover:text-blue-600 hover:bg-slate-100 transition-all cursor-pointer">
+<span class="material-symbols-outlined mr-3" data-icon="edit_note">edit_note</span>
+<span class="font-inter text-sm font-medium">Data Input</span>
+</div>
+<!-- Active State: Algorithms -->
+<div class="flex items-center px-4 py-3 rounded-xl text-blue-700 bg-white border-r-2 border-blue-700 transition-all cursor-pointer">
+<span class="material-symbols-outlined mr-3" data-icon="account_tree" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+<span class="font-inter text-sm font-semibold">Algorithms</span>
+</div>
+<div class="flex items-center px-4 py-3 rounded-xl text-slate-500 hover:text-blue-600 hover:bg-slate-100 transition-all cursor-pointer">
+<span class="material-symbols-outlined mr-3" data-icon="analytics">analytics</span>
+<span class="font-inter text-sm font-medium">Classification</span>
+</div>
+<div class="flex items-center px-4 py-3 rounded-xl text-slate-500 hover:text-blue-600 hover:bg-slate-100 transition-all cursor-pointer">
+<span class="material-symbols-outlined mr-3" data-icon="history">history</span>
+<span class="font-inter text-sm font-medium">History</span>
+</div>
+</nav>
+<div class="px-4 mt-auto pt-6 border-t border-slate-200/50 space-y-1">
+<div class="flex items-center px-4 py-3 rounded-xl text-slate-500 hover:text-blue-600 hover:bg-slate-100 transition-all cursor-pointer">
+<span class="material-symbols-outlined mr-3" data-icon="settings">settings</span>
+<span class="font-inter text-sm font-medium">Settings</span>
+</div>
+<div class="flex items-center px-4 py-3 rounded-xl text-error/80 hover:text-error hover:bg-error-container/10 transition-all cursor-pointer">
+<span class="material-symbols-outlined mr-3" data-icon="logout">logout</span>
+<span class="font-inter text-sm font-medium">Logout</span>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col min-w-0">
+<!-- TopNavBar Component -->
+<header class="w-full sticky top-0 z-50 bg-slate-50/80 backdrop-blur-md flex justify-between items-center px-8 py-3 border-b border-slate-200/50 shadow-sm">
+<div class="flex items-center gap-8">
+<h2 class="text-xl font-bold tracking-tight text-blue-700 font-manrope">Algorithms Pipeline</h2>
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-slate-400" placeholder="Search pipeline logs or nodes..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-low rounded-lg cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-slate-500 text-lg" data-icon="notifications">notifications</span>
+</div>
+<div class="h-8 w-[1px] bg-slate-200 mx-1"></div>
+<div class="flex items-center gap-3 pl-2">
+<div class="text-right">
+<p class="text-xs font-bold text-on-surface">Admin BPMA</p>
+<p class="text-[10px] text-on-surface-variant">System Architect</p>
+</div>
+<img alt="Stakeholder profile" class="w-10 h-10 rounded-full border-2 border-white shadow-sm" data-alt="Professional headshot of a middle-aged male executive in a clean office setting, sharp focus, neutral lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_bTjmr-K2CEKzX4dpx_goAB2wuYEt9c_IMmyuTuznYTCQXKArtkpRRGwdZ6WttBYtQYVxDl8CjDtp7z6G5VJvb35DDnYs7ULzZJAVe_0Kdtcju0ODjZj7-gtAyNe-IzFd8fJQw2uff_MB0EhM_ofiMSO3H3oyNxX5ipmCcarWK-vgm-2m5hWFwDhgUJnr55kQR6-A6fx3xIAZz7roFxBcJiyhTI1gZqKVWTvXfebYRYfFv4ua9IbO6DbHQE6WdabVQYKTKoK6gn_B"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<div class="p-8 space-y-8 overflow-y-auto">
+<!-- Page Header Intro -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h3 class="font-manrope text-2xl font-bold text-on-background">Processing Transparency</h3>
+<p class="text-on-surface-variant max-w-2xl mt-1">Real-time analysis of the Decision Tree induction process using the ID3 Algorithm logic. Monitor how Gini Index calculations drive binary classification.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-surface-container-high text-on-surface font-semibold rounded-lg text-sm flex items-center gap-2 hover:bg-slate-200 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+                        Export Logic
+                    </button>
+<button class="px-4 py-2 bg-primary text-on-primary font-semibold rounded-lg text-sm flex items-center gap-2 hover:opacity-90 transition-all shadow-[0_4px_12px_rgba(0,83,219,0.2)]">
+<span class="material-symbols-outlined text-sm" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                        Re-run Pipeline
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Section 1: Validation & Cleaning Log (Technical Focus) -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-6">
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm flex-1 flex flex-col">
+<div class="flex items-center justify-between mb-6">
+<h4 class="font-manrope font-bold text-slate-700 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+                                Log Validasi &amp; Cleaning
+                            </h4>
+<span class="px-2 py-0.5 bg-tertiary-container/30 text-on-tertiary-container text-[10px] font-bold rounded-full uppercase tracking-tight">Active</span>
+</div>
+<div class="bg-slate-900 rounded-lg p-4 font-mono text-[11px] leading-relaxed text-slate-300 flex-1 overflow-y-auto max-h-[400px]">
+<div class="flex gap-3 mb-2">
+<span class="text-blue-400">[08:42:01]</span>
+<span class="text-slate-500">INIT: Starting Preprocessing Pipeline...</span>
+</div>
+<div class="flex gap-3 mb-2">
+<span class="text-blue-400">[08:42:03]</span>
+<span class="text-emerald-400">VALIDATE:</span>
+<span>Dataset 'Migas_Q3' loaded. N=1,248</span>
+</div>
+<div class="flex gap-3 mb-2">
+<span class="text-blue-400">[08:42:04]</span>
+<span class="text-amber-400">CLEAN:</span>
+<span>Imputing missing 'kehadiran' values using mean (0.88)</span>
+</div>
+<div class="flex gap-3 mb-2">
+<span class="text-blue-400">[08:42:05]</span>
+<span class="text-rose-400">CLEAN:</span>
+<span>Removed 12 outliers in 'respons' &gt; 3σ</span>
+</div>
+<div class="flex gap-3 mb-2">
+<span class="text-blue-400">[08:42:07]</span>
+<span class="text-emerald-400">READY:</span>
+<span>Data normalized (0-1). Accuracy target: 94.2%</span>
+</div>
+<div class="mt-4 border-t border-slate-800 pt-2 animate-pulse">
+<span class="text-blue-400">[08:42:10]</span>
+<span class="text-slate-400">PROC: Calculating Gini impurity...</span>
+<span class="ml-1 text-slate-100">_</span>
+</div>
+</div>
+</div>
+<!-- Signature Component: Stability Gauge (Custom Data Viz) -->
+<div class="glass-card p-6 rounded-xl shadow-[0_20px_40px_rgba(42,52,57,0.06)] relative overflow-hidden">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-tertiary/10 rounded-full blur-2xl"></div>
+<h4 class="text-xs font-bold text-slate-500 uppercase tracking-[0.1em] mb-4">Model Confidence Score</h4>
+<div class="flex items-center gap-6">
+<div class="relative w-24 h-24">
+<svg class="w-full h-full transform -rotate-90">
+<circle cx="48" cy="48" fill="transparent" r="40" stroke="#e8eff3" stroke-width="8"></circle>
+<circle cx="48" cy="48" fill="transparent" r="40" stroke="#006d4a" stroke-dasharray="251.2" stroke-dashoffset="30" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="font-manrope font-bold text-xl text-on-surface">88%</span>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<div class="w-2 h-2 rounded-full bg-tertiary"></div>
+<p class="text-sm font-bold">Optimal Stability</p>
+</div>
+<p class="text-xs text-on-surface-variant">Gini Index variance remains within ±0.04 threshold.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 2: Gini Index Perhitungan Table -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest p-6 rounded-xl shadow-sm">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h4 class="font-manrope font-bold text-slate-700">Tabel Perhitungan Gini Index</h4>
+<p class="text-xs text-on-surface-variant mt-1">Attribute selection based on impurity minimization.</p>
+</div>
+<div class="flex items-center bg-surface-container-low p-1 rounded-lg">
+<button class="px-3 py-1 bg-white shadow-sm rounded-md text-[11px] font-bold">Standard</button>
+<button class="px-3 py-1 text-[11px] font-bold text-slate-500">Advanced</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full border-collapse">
+<thead>
+<tr class="border-b border-slate-100">
+<th class="text-left py-4 px-2 text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">Attribute</th>
+<th class="text-center py-4 px-2 text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">Samples</th>
+<th class="text-center py-4 px-2 text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">Weighted Avg Gini</th>
+<th class="text-center py-4 px-2 text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">Gini Gain</th>
+<th class="text-right py-4 px-2 text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-50">
+<tr class="hover:bg-surface transition-colors">
+<td class="py-4 px-2">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-800">kepatuhan</span>
+<span class="text-[10px] text-slate-400">Mandatory reporting freq</span>
+</div>
+</td>
+<td class="text-center py-4 px-2 font-mono text-sm">1,248</td>
+<td class="text-center py-4 px-2 font-mono text-sm">0.342</td>
+<td class="text-center py-4 px-2 font-mono text-sm font-bold text-primary">0.148</td>
+<td class="text-right py-4 px-2">
+<span class="px-2 py-1 bg-tertiary-container/20 text-on-tertiary-container text-[10px] font-bold rounded-full">Root Node</span>
+</td>
+</tr>
+<tr class="hover:bg-surface transition-colors bg-surface-container-low/30">
+<td class="py-4 px-2">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-800">kehadiran</span>
+<span class="text-[10px] text-slate-400">Session participation rate</span>
+</div>
+</td>
+<td class="text-center py-4 px-2 font-mono text-sm">842</td>
+<td class="text-center py-4 px-2 font-mono text-sm">0.415</td>
+<td class="text-center py-4 px-2 font-mono text-sm font-bold text-primary">0.075</td>
+<td class="text-right py-4 px-2">
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant text-[10px] font-bold rounded-full">Split Node</span>
+</td>
+</tr>
+<tr class="hover:bg-surface transition-colors">
+<td class="py-4 px-2">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-800">respons</span>
+<span class="text-[10px] text-slate-400">Mean response time (hrs)</span>
+</div>
+</td>
+<td class="text-center py-4 px-2 font-mono text-sm">406</td>
+<td class="text-center py-4 px-2 font-mono text-sm">0.456</td>
+<td class="text-center py-4 px-2 font-mono text-sm font-bold text-primary">0.034</td>
+<td class="text-right py-4 px-2">
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant text-[10px] font-bold rounded-full">Leaf Pending</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Section 3: Visualisasi Pohon Keputusan (Decision Tree) -->
+<div class="col-span-12 bg-surface-container-low rounded-2xl p-8 relative overflow-hidden border border-slate-200/40">
+<div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#0053db 1px, transparent 1px); background-size: 24px 24px;"></div>
+<div class="relative z-10 flex flex-col items-center">
+<div class="mb-10 text-center">
+<h4 class="font-manrope font-extrabold text-2xl text-slate-800">Visualisasi Pohon Keputusan</h4>
+<p class="text-slate-500 font-medium italic">Current Model State: Induction Complete</p>
+</div>
+<!-- Tree Map Visualization -->
+<div class="flex flex-col items-center w-full max-w-4xl">
+<!-- Root Node -->
+<div class="group relative flex flex-col items-center mb-12">
+<div class="px-6 py-4 bg-white shadow-lg rounded-xl border-t-4 border-primary w-56 text-center transition-transform hover:scale-105 cursor-pointer">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Root Attribute</p>
+<p class="font-bold text-on-surface text-lg">Kepatuhan</p>
+<div class="mt-2 text-[10px] bg-primary/5 py-1 rounded text-primary font-mono italic">Gini: 0.148</div>
+</div>
+<!-- Connecting Lines -->
+<div class="h-12 w-[1px] bg-slate-300"></div>
+<div class="flex w-full justify-between px-16 relative">
+<div class="h-[1px] bg-slate-300 w-full absolute top-0"></div>
+<div class="h-8 w-[1px] bg-slate-300"></div>
+<div class="h-8 w-[1px] bg-slate-300"></div>
+</div>
+</div>
+<!-- Level 1 Nodes -->
+<div class="grid grid-cols-2 gap-32 w-full">
+<!-- Left Branch -->
+<div class="flex flex-col items-center">
+<div class="mb-2 text-[10px] font-bold text-slate-400 bg-surface px-2 rounded">&lt; 0.75 (Low)</div>
+<div class="px-5 py-3 bg-white shadow-md rounded-xl border border-slate-100 w-48 text-center hover:bg-slate-50 transition-colors">
+<p class="text-[9px] font-bold text-slate-400 uppercase mb-1">Split Node</p>
+<p class="font-bold text-on-surface text-sm">Kehadiran</p>
+</div>
+<div class="h-8 w-[1px] bg-slate-300 mt-2"></div>
+<div class="flex w-32 justify-between relative mt-0">
+<div class="h-[1px] bg-slate-300 w-full absolute top-0"></div>
+<div class="h-6 w-[1px] bg-slate-300"></div>
+<div class="h-6 w-[1px] bg-slate-300"></div>
+</div>
+<!-- Level 2 Leaves for Left Branch -->
+<div class="flex gap-4 mt-2">
+<div class="px-3 py-2 bg-error-container/10 border border-error/20 rounded-lg text-center w-24">
+<p class="text-error font-bold text-[10px]">REJECTED</p>
+</div>
+<div class="px-3 py-2 bg-slate-100 border border-slate-200 rounded-lg text-center w-24">
+<p class="text-slate-500 font-bold text-[10px]">REVIEW</p>
+</div>
+</div>
+</div>
+<!-- Right Branch -->
+<div class="flex flex-col items-center">
+<div class="mb-2 text-[10px] font-bold text-slate-400 bg-surface px-2 rounded">≥ 0.75 (High)</div>
+<div class="px-5 py-3 bg-tertiary-container/20 border-2 border-tertiary/30 shadow-lg shadow-tertiary/5 rounded-xl w-48 text-center flex flex-col items-center">
+<span class="material-symbols-outlined text-tertiary mb-1" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<p class="font-bold text-on-tertiary-container text-sm">APPROVED</p>
+<p class="text-[9px] text-on-tertiary-container/70 mt-1">High Confidence</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

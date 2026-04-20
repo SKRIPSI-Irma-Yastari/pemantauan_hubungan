@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Classification &amp; Evaluation | BPMA Luminary</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#618bff",
+                        "on-background": "#2a3439",
+                        "surface-dim": "#cfdce3",
+                        "secondary-fixed": "#d3e4fe",
+                        "inverse-surface": "#0b0f10",
+                        "outline-variant": "#a9b4b9",
+                        "on-surface": "#2a3439",
+                        "surface-variant": "#d9e4ea",
+                        "on-tertiary": "#e6ffee",
+                        "primary-dim": "#0048c1",
+                        "on-primary": "#f8f7ff",
+                        "on-error-container": "#752121",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-container": "#e8eff3",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#f7f9ff",
+                        "secondary-fixed-dim": "#c5d6f0",
+                        "on-error": "#fff7f6",
+                        "surface-container-high": "#e1e9ee",
+                        "on-tertiary-fixed-variant": "#006544",
+                        "surface-tint": "#0053db",
+                        "tertiary-container": "#69f6b8",
+                        "tertiary-fixed-dim": "#58e7ab",
+                        "secondary": "#506076",
+                        "on-primary-fixed-variant": "#0050d4",
+                        "on-secondary-fixed-variant": "#4d5d73",
+                        "background": "#f7f9fb",
+                        "tertiary-fixed": "#69f6b8",
+                        "surface-container-highest": "#d9e4ea",
+                        "on-primary-fixed": "#003798",
+                        "surface": "#f7f9fb",
+                        "surface-bright": "#f7f9fb",
+                        "secondary-dim": "#44546a",
+                        "primary": "#0053db",
+                        "on-tertiary-container": "#005a3c",
+                        "on-secondary-container": "#435368",
+                        "primary-container": "#dbe1ff",
+                        "tertiary": "#006d4a",
+                        "secondary-container": "#d3e4fe",
+                        "on-tertiary-fixed": "#00452d",
+                        "primary-fixed-dim": "#c7d3ff",
+                        "on-secondary-fixed": "#314055",
+                        "on-surface-variant": "#566166",
+                        "outline": "#717c82",
+                        "error-container": "#fe8983",
+                        "inverse-on-surface": "#9a9d9f",
+                        "on-primary-container": "#0048bf",
+                        "error": "#9f403d",
+                        "tertiary-dim": "#005f40",
+                        "surface-container-low": "#f0f4f7",
+                        "error-dim": "#4e0309"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .stability-gauge {
+            background: conic-gradient(from 180deg at 50% 50%, #006d4a 0deg, #69f6b8 180deg, #e8eff3 180deg);
+            mask: radial-gradient(farthest-side, transparent 80%, white 0);
+            -webkit-mask: radial-gradient(farthest-side, transparent 80%, white 0);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 border-r border-slate-200/50 dark:border-slate-800/50 flex flex-col py-6 bg-slate-50 sticky top-0">
+<div class="px-6 mb-10">
+<h1 class="text-blue-700 font-headline font-extrabold text-2xl tracking-tight">BPMA</h1>
+<p class="text-xs text-on-surface-variant font-medium uppercase tracking-widest">Institutional Luminary</p>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<div class="flex items-center gap-3 px-3 py-2 text-slate-500 hover:text-blue-600 hover:bg-slate-100 transition-all duration-200 ease-in-out cursor-pointer rounded-lg">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-inter text-sm font-medium">Dashboard</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-slate-500 hover:text-blue-600 hover:bg-slate-100 transition-all duration-200 ease-in-out cursor-pointer rounded-lg">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-inter text-sm font-medium">Stakeholders</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-slate-500 hover:text-blue-600 hover:bg-slate-100 transition-all duration-200 ease-in-out cursor-pointer rounded-lg">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="font-inter text-sm font-medium">Data Input</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-slate-500 hover:text-blue-600 hover:bg-slate-100 transition-all duration-200 ease-in-out cursor-pointer rounded-lg">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-inter text-sm font-medium">Algorithms</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-blue-700 bg-white border-r-2 border-blue-700 font-inter text-sm font-bold shadow-sm">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-inter text-sm font-medium">Classification</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-slate-500 hover:text-blue-600 hover:bg-slate-100 transition-all duration-200 ease-in-out cursor-pointer rounded-lg">
+<span class="material-symbols-outlined">history</span>
+<span class="font-inter text-sm font-medium">History</span>
+</div>
+</nav>
+<div class="px-4 mt-auto space-y-1">
+<div class="flex items-center gap-3 px-3 py-2 text-slate-500 hover:text-blue-600 hover:bg-slate-100 transition-all duration-200 ease-in-out cursor-pointer rounded-lg">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-inter text-sm font-medium">Settings</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-slate-500 hover:text-blue-600 hover:bg-slate-100 transition-all duration-200 ease-in-out cursor-pointer rounded-lg">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-inter text-sm font-medium">Logout</span>
+</div>
+</div>
+</aside>
+<div class="flex-1 flex flex-col min-w-0">
+<!-- TopNavBar -->
+<header class="w-full sticky top-0 z-50 flex justify-between items-center px-8 py-4 bg-slate-50/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-4">
+<h2 class="font-headline font-bold text-xl tracking-tight text-blue-700">Classification Results</h2>
+<div class="h-4 w-px bg-outline-variant/30"></div>
+<nav class="flex items-center gap-6">
+<span class="text-blue-700 font-bold font-manrope cursor-pointer transition-colors">Evaluation</span>
+<span class="text-slate-500 font-manrope cursor-pointer hover:bg-slate-100 transition-colors px-2 py-1 rounded">Raw Data</span>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-white px-3 py-1.5 rounded-xl border border-outline-variant/10">
+<span class="material-symbols-outlined text-slate-400 text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48" placeholder="Search parameters..." type="text"/>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-500 cursor-pointer active:scale-95 transition-transform">notifications</span>
+<span class="material-symbols-outlined text-slate-500 cursor-pointer active:scale-95 transition-transform">help</span>
+<img alt="Stakeholder profile" class="w-8 h-8 rounded-full border border-primary/20 object-cover" data-alt="professional portrait of a senior executive man with neutral background soft studio lighting corporate aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6gIQmmZ5U8zjgHFjgYZgD0RY99Qc30NHGISJRGs6PFfKi1xMQcfHd31ehQ2cocyN_FOjaDeJapww__hoGmNdEuR11GcDl4m71-gJ52-oCNXaQmBd_AbKmgOWpHL0-6zT7iUg2uf7JZ5qjupukBlzXtNOmZgL0V-st5sL2fs0SwckVRjUjXqYl-fgcVT_vUK-9RG2jQ1yQ8n8Joba_mBvHARUTRs7TTdNEY4cJw9NtJePjedDYUSsmlQhMtDHq1puNG1OVNpM6iNS3"/>
+</div>
+</div>
+</header>
+<main class="p-8 space-y-8 max-w-7xl mx-auto w-full">
+<!-- Hero Metrics Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Stability Gauge Card -->
+<div class="md:col-span-4 glass-card p-6 rounded-xl shadow-sm flex flex-col items-center justify-center text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16"></div>
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-4">Overall Index</span>
+<div class="relative w-48 h-24 mb-4">
+<div class="stability-gauge w-48 h-48 rounded-full"></div>
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 text-2xl font-headline font-extrabold text-on-surface">94.2%</div>
+</div>
+<div class="px-4 py-1.5 bg-tertiary-container text-on-tertiary-container rounded-full text-xs font-bold">
+                        Harmonis
+                    </div>
+<p class="text-xs text-on-surface-variant mt-3 px-6 leading-relaxed">System behavior is within optimal regulatory parameters.</p>
+</div>
+<!-- Metrics Performance -->
+<div class="md:col-span-8 bg-surface-container-low p-6 rounded-xl flex flex-col">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h3 class="font-headline font-bold text-lg text-on-surface">Model Performance</h3>
+<p class="text-sm text-on-surface-variant">Classification Algorithm: CART (Decision Tree)</p>
+</div>
+<div class="text-right">
+<span class="text-xs text-on-surface-variant font-medium">LATEST RUN</span>
+<p class="text-sm font-semibold">Oct 24, 2023 · 14:02</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-6 flex-1">
+<div class="bg-surface-container-lowest p-5 rounded-lg">
+<span class="text-xs text-on-surface-variant font-bold uppercase tracking-wider">Accuracy</span>
+<div class="text-3xl font-headline font-extrabold text-primary mt-1">98.4<span class="text-sm font-normal">%</span></div>
+<div class="mt-4 h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[98.4%]"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-lg">
+<span class="text-xs text-on-surface-variant font-bold uppercase tracking-wider">Precision</span>
+<div class="text-3xl font-headline font-extrabold text-tertiary mt-1">97.1<span class="text-sm font-normal">%</span></div>
+<div class="mt-4 h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[97.1%]"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-5 rounded-lg">
+<span class="text-xs text-on-surface-variant font-bold uppercase tracking-wider">Recall</span>
+<div class="text-3xl font-headline font-extrabold text-secondary mt-1">99.0<span class="text-sm font-normal">%</span></div>
+<div class="mt-4 h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[99%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Detailed Section: Confusion Matrix & Decision Rules -->
+<div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+<!-- Decision Rules Column -->
+<div class="md:col-span-3 space-y-6">
+<div class="flex items-center justify-between">
+<h3 class="font-headline font-bold text-xl text-on-surface">Decision Rules (IF-THEN)</h3>
+<button class="text-xs font-bold text-primary flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-sm">download</span> EXPORT LOGIC
+                        </button>
+</div>
+<div class="space-y-4">
+<!-- Rule 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/10 hover:border-primary/20 transition-colors">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">schema</span>
+</div>
+<span class="text-sm font-bold text-on-surface-variant uppercase tracking-widest">Rule #01 · High Stability</span>
+</div>
+<div class="font-mono text-sm space-y-1 bg-surface p-4 rounded-lg text-secondary-dim">
+<p><span class="text-primary font-bold">IF</span> Production_Flow &gt; 850 MBPD</p>
+<p><span class="text-primary font-bold">AND</span> Maintenance_Lag &lt; 12 Hours</p>
+<p><span class="text-tertiary font-bold">THEN</span> STATUS = <span class="text-tertiary font-extrabold">Harmonis</span></p>
+</div>
+</div>
+<!-- Rule 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/10 hover:border-primary/20 transition-colors">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-8 h-8 rounded-lg bg-error-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-error text-sm">warning</span>
+</div>
+<span class="text-sm font-bold text-on-surface-variant uppercase tracking-widest">Rule #02 · Critical Pressure</span>
+</div>
+<div class="font-mono text-sm space-y-1 bg-surface p-4 rounded-lg text-secondary-dim">
+<p><span class="text-primary font-bold">IF</span> Reservoir_Pressure &lt; 2100 PSI</p>
+<p><span class="text-primary font-bold">AND</span> Water_Cut &gt; 15%</p>
+<p><span class="text-error font-bold">THEN</span> STATUS = <span class="text-error font-extrabold">Kurang Harmonis</span></p>
+</div>
+</div>
+<!-- Rule 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/10 hover:border-primary/20 transition-colors">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-8 h-8 rounded-lg bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-sm">filter_alt</span>
+</div>
+<span class="text-sm font-bold text-on-surface-variant uppercase tracking-widest">Rule #03 · Seasonal Adjustment</span>
+</div>
+<div class="font-mono text-sm space-y-1 bg-surface p-4 rounded-lg text-secondary-dim">
+<p><span class="text-primary font-bold">IF</span> Gas_Flare_Volume &lt; 50 MMSCFD</p>
+<p><span class="text-tertiary font-bold">THEN</span> STATUS = <span class="text-tertiary font-extrabold">Harmonis</span></p>
+</div>
+</div>
+</div>
+</div>
+<!-- Confusion Matrix Column -->
+<div class="md:col-span-2 space-y-6">
+<h3 class="font-headline font-bold text-xl text-on-surface">Confusion Matrix</h3>
+<div class="bg-white rounded-xl shadow-sm border border-outline-variant/5 overflow-hidden">
+<div class="p-4 bg-surface-container-low border-b border-outline-variant/10 flex justify-between">
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Actual vs Predicted</span>
+<span class="text-xs text-on-surface-variant italic">n = 1,450 records</span>
+</div>
+<div class="p-6">
+<div class="grid grid-cols-3 gap-px bg-outline-variant/20">
+<!-- Top headers -->
+<div class="bg-white"></div>
+<div class="bg-surface-container-low p-3 text-center">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">Pred. Harmonis</span>
+</div>
+<div class="bg-surface-container-low p-3 text-center">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">Pred. Kurang</span>
+</div>
+<!-- Actual Harmonis Row -->
+<div class="bg-surface-container-low p-3 flex items-center">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter vertical-text transform -rotate-90">Act. Harmonis</span>
+</div>
+<div class="bg-tertiary/10 p-6 text-center">
+<div class="text-2xl font-headline font-extrabold text-tertiary">920</div>
+<div class="text-[10px] text-tertiary font-bold">TRUE POS.</div>
+</div>
+<div class="bg-surface p-6 text-center">
+<div class="text-2xl font-headline font-extrabold text-outline">12</div>
+<div class="text-[10px] text-outline font-bold">FALSE NEG.</div>
+</div>
+<!-- Actual Kurang Row -->
+<div class="bg-surface-container-low p-3 flex items-center">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter vertical-text transform -rotate-90">Act. Kurang</span>
+</div>
+<div class="bg-surface p-6 text-center">
+<div class="text-2xl font-headline font-extrabold text-outline">8</div>
+<div class="text-[10px] text-outline font-bold">FALSE POS.</div>
+</div>
+<div class="bg-error/10 p-6 text-center">
+<div class="text-2xl font-headline font-extrabold text-error">510</div>
+<div class="text-[10px] text-error font-bold">TRUE NEG.</div>
+</div>
+</div>
+</div>
+<div class="p-4 border-t border-outline-variant/10 space-y-3">
+<div class="flex justify-between text-xs">
+<span class="text-on-surface-variant font-medium">F1-Score</span>
+<span class="font-bold text-on-surface">0.985</span>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-on-surface-variant font-medium">AUC-ROC</span>
+<span class="font-bold text-on-surface">0.992</span>
+</div>
+</div>
+</div>
+<!-- Evaluation Insights -->
+<div class="bg-primary p-6 rounded-xl text-on-primary shadow-lg shadow-primary/20">
+<div class="flex items-start gap-3 mb-4">
+<span class="material-symbols-outlined text-inverse-primary">lightbulb</span>
+<h4 class="font-bold text-sm">Technical Insight</h4>
+</div>
+<p class="text-sm leading-relaxed text-blue-100">
+                            Model CART menunjukkan stabilitas tinggi pada variabel <span class="text-white font-bold underline decoration-blue-300">Production_Flow</span>. 
+                            Resiko klasifikasi salah hanya terjadi pada ambang batas transisi pressure (2100-2150 PSI).
+                        </p>
+<button class="mt-6 w-full py-2 bg-white/10 hover:bg-white/20 transition-colors rounded-lg text-xs font-bold uppercase tracking-widest">
+                            View Full Report
+                        </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Background Texture -->
+<div class="fixed inset-0 -z-10 pointer-events-none opacity-20">
+<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-primary-container to-transparent rounded-full blur-[120px]"></div>
+<div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-tertiary-container to-transparent rounded-full blur-[100px]"></div>
+</div>
+</body></html>

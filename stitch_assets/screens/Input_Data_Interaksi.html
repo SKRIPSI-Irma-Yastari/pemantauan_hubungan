@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BPMA Luminary - Data Input</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#618bff",
+                    "on-background": "#2a3439",
+                    "surface-dim": "#cfdce3",
+                    "secondary-fixed": "#d3e4fe",
+                    "inverse-surface": "#0b0f10",
+                    "outline-variant": "#a9b4b9",
+                    "on-surface": "#2a3439",
+                    "surface-variant": "#d9e4ea",
+                    "on-tertiary": "#e6ffee",
+                    "primary-dim": "#0048c1",
+                    "on-primary": "#f8f7ff",
+                    "on-error-container": "#752121",
+                    "primary-fixed": "#dbe1ff",
+                    "surface-container": "#e8eff3",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#f7f9ff",
+                    "secondary-fixed-dim": "#c5d6f0",
+                    "on-error": "#fff7f6",
+                    "surface-container-high": "#e1e9ee",
+                    "on-tertiary-fixed-variant": "#006544",
+                    "surface-tint": "#0053db",
+                    "tertiary-container": "#69f6b8",
+                    "tertiary-fixed-dim": "#58e7ab",
+                    "secondary": "#506076",
+                    "on-primary-fixed-variant": "#0050d4",
+                    "on-secondary-fixed-variant": "#4d5d73",
+                    "background": "#f7f9fb",
+                    "tertiary-fixed": "#69f6b8",
+                    "surface-container-highest": "#d9e4ea",
+                    "on-primary-fixed": "#003798",
+                    "surface": "#f7f9fb",
+                    "surface-bright": "#f7f9fb",
+                    "secondary-dim": "#44546a",
+                    "primary": "#0053db",
+                    "on-tertiary-container": "#005a3c",
+                    "on-secondary-container": "#435368",
+                    "primary-container": "#dbe1ff",
+                    "tertiary": "#006d4a",
+                    "secondary-container": "#d3e4fe",
+                    "on-tertiary-fixed": "#00452d",
+                    "primary-fixed-dim": "#c7d3ff",
+                    "on-secondary-fixed": "#314055",
+                    "on-surface-variant": "#566166",
+                    "outline": "#717c82",
+                    "error-container": "#fe8983",
+                    "inverse-on-surface": "#9a9d9f",
+                    "on-primary-container": "#0048bf",
+                    "error": "#9f403d",
+                    "tertiary-dim": "#005f40",
+                    "surface-container-low": "#f0f4f7",
+                    "error-dim": "#4e0309"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 border-r border-slate-200/50 dark:border-slate-800/50 bg-slate-50 dark:bg-slate-950 flex flex-col py-6 sticky top-0">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg">account_balance</span>
+</div>
+<div>
+<h1 class="text-blue-700 dark:text-blue-400 font-manrope font-extrabold text-lg leading-none">BPMA</h1>
+<p class="text-[10px] text-slate-500 font-medium uppercase tracking-wider">Institutional Luminary</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 px-3">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-100 dark:hover:bg-slate-900/50 transition-all duration-200 ease-in-out font-inter text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-100 dark:hover:bg-slate-900/50 transition-all duration-200 ease-in-out font-inter text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+                Stakeholders
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-blue-700 dark:text-blue-400 bg-white dark:bg-slate-900 border-r-2 border-blue-700 dark:border-blue-400 transition-all duration-200 ease-in-out font-inter text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+                Data Input
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-100 dark:hover:bg-slate-900/50 transition-all duration-200 ease-in-out font-inter text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+                Algorithms
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-100 dark:hover:bg-slate-900/50 transition-all duration-200 ease-in-out font-inter text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                Classification
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-100 dark:hover:bg-slate-900/50 transition-all duration-200 ease-in-out font-inter text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+                History
+            </a>
+</nav>
+<div class="px-3 pt-6 border-t border-slate-200/50 dark:border-slate-800/50 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-slate-100 dark:hover:bg-slate-900/50 transition-all duration-200 ease-in-out font-inter text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 text-error-dim font-inter text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- TopNavBar -->
+<header class="w-full sticky top-0 z-50 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md flex justify-between items-center px-6 py-3 border-b border-slate-200/50 dark:border-slate-800/50 shadow-sm">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="w-full pl-10 pr-4 py-1.5 bg-surface-container-low border-none rounded-lg text-sm focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface" placeholder="Search stakeholders or datasets..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer active:scale-95 text-slate-500">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer active:scale-95 text-slate-500">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="h-8 w-px bg-slate-200 dark:bg-slate-700 mx-1"></div>
+<div class="flex items-center gap-3 pl-2">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-semibold text-blue-700">Administrator</p>
+<p class="text-[10px] text-on-surface-variant">BPMA Central Office</p>
+</div>
+<img alt="Stakeholder profile" class="w-10 h-10 rounded-full object-cover border-2 border-primary-container" data-alt="professional portrait of a senior executive in a suit with a neutral office background and soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5AHKZ6zpCQxCzitHIhXtZPkXxg9DypxslaWjqeF038Z55COOP8AWPJKX7QFjjabgzfMeGn7zGIkDQgvTH2MIojd2orMoVkv7Y9nHIr6vz5C7QyEqKvMJ6yCg1ANCuzHpZVJnalLOZD-DmHIsRujejw_C-Zw3pZwktljML1LMvKm-_k-cjs8uByFpObPTAsWas-SKYso09PccQbMiKIJFthIvPGThegXesf-xxt7s3_gnQHPBBCKgJViizaMH6qSlQW30PocBTcLgn"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-8 max-w-6xl mx-auto w-full">
+<div class="mb-8">
+<h2 class="text-3xl font-bold tracking-tight text-on-surface font-headline">Halaman Input Data Interaksi</h2>
+<p class="text-on-surface-variant body-md mt-1">Area bagi Admin untuk memasukkan data mentah interaksi stakeholder Migas.</p>
+</div>
+<!-- Bento Grid Layout for Form Sections -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+<!-- Main Form Column -->
+<div class="md:col-span-8 space-y-6">
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm">
+<div class="flex items-center justify-between mb-8">
+<h3 class="headline-md font-bold text-on-surface">Formulir Parameter</h3>
+<span class="px-3 py-1 bg-tertiary-container/30 text-on-tertiary-container text-xs font-bold rounded-full uppercase tracking-tighter">Live Input Mode</span>
+</div>
+<form class="space-y-8">
+<!-- Period Selection -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider">Pilihan Periode</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low border border-outline-variant/15 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-primary appearance-none">
+<option>Semester I (Januari - Juni 2024)</option>
+<option>Semester II (Juli - Desember 2024)</option>
+<option>Semester I (Januari - Juni 2023)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">unfold_more</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider">Stakeholder Target</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low border border-outline-variant/15 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-primary appearance-none">
+<option>Pertamina Hulu Rokan</option>
+<option>Chevron Pacific Indonesia</option>
+<option>ExxonMobil Cepu</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">unfold_more</span>
+</div>
+</div>
+</div>
+<div class="h-px bg-slate-100"></div>
+<!-- Performance Metrics -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
+<div class="space-y-2">
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider">Kepatuhan Laporan %</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border border-outline-variant/15 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-primary" placeholder="0 - 100" type="number"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm font-medium">%</span>
+</div>
+<p class="text-[11px] text-on-surface-variant italic">Persentase laporan teknis yang dikirim tepat waktu.</p>
+</div>
+<div class="space-y-2">
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider">Kehadiran Rapat</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border border-outline-variant/15 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-primary" placeholder="Jumlah kehadiran" type="number"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant">calendar_today</span>
+</div>
+<p class="text-[11px] text-on-surface-variant italic">Total sesi rapat resmi yang dihadiri delegasi.</p>
+</div>
+<div class="space-y-2">
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider">Respons Komunikasi (Hari)</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border border-outline-variant/15 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-primary" placeholder="Rata-rata hari" type="number"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant">speed</span>
+</div>
+<p class="text-[11px] text-on-surface-variant italic">Kecepatan rata-rata membalas korespendensi resmi.</p>
+</div>
+<div class="space-y-2">
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider">Partisipasi Kegiatan</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low border border-outline-variant/15 rounded-lg py-2.5 px-4 text-sm focus:ring-2 focus:ring-primary appearance-none">
+<option>Aktif (Diatas 80%)</option>
+<option>Moderat (50% - 80%)</option>
+<option>Pasif (Dibawah 50%)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">unfold_more</span>
+</div>
+<p class="text-[11px] text-on-surface-variant italic">Keterlibatan dalam forum diskusi dan workshop non-rutin.</p>
+</div>
+</div>
+<div class="pt-4 flex items-center justify-end gap-3">
+<button class="px-6 py-2.5 text-sm font-semibold text-secondary hover:bg-surface-container-high rounded-lg transition-colors" type="reset">Discard Draft</button>
+<button class="px-8 py-2.5 bg-primary text-on-primary text-sm font-bold rounded-lg hover:shadow-[0_4px_12px_rgba(0,83,219,0.3)] transition-all active:scale-95 flex items-center gap-2" type="submit">
+<span class="material-symbols-outlined text-sm">save</span>
+                                    Submit Data
+                                </button>
+</div>
+</form>
+</div>
+<!-- Asymmetric Guide Card -->
+<div class="bg-primary/5 rounded-xl p-6 border-l-4 border-primary">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">info</span>
+<div>
+<h4 class="text-sm font-bold text-primary mb-1">Standardisasi Input</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                                    Pastikan semua data numerik telah divalidasi sesuai dengan Berita Acara Rapat Bulanan. Kesalahan input data akan mempengaruhi skor algoritma klasifikasi secara otomatis.
+                                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Insight/Context Column -->
+<div class="md:col-span-4 space-y-6">
+<!-- Stability Gauge (Signature Component) -->
+<div class="bg-white/80 backdrop-blur-xl border border-outline-variant/10 rounded-xl p-6 shadow-sm overflow-hidden relative">
+<div class="relative z-10">
+<h3 class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-6">Current Confidence Index</h3>
+<div class="flex flex-col items-center">
+<div class="relative w-40 h-20 mb-4">
+<!-- Semi-circular track -->
+<svg class="w-full h-full" viewbox="0 0 100 50">
+<path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#e8eff3" stroke-linecap="round" stroke-width="12"></path>
+<path d="M 10 50 A 40 40 0 0 1 75 20" fill="none" stroke="url(#gradient-emerald)" stroke-linecap="round" stroke-width="12"></path>
+<defs>
+<lineargradient id="gradient-emerald" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" style="stop-color:#006d4a"></stop>
+<stop offset="100%" style="stop-color:#69f6b8"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="absolute inset-0 flex items-end justify-center pb-1">
+<span class="text-2xl font-extrabold text-tertiary">84%</span>
+</div>
+</div>
+<div class="text-center">
+<span class="px-3 py-1 bg-tertiary-container text-on-tertiary-container text-[10px] font-bold rounded-full">HARMONIOUS</span>
+<p class="text-[11px] text-on-surface-variant mt-3 px-4">Data integrity is high for current semester inputs.</p>
+</div>
+</div>
+</div>
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-primary/5 rounded-full blur-2xl"></div>
+</div>
+<!-- Recent Activity Cards -->
+<div class="space-y-4">
+<h3 class="text-xs font-bold text-on-surface-variant uppercase tracking-widest px-2">Recent Submissions</h3>
+<div class="bg-surface-container-low rounded-lg p-4 transition-colors hover:bg-surface-container-high cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<p class="text-sm font-bold text-on-surface">PetroChina Ltd.</p>
+<span class="text-[10px] text-on-surface-variant font-medium">2h ago</span>
+</div>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-white text-on-surface-variant text-[10px] rounded-md border border-outline-variant/10">Sem I 2024</span>
+<span class="px-2 py-0.5 bg-white text-on-surface-variant text-[10px] rounded-md border border-outline-variant/10">92% Compliance</span>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-4 transition-colors hover:bg-surface-container-high cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<p class="text-sm font-bold text-on-surface">Medco E&amp;P</p>
+<span class="text-[10px] text-on-surface-variant font-medium">5h ago</span>
+</div>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-white text-on-surface-variant text-[10px] rounded-md border border-outline-variant/10">Sem I 2024</span>
+<span class="px-2 py-0.5 bg-white text-on-surface-variant text-[10px] rounded-md border border-outline-variant/10">78% Compliance</span>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-4 transition-colors hover:bg-surface-container-high cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<p class="text-sm font-bold text-on-surface">ENI Indonesia</p>
+<span class="text-[10px] text-on-surface-variant font-medium">Yesterday</span>
+</div>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-white text-on-surface-variant text-[10px] rounded-md border border-outline-variant/10">Sem II 2023</span>
+<span class="px-2 py-0.5 bg-white text-on-surface-variant text-[10px] rounded-md border border-outline-variant/10">85% Compliance</span>
+</div>
+</div>
+</div>
+<!-- Action Link -->
+<a class="flex items-center justify-between p-4 bg-white border border-outline-variant/10 rounded-xl hover:bg-primary-container/30 transition-all group" href="#">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-primary-container rounded-lg group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm">history</span>
+</div>
+<span class="text-sm font-semibold">View Full History</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</a>
+</div>
+</div>
+</div>
+</main>
+</body></html>

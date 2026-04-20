@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Survey Input - Institutional Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e3e2e6",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-surface-variant": "#45464d",
+                        "tertiary-fixed-dim": "#c3c7cc",
+                        "secondary": "#6f43c0",
+                        "on-secondary-fixed": "#250059",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f1f0f4",
+                        "surface-container-low": "#f4f3f7",
+                        "on-tertiary-fixed": "#181c20",
+                        "outline-variant": "#c6c6cd",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#d3bbff",
+                        "surface": "#faf9fd",
+                        "on-secondary-fixed-variant": "#5727a6",
+                        "primary-container": "#131b2e",
+                        "on-tertiary-fixed-variant": "#43474c",
+                        "on-tertiary-container": "#808489",
+                        "surface-dim": "#dbd9dd",
+                        "outline": "#76777d",
+                        "surface-bright": "#faf9fd",
+                        "inverse-primary": "#bec6e0",
+                        "surface-tint": "#565e74",
+                        "secondary-fixed": "#ebddff",
+                        "on-surface": "#1a1b1e",
+                        "surface-container": "#efedf1",
+                        "background": "#faf9fd",
+                        "on-primary-fixed": "#131b2e",
+                        "primary-fixed": "#dae2fd",
+                        "tertiary": "#000000",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "tertiary-fixed": "#dfe3e8",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#a97efd",
+                        "surface-container-highest": "#e3e2e6",
+                        "inverse-surface": "#2f3033",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#3d0088",
+                        "on-error-container": "#93000a",
+                        "on-background": "#1a1b1e",
+                        "on-primary-container": "#7c839b",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#181c20",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#000000",
+                        "surface-container-high": "#e9e7eb",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf9fd;
+        }
+        .form-stage {
+            background-color: #ffffff;
+            transition: background-color 0.3s ease;
+        }
+        .form-stage:focus-within {
+            background-color: #ebddff;
+        }
+        .custom-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            background: #6f43c0;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-slate-900 dark:bg-slate-950 flex flex-col py-8 px-4 shadow-2xl shadow-slate-950/20 z-50">
+<div class="mb-10 px-2">
+<h1 class="text-xl font-bold text-white tracking-wider font-['Manrope']">KKKS Aceh</h1>
+<p class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-semibold mt-1">Sovereign Clarity Portal</p>
+</div>
+<nav class="space-y-2 flex-1">
+<!-- Active Tab: Survey Input -->
+<a class="flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 ease-in-out text-white bg-purple-600/20 border-r-4 border-purple-500 font-['Manrope'] font-semibold tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+<span>Survey Input</span>
+</a>
+<!-- Inactive Tab -->
+<a class="flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 ease-in-out text-slate-400 hover:text-slate-100 hover:bg-slate-800 font-['Manrope'] font-semibold tracking-tight" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span>Survey Management</span>
+</a>
+</nav>
+<div class="mt-auto px-2 pt-4 border-t border-slate-800">
+<div class="flex items-center space-x-3">
+<img alt="BPMA Logo" class="w-10 h-10 rounded-full bg-slate-800" data-alt="Official BPMA logo graphic representing Acehnese institutional authority with professional clean geometry" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDO6Jda11WYtVM3jbrn1pgq9-OxRxx541_a15kOSI-Y-bqcK_QUFkNr0fR2SXuxf2vG-gSJwpPU0-nO--XyYYj57yMXSjKPKvDGyfB0KK0WhaST_10djBaO_KnvGdjXmy0IO5zGkrCitcPrAUAULpBsPwW1A10CclGQAsGHk3VRGcRjtvjM9pxUuJXbMkBTNNYJLTQ6CPcQJKAWUvm5bT2qZEVvGInEvgmwD3SMXwrNIlZjHp553IJtOUo_e74YKUQXYsjDKCAMulXH"/>
+<div>
+<p class="text-xs font-bold text-white">BPMA Admin</p>
+<p class="text-[10px] text-slate-500">Regulator</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-slate-50/80 backdrop-blur-md flex justify-between items-center px-8 z-40">
+<div class="flex items-center space-x-4">
+<h2 class="text-lg font-extrabold text-slate-900 font-['Inter']">Institutional Analytics</h2>
+<div class="h-4 w-px bg-slate-200"></div>
+<div class="relative group">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+<span class="material-symbols-outlined text-sm">search</span>
+</span>
+<input class="bg-surface-container-low border-none text-sm rounded-full py-1.5 pl-10 pr-4 w-64 focus:ring-2 focus:ring-purple-500/30 transition-all" placeholder="Search data points..." type="text"/>
+</div>
+</div>
+<div class="flex items-center space-x-6">
+<button class="text-slate-500 hover:text-purple-600 transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="flex items-center space-x-3">
+<span class="text-sm font-medium text-purple-700">Admin</span>
+<img alt="Admin User Profile" class="w-8 h-8 rounded-full ring-2 ring-purple-100" data-alt="professional portrait of a corporate administrative officer in a modern workspace setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwam49_4YT9ymX_XM-jLAarV-LeqPQffcrsmNRffPpexSEvy2e5TkWkuuVsPWp3uZ0y-eB39eNg0uXj_rJ69894p_ANFCcIdsA-vW2qd3YaldIIi9f25V1Qe8dItFHF1crOB6Y4pHSDC_4KMUqZm1pdlzhkyCnwzMji4dCRgSmcZE1lpIG5cugiwsQDxpJzwxeVebk65hXXt6Q9hx_svBm0PLKQjiVQjcql3VIBqDR2J-8rU4HVA5rDiAGwbHK1fT9pX3WZYhl8DKt"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 pb-12 px-12 min-h-screen">
+<div class="max-w-4xl mx-auto">
+<!-- Header Section -->
+<div class="mb-10">
+<span class="text-[10px] font-bold tracking-[0.15em] text-secondary uppercase font-label">Submission Portal</span>
+<h3 class="text-3xl font-headline font-bold text-on-surface mt-2">Survey Input Form</h3>
+<p class="text-on-surface-variant mt-2 max-w-2xl font-body">Input operational performance metrics for Kontraktor Kontrak Kerja Sama (KKKS). Ensure all data reflects the sovereign clarity of regional operations.</p>
+</div>
+<!-- Form Content -->
+<form class="space-y-6">
+<!-- Bento-like Section: Primary Identification -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="form-stage p-8 rounded-xl shadow-sm border border-outline-variant/15">
+<label class="block text-[11px] font-bold text-on-surface-variant uppercase tracking-wider mb-3">Nama Stakeholder KKKS</label>
+<select class="w-full bg-surface-container-low border-none rounded-lg py-3 px-4 text-on-surface focus:ring-2 focus:ring-secondary/20 font-body">
+<option>Select KKKS Entity</option>
+<option>Pertamina EP</option>
+<option>Medco E&amp;P Malaka</option>
+<option>Mubadala Energy</option>
+<option>Triangle Pase</option>
+</select>
+</div>
+<div class="form-stage p-8 rounded-xl shadow-sm border border-outline-variant/15">
+<label class="block text-[11px] font-bold text-on-surface-variant uppercase tracking-wider mb-3">Wilayah Operasional</label>
+<select class="w-full bg-surface-container-low border-none rounded-lg py-3 px-4 text-on-surface focus:ring-2 focus:ring-secondary/20 font-body">
+<option>Select Region</option>
+<option>Aceh Timur</option>
+<option>Aceh Utara</option>
+<option>Aceh Tamiang</option>
+<option>Pidie Jaya</option>
+<option>Bireuen</option>
+</select>
+</div>
+</div>
+<!-- Bento-like Section: Temporal Context -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="form-stage p-8 rounded-xl shadow-sm border border-outline-variant/15">
+<label class="block text-[11px] font-bold text-on-surface-variant uppercase tracking-wider mb-3">Tahun</label>
+<select class="w-full bg-surface-container-low border-none rounded-lg py-3 px-4 text-on-surface focus:ring-2 focus:ring-secondary/20 font-body">
+<option>2024</option>
+<option>2023</option>
+<option>2022</option>
+</select>
+</div>
+<div class="form-stage p-8 rounded-xl shadow-sm border border-outline-variant/15">
+<label class="block text-[11px] font-bold text-on-surface-variant uppercase tracking-wider mb-3">Bulan</label>
+<select class="w-full bg-surface-container-low border-none rounded-lg py-3 px-4 text-on-surface focus:ring-2 focus:ring-secondary/20 font-body">
+<option>Januari</option>
+<option>Februari</option>
+<option>Maret</option>
+<option>April</option>
+</select>
+</div>
+</div>
+<!-- Qualitative Metrics -->
+<div class="form-stage p-8 rounded-xl shadow-sm border border-outline-variant/15">
+<div class="flex justify-between items-end mb-4">
+<div>
+<label class="block text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Kepatuhan Laporan</label>
+<p class="text-xs text-on-surface-variant/70 mt-1">Percentage of reporting deadlines met within the cycle.</p>
+</div>
+<span class="text-2xl font-headline font-bold text-secondary">85%</span>
+</div>
+<input class="w-full h-2 bg-surface-container-high rounded-full appearance-none cursor-pointer custom-slider" max="100" min="0" type="range" value="85"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="form-stage p-8 rounded-xl shadow-sm border border-outline-variant/15">
+<label class="block text-[11px] font-bold text-on-surface-variant uppercase tracking-wider mb-3">Kehadiran Rapat</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-lg py-3 px-4 text-on-surface focus:ring-2 focus:ring-secondary/20 font-body" placeholder="0" type="number"/>
+<span class="absolute right-4 top-3 text-xs text-on-surface-variant/50 font-label">SESSIONS</span>
+</div>
+</div>
+<div class="form-stage p-8 rounded-xl shadow-sm border border-outline-variant/15">
+<label class="block text-[11px] font-bold text-on-surface-variant uppercase tracking-wider mb-3">Kecepatan Respons Komunikasi</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-lg py-3 px-4 text-on-surface focus:ring-2 focus:ring-secondary/20 font-body" placeholder="0" type="number"/>
+<span class="absolute right-4 top-3 text-xs text-on-surface-variant/50 font-label">DAYS</span>
+</div>
+</div>
+</div>
+<!-- Evaluation Section -->
+<div class="form-stage p-8 rounded-xl shadow-sm border border-outline-variant/15">
+<label class="block text-[11px] font-bold text-on-surface-variant uppercase tracking-wider mb-4">Penilaian Hubungan Kerja Sama</label>
+<div class="flex items-center space-x-6">
+<div class="flex space-x-2">
+<button class="text-secondary" type="button"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span></button>
+<button class="text-secondary" type="button"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span></button>
+<button class="text-secondary" type="button"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span></button>
+<button class="text-secondary" type="button"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span></button>
+<button class="text-surface-container-high" type="button"><span class="material-symbols-outlined">star</span></button>
+</div>
+<span class="text-sm font-medium text-on-surface-variant">4.0 - Strong Institutional Alignment</span>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex items-center justify-end space-x-4 pt-6">
+<button class="px-8 py-3 rounded-full text-sm font-bold text-on-surface-variant hover:bg-surface-container-high transition-colors font-label" type="button">
+                        Cancel
+                    </button>
+<button class="px-10 py-3 rounded-full bg-secondary text-white text-sm font-bold shadow-lg shadow-secondary/20 hover:scale-[1.02] active:scale-95 transition-all font-label" type="submit">
+                        Submit Data
+                    </button>
+</div>
+</form>
+<!-- Footer Meta -->
+<div class="mt-16 text-center">
+<p class="text-[10px] text-on-surface-variant/40 tracking-[0.2em] font-label uppercase">Institutional Compliance &amp; Transparency Engine © 2024</p>
+</div>
+</div>
+</main>
+</body></html>
