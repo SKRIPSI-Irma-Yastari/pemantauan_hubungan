@@ -1,5 +1,6 @@
 "use client"
 
+import { useState, useEffect, useMemo } from "react"
 import { 
   Plus, 
   Search, 
@@ -10,28 +11,126 @@ import {
   Calendar, 
   AlertCircle,
   Filter,
-  ChevronLeft
+  ChevronLeft,
+  Loader2
 } from "lucide-react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
+import { supabase } from "@/lib/supabase"
 
-const stats = [
-  { label: "Average Compliance", value: "86.4%", trend: "+4.2% since last month", icon: TrendingUp, color: "primary" },
-  { label: "Total Submissions", value: "142", trend: "Q1 Fiscal Period 2024", icon: Calendar, color: "secondary" },
-  { label: "Pending Reviews", value: "08", trend: "Requires attention in Aceh Utara", icon: AlertCircle, color: "tertiary" },
-]
+// Stats will be calculated dynamically within the component
 
-const surveyData = [
-  { id: "KKKS-001-ACEH", name: "Medco E&P Malaka", region: "Aceh Timur", period: "Januari 2024", compliance: 92, attendance: "100%", response: "24/24", rating: "Excellent" },
-  { id: "KKKS-042-ACEH", name: "Pertamina EP Asset 1", region: "Rantau", period: "Januari 2024", compliance: 85, attendance: "95%", response: "22/24", rating: "Stable" },
-  { id: "KKKS-009-ACEH", name: "Triangle Pase Inc", region: "Aceh Utara", period: "Desember 2023", compliance: 72, attendance: "88%", response: "18/24", rating: "Review Needed" },
-  { id: "KKKS-015-ACEH", name: "Zaratex Energy Ltd", region: "Lhokseumawe", period: "Januari 2024", compliance: 95, attendance: "100%", response: "24/24", rating: "Excellent" },
-]
+// Mapping helper for regions
+const getRegion = (kkks: string) => {
+  const mapping: Record<string, string> = {
+    "PT Medco E&P Malaka": "Aceh Timur",
+    "PT Pema Global Energi (PGE)": "Aceh Utara",
+    "Triangle Pase": "Aceh Utara",
+    "Conrad Asia Energy": "Aceh Barat",
+    "Zaratex N.V": "Lhokseumawe"
+  }
+  return mapping[kkks] || "Wilayah Aceh"
+}
+
+// Mapping helper for compliance score
+const getComplianceScore = (compliance: string) => {
+  if (!compliance) return 0
+  if (compliance.includes("Sangat")) return 100
+  if (compliance.includes("Cukup")) return 75
+  if (compliance.includes("Kurang")) return 40
+  return 0
+}
+
+// Mapping helper for rating labels
+const getRatingLabel = (rating: string) => {
+  if (rating === "Sangat Baik") return "Excellent"
+  if (rating === "Cukup") return "Stable"
+  if (rating === "Kurang Baik") return "Review Needed"
+  return rating || "Unknown"
+}
 
 export default function SurveyManagementPage() {
+  const [surveys, setSurveys] = useState<any[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    async function fetchSurveys() {
+      try {
+        setIsLoading(true)
+        const { data, error } = await supabase
+          .from('surveys')
+          .select('*')
+          .order('created_at', { ascending: false })
+
+        if (error) throw error
+        setSurveys(data || [])
+      } catch (err: any) {
+        console.error("Error fetching surveys:", err)
+        setError(err.message)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    fetchSurveys()
+  }, [])
+
+  const handleDelete = async (id: string) => {
+    if (!confirm("Are you sure you want to delete this record?")) return
+
+    try {
+      const { error } = await supabase
+        .from('surveys')
+        .delete()
+        .eq('id', id)
+
+      if (error) throw error
+      setSurveys(prev => prev.filter(s => s.id !== id))
+    } catch (err: any) {
+      alert("Error deleting record: " + err.message)
+    }
+  }
+
+  const calculatedStats = useMemo(() => {
+    if (!surveys.length) return [
+      { label: "Average Compliance", value: "0%", trend: "No data available", icon: TrendingUp, color: "primary" },
+      { label: "Total Submissions", value: "0", trend: "Current Period", icon: Calendar, color: "secondary" },
+      { label: "Active Entities", value: "00", trend: "Across Aceh Region", icon: AlertCircle, color: "tertiary" },
+    ]
+
+    const totalSubmissions = surveys.length
+    const uniqueKKKS = new Set(surveys.map(s => s.kkks)).size
+    const avgCompliance = surveys.reduce((acc, s) => acc + getComplianceScore(s.compliance), 0) / totalSubmissions
+
+    return [
+      { 
+        label: "Average Compliance", 
+        value: `${avgCompliance.toFixed(1)}%`, 
+        trend: `${surveys.length > 1 ? "Calculated from aggregate data" : "Single record baseline"}`, 
+        icon: TrendingUp, 
+        color: "primary" 
+      },
+      { 
+        label: "Total Submissions", 
+        value: totalSubmissions.toString(), 
+        trend: "Active Registry Rows", 
+        icon: Calendar, 
+        color: "secondary" 
+      },
+      { 
+        label: "Active Entities", 
+        value: uniqueKKKS.toString().padStart(2, '0'), 
+        trend: "Unique KKKS Stakeholders", 
+        icon: AlertCircle, 
+        color: "tertiary" 
+      },
+    ]
+  }, [surveys])
+
   return (
-    <div className="p-8 space-y-10 max-w-[1500px] mx-auto">
+    <div className="p-8 space-y-10 max-w-[1500px] mx-auto min-h-screen">
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
@@ -60,7 +159,16 @@ export default function SurveyManagementPage() {
 
       {/* Registry Table Section */}
       <div className="bg-surface-container-lowest rounded-3xl overflow-hidden shadow-sm border border-outline-variant/10">
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto min-h-[400px] relative">
+          {isLoading && (
+            <div className="absolute inset-0 bg-surface-container-lowest/50 backdrop-blur-sm z-10 flex items-center justify-center">
+              <div className="flex flex-col items-center gap-4">
+                <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                <span className="text-xs font-bold uppercase tracking-widest text-primary">Synchronizing Core Data...</span>
+              </div>
+            </div>
+          )}
+
           <table className="w-full text-left">
             <thead>
               <tr className="bg-surface-container text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
@@ -75,65 +183,81 @@ export default function SurveyManagementPage() {
               </tr>
             </thead>
             <tbody className="text-sm">
-              {surveyData.map((row, idx) => (
-                <tr key={row.id} className={cn(
-                  "hover:bg-surface-container-low transition-colors group border-b border-outline-variant/5",
-                  idx % 2 === 1 ? "bg-surface-container/30" : "bg-transparent"
-                )}>
-                  <td className="px-8 py-6">
-                    <div className="font-bold text-on-surface">{row.name}</div>
-                    <div className="text-[10px] text-on-surface-variant opacity-60 font-medium">ID: {row.id}</div>
-                  </td>
-                  <td className="px-6 py-6 text-on-surface-variant font-medium">{row.region}</td>
-                  <td className="px-6 py-6">
-                    <span className="bg-primary/5 text-primary px-3 py-1 rounded-full text-[10px] font-bold border border-primary/10">
-                      {row.period}
-                    </span>
-                  </td>
-                  <td className="px-6 py-6">
-                    <div className="flex items-center gap-3 min-w-[120px]">
-                      <div className="flex-1 h-1.5 bg-surface-container rounded-full overflow-hidden">
-                        <motion.div 
-                          initial={{ width: 0 }}
-                          animate={{ width: `${row.compliance}%` }}
-                          transition={{ duration: 1, delay: idx * 0.1 }}
-                          className="h-full bg-primary rounded-full shadow-[0_0_8px_rgba(var(--color-primary-rgb),0.3)]"
-                        />
-                      </div>
-                      <span className="font-bold text-primary">{row.compliance}%</span>
-                    </div>
-                  </td>
-                  <td className="px-6 py-6 text-center font-bold text-on-surface">{row.attendance}</td>
-                  <td className="px-6 py-6 text-center font-mono text-[11px] text-on-surface-variant">{row.response}</td>
-                  <td className="px-6 py-6">
-                    <span className={cn(
-                      "text-[9px] font-extrabold px-2.5 py-1 rounded uppercase tracking-tighter border",
-                      row.rating === "Excellent" && "bg-tertiary-container/30 text-tertiary border-tertiary/10",
-                      row.rating === "Stable" && "bg-primary-container/30 text-primary border-primary/10",
-                      row.rating === "Review Needed" && "bg-error-container/30 text-error border-error/10"
-                    )}>
-                      {row.rating}
-                    </span>
-                  </td>
-                  <td className="px-8 py-6 text-right">
-                    <div className="flex justify-end gap-2">
-                      <button className="p-2 hover:bg-surface-container rounded-lg text-on-surface-variant transition-all hover:text-primary">
-                        <Edit2 className="h-4 w-4" />
-                      </button>
-                      <button className="p-2 hover:bg-error-container/20 rounded-lg text-on-surface-variant transition-all hover:text-error">
-                        <Trash2 className="h-4 w-4" />
-                      </button>
-                    </div>
+              {surveys.length === 0 && !isLoading ? (
+                <tr>
+                  <td colSpan={8} className="px-8 py-20 text-center text-on-surface-variant/40 font-bold uppercase tracking-widest italic">
+                    No registry data detected in the current sector.
                   </td>
                 </tr>
-              ))}
+              ) : (
+                surveys.map((row, idx) => {
+                  const complianceScore = getComplianceScore(row.compliance)
+                  const ratingLabel = getRatingLabel(row.relationship_rating)
+                  return (
+                    <tr key={row.id} className={cn(
+                      "hover:bg-surface-container-low transition-colors group border-b border-outline-variant/5",
+                      idx % 2 === 1 ? "bg-surface-container/30" : "bg-transparent"
+                    )}>
+                      <td className="px-8 py-6">
+                        <div className="font-bold text-on-surface">{row.kkks}</div>
+                        <div className="text-[10px] text-on-surface-variant opacity-60 font-medium">ID: {row.id.substring(0, 8)}...</div>
+                      </td>
+                      <td className="px-6 py-6 text-on-surface-variant font-medium">{getRegion(row.kkks)}</td>
+                      <td className="px-6 py-6">
+                        <span className="bg-primary/5 text-primary px-3 py-1 rounded-full text-[10px] font-bold border border-primary/10">
+                          {row.month} {row.year}
+                        </span>
+                      </td>
+                      <td className="px-6 py-6">
+                        <div className="flex items-center gap-3 min-w-[120px]">
+                          <div className="flex-1 h-1.5 bg-surface-container rounded-full overflow-hidden">
+                            <motion.div 
+                              initial={{ width: 0 }}
+                              animate={{ width: `${complianceScore}%` }}
+                              transition={{ duration: 1, delay: idx * 0.05 }}
+                              className="h-full bg-primary rounded-full shadow-[0_0_8px_rgba(var(--color-primary-rgb),0.3)]"
+                            />
+                          </div>
+                          <span className="font-bold text-primary">{complianceScore}%</span>
+                        </div>
+                      </td>
+                      <td className="px-6 py-6 text-center font-bold text-on-surface">{row.attendance}</td>
+                      <td className="px-6 py-6 text-center font-mono text-[11px] text-on-surface-variant">{row.response_speed}</td>
+                      <td className="px-6 py-6">
+                        <span className={cn(
+                          "text-[9px] font-extrabold px-2.5 py-1 rounded uppercase tracking-tighter border",
+                          ratingLabel === "Excellent" && "bg-tertiary-container/30 text-tertiary border-tertiary/10",
+                          ratingLabel === "Stable" && "bg-primary-container/30 text-primary border-primary/10",
+                          ratingLabel === "Review Needed" && "bg-error-container/30 text-error border-error/10"
+                        )}>
+                          {ratingLabel}
+                        </span>
+                      </td>
+                      <td className="px-8 py-6 text-right">
+                        <div className="flex justify-end gap-2">
+                          <button className="p-2 hover:bg-surface-container rounded-lg text-on-surface-variant transition-all hover:text-primary">
+                            <Edit2 className="h-4 w-4" />
+                          </button>
+                          <button 
+                            onClick={() => handleDelete(row.id)}
+                            className="p-2 hover:bg-error-container/20 rounded-lg text-on-surface-variant transition-all hover:text-error"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  )
+                })
+              )}
             </tbody>
+
           </table>
         </div>
 
         {/* Pagination Footer */}
         <div className="px-8 py-5 bg-surface-container-low/50 border-t border-outline-variant/10 flex justify-between items-center text-[10px]">
-          <p className="text-on-surface-variant font-bold uppercase tracking-[0.1em]">Showing 4 of 12 Institutional Records</p>
+          <p className="text-on-surface-variant font-bold uppercase tracking-[0.1em]">Showing {surveys.length} of {surveys.length} Institutional Records</p>
           <div className="flex gap-1">
             <button className="p-2 rounded-lg hover:bg-surface-container text-on-surface-variant transition-all">
               <ChevronLeft className="h-3 w-3" />
@@ -150,7 +274,7 @@ export default function SurveyManagementPage() {
 
       {/* Editorial Style Stats Section */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-4">
-        {stats.map((stat, idx) => (
+        {calculatedStats.map((stat, idx) => (
           <motion.div 
             key={stat.label}
             initial={{ opacity: 0, scale: 0.95 }}
@@ -175,7 +299,7 @@ export default function SurveyManagementPage() {
               {stat.label}
             </p>
             <h3 className="text-4xl font-heading font-extrabold tracking-tight">
-              {stat.value.split('%')[0]}<span className="text-2xl font-medium opacity-50 px-0.5">{stat.value.includes('%') ? '%' : ''}</span>
+              {stat.value.includes('%') ? stat.value.split('%')[0] : stat.value}<span className="text-2xl font-medium opacity-50 px-0.5">{stat.value.includes('%') ? '%' : ''}</span>
             </h3>
             
             <div className="mt-6 flex items-center gap-2">

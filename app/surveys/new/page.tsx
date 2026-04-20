@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { 
   Building2, 
   MapPin, 
@@ -21,6 +22,7 @@ import Link from "next/link"
 import { supabase } from "@/lib/supabase"
 
 export default function SurveyInputForm() {
+  const router = useRouter()
   const [kkks, setKkks] = useState("")
   const [year, setYear] = useState("2024")
   const [month, setMonth] = useState("")
@@ -62,15 +64,12 @@ export default function SurveyInputForm() {
 
       if (error) throw error
 
-      setStatus({ type: 'success', message: "Survey data successfully submitted to the server." })
+      setStatus({ type: 'success', message: "Survey data successfully submitted. Redirecting to registry..." })
       
-      // Reset form on success
-      setKkks("")
-      setMonth("")
-      setCompliance("")
-      setAttendance("")
-      setResponseSpeed("")
-      setRelationshipRating("")
+      // Delay redirect to show success message
+      setTimeout(() => {
+        router.push("/surveys")
+      }, 2000)
       
     } catch (err: any) {
       console.error("Submission Error:", err)
@@ -79,6 +78,7 @@ export default function SurveyInputForm() {
       setIsSubmitting(false)
     }
   }
+
 
   return (
     <div className="p-8 pb-20 max-w-[1000px] mx-auto min-h-screen">
