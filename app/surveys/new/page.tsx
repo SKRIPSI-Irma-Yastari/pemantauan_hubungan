@@ -11,11 +11,14 @@ import {
   Save, 
   X,
   CheckCircle2,
-  Info
+  Info,
+  Loader2,
+  AlertCircle
 } from "lucide-react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
+import { supabase } from "@/lib/supabase"
 
 export default function SurveyInputForm() {
   const [kkks, setKkks] = useState("")
@@ -25,6 +28,57 @@ export default function SurveyInputForm() {
   const [attendance, setAttendance] = useState("")
   const [responseSpeed, setResponseSpeed] = useState("")
   const [relationshipRating, setRelationshipRating] = useState("")
+  
+  // Submission State
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [status, setStatus] = useState<{ type: 'success' | 'error' | null, message: string }>({ type: null, message: "" })
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    
+    // Basic Validation
+    if (!kkks || !month || !compliance || !attendance || !responseSpeed || !relationshipRating) {
+      setStatus({ type: 'error', message: "Please fill in all required fields before submitting." })
+      return
+    }
+
+    setIsSubmitting(true)
+    setStatus({ type: null, message: "" })
+
+    try {
+      const { error } = await supabase
+        .from('surveys')
+        .insert([
+          { 
+            kkks, 
+            year: parseInt(year), 
+            month, 
+            compliance, 
+            attendance, 
+            response_speed: responseSpeed, 
+            relationship_rating: relationshipRating 
+          }
+        ])
+
+      if (error) throw error
+
+      setStatus({ type: 'success', message: "Survey data successfully submitted to the server." })
+      
+      // Reset form on success
+      setKkks("")
+      setMonth("")
+      setCompliance("")
+      setAttendance("")
+      setResponseSpeed("")
+      setRelationshipRating("")
+      
+    } catch (err: any) {
+      console.error("Submission Error:", err)
+      setStatus({ type: 'error', message: err.message || "An error occurred while submitting the data. Please try again." })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <div className="p-8 pb-20 max-w-[1000px] mx-auto min-h-screen">
@@ -45,8 +99,34 @@ export default function SurveyInputForm() {
         </p>
       </motion.div>
 
+      {/* Status Messages */}
+      <AnimatePresence>
+        {status.type && (
+          <motion.div
+            initial={{ opacity: 0, height: 0, marginBottom: 0 }}
+            animate={{ opacity: 1, height: 'auto', marginBottom: 32 }}
+            exit={{ opacity: 0, height: 0, marginBottom: 0 }}
+            className={cn(
+              "overflow-hidden rounded-2xl border flex items-center gap-4 p-5",
+              status.type === 'success' 
+                ? "bg-primary/5 border-primary/20 text-primary" 
+                : "bg-error/5 border-error/20 text-error"
+            )}
+          >
+            {status.type === 'success' ? <CheckCircle2 className="shrink-0" /> : <AlertCircle className="shrink-0" />}
+            <span className="text-sm font-bold">{status.message}</span>
+            <button 
+              onClick={() => setStatus({ type: null, message: "" })}
+              className="ml-auto p-1 hover:bg-black/5 rounded-full"
+            >
+              <X size={16} />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Main Form */}
-      <form className="space-y-8">
+      <form onSubmit={handleSubmit} className="space-y-8">
         {/* Section 1: Entity Identification */}
         <section className="p-10 bg-surface-container-low rounded-3xl border border-outline-variant/5 shadow-sm">
           <div className="space-y-4">
@@ -57,6 +137,7 @@ export default function SurveyInputForm() {
               value={kkks}
               onChange={(e) => setKkks(e.target.value)}
               className="w-full h-12 bg-surface-container border-none rounded-xl px-4 text-sm font-bold focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+              disabled={isSubmitting}
             >
               <option value="">Select KKKS Entity</option>
               <option value="PT Medco E&P Malaka">PT Medco E&P Malaka</option>
@@ -78,6 +159,7 @@ export default function SurveyInputForm() {
               value={year}
               onChange={(e) => setYear(e.target.value)}
               className="w-full h-12 bg-surface-container border-none rounded-xl px-4 text-sm font-bold focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+              disabled={isSubmitting}
             >
               <option value="2024">2024</option>
               <option value="2025">2025</option>
@@ -92,6 +174,7 @@ export default function SurveyInputForm() {
               value={month}
               onChange={(e) => setMonth(e.target.value)}
               className="w-full h-12 bg-surface-container border-none rounded-xl px-4 text-sm font-bold focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+              disabled={isSubmitting}
             >
               <option value="">Select Month</option>
               {[
@@ -121,6 +204,7 @@ export default function SurveyInputForm() {
                 key={option}
                 type="button"
                 onClick={() => setCompliance(option)}
+                disabled={isSubmitting}
                 className={cn(
                   "px-6 py-3 rounded-2xl text-sm font-bold transition-all border-2",
                   compliance === option 
@@ -144,6 +228,7 @@ export default function SurveyInputForm() {
                   key={option}
                   type="button"
                   onClick={() => setAttendance(option)}
+                  disabled={isSubmitting}
                   className={cn(
                     "w-full px-6 py-4 rounded-xl text-left text-sm font-bold transition-all border-2",
                     attendance === option 
@@ -164,6 +249,7 @@ export default function SurveyInputForm() {
                   key={option}
                   type="button"
                   onClick={() => setResponseSpeed(option)}
+                  disabled={isSubmitting}
                   className={cn(
                     "w-full px-6 py-4 rounded-xl text-left text-sm font-bold transition-all border-2",
                     responseSpeed === option 
@@ -187,6 +273,7 @@ export default function SurveyInputForm() {
                 key={option}
                 type="button"
                 onClick={() => setRelationshipRating(option)}
+                disabled={isSubmitting}
                 className={cn(
                   "p-6 rounded-2xl text-center transition-all duration-300 border-2",
                   relationshipRating === option 
@@ -206,13 +293,25 @@ export default function SurveyInputForm() {
         {/* Action Buttons */}
         <div className="flex items-center justify-end gap-4 pt-10">
           <Link href="/surveys">
-            <button className="px-10 py-3.5 rounded-full text-sm font-bold text-on-surface-variant hover:bg-surface-container-high transition-all active:scale-95">
+            <button 
+              type="button"
+              className="px-10 py-3.5 rounded-full text-sm font-bold text-on-surface-variant hover:bg-surface-container-high transition-all active:scale-95 disabled:opacity-50"
+              disabled={isSubmitting}
+            >
               Cancel
             </button>
           </Link>
-          <button className="flex items-center gap-3 px-12 py-4 rounded-full bg-primary text-on-primary font-heading font-extrabold text-sm shadow-xl shadow-primary/20 hover:opacity-90 active:scale-95 transition-all">
-            <Save className="h-4 w-4" />
-            Submit Institutional Data
+          <button 
+            type="submit"
+            disabled={isSubmitting}
+            className="flex items-center gap-3 px-12 py-4 rounded-full bg-primary text-on-primary font-heading font-extrabold text-sm shadow-xl shadow-primary/20 hover:opacity-90 active:scale-95 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+          >
+            {isSubmitting ? (
+              <Loader2 className="h-4 w-4 animate-spin" />
+            ) : (
+              <Save className="h-4 w-4" />
+            )}
+            {isSubmitting ? "Processing Submission..." : "Submit Institutional Data"}
           </button>
         </div>
       </form>
