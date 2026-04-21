@@ -46,31 +46,35 @@ const getRatingStatus = (rating: string): "HARMONIOUS" | "STABLE" | "CRITICAL" =
 
 export default function DashboardPage() {
   const [surveys, setSurveys] = useState<any[]>([])
+  const [interactions, setInteractions] = useState<any[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    async function fetchSurveys() {
+    async function fetchData() {
       try {
         setIsLoading(true)
-        const { data, error } = await supabase
-          .from('surveys')
-          .select('*')
-          .order('created_at', { ascending: false })
+        const [surveysRes, interactionsRes] = await Promise.all([
+          supabase.from('surveys').select('*').order('created_at', { ascending: false }),
+          supabase.from('interaction_data').select('*').order('created_at', { ascending: false })
+        ])
 
-        if (error) throw error
-        setSurveys(data || [])
+        if (surveysRes.error) throw surveysRes.error
+        if (interactionsRes.error) throw interactionsRes.error
+        
+        setSurveys(surveysRes.data || [])
+        setInteractions(interactionsRes.data || [])
       } catch (err) {
-        console.error("Error fetching surveys:", err)
+        console.error("Error fetching dashboard data:", err)
       } finally {
         setIsLoading(false)
       }
     }
 
-    fetchSurveys()
+    fetchData()
   }, [])
 
   const metrics = useMemo(() => {
-    if (!surveys.length) return {
+    if (surveys.length === 0 && interactions.length === 0) return {
       totalKKKS: 0,
       harmonis: 0,
       attention: 0,
@@ -85,16 +89,35 @@ export default function DashboardPage() {
       recentActivities: []
     }
 
-    const uniqueKKKS = new Set(surveys.map(s => s.kkks)).size
-    const harmonisCount = surveys.filter(s => s.relationship_rating === "Sangat Baik").length
-    const criticalCount = surveys.filter(s => s.relationship_rating === "Kurang Baik").length
-    const stableCount = surveys.length - harmonisCount - criticalCount
-
-    const avgScore = surveys.reduce((acc, s) => acc + getComplianceNumericScore(s.compliance), 0) / surveys.length
+    const uniqueKKKS = new Set([
+      ...surveys.map(s => s.kkks),
+      ...interactions.map(i => i.stakeholder)
+    ]).size
     
-    let complianceStatus = "Kurang Patuh"
-    if (avgScore > 85) complianceStatus = "Sangat Patuh"
-    else if (avgScore > 65) complianceStatus = "Cukup Patuh"
+    let harmonisCount = 0
+    let stableCount = 0
+    let criticalCount = 0
+    let totalComplianceNumeric = 0
+    let complianceCount = 0
+
+    surveys.forEach(s => {
+      if (s.relationship_rating === "Sangat Baik") harmonisCount++
+      else if (s.relationship_rating === "Cukup") stableCount++
+      else criticalCount++
+
+      totalComplianceNumeric += getComplianceNumericScore(s.compliance)
+      complianceCount++
+    })
+
+    interactions.forEach(i => {
+      if (i.compliance !== null && i.compliance !== undefined) {
+        totalComplianceNumeric += Number(i.compliance)
+        complianceCount++
+      }
+    })
+
+    const avgCompliance = complianceCount > 0 ? totalComplianceNumeric / complianceCount : 0
+    let complianceStatus = `${Math.round(avgCompliance)}%`
 
     // Overall stability score based on relationship rating
     const totalScore = surveys.reduce((acc, s) => {
@@ -102,11 +125,11 @@ export default function DashboardPage() {
       if (s.relationship_rating === "Cukup") return acc + 70
       return acc + 40
     }, 0)
-    const stabilityScore = totalScore / surveys.length
+    const stabilityScore = surveys.length > 0 ? totalScore / surveys.length : 0
     
     let stabilityStatus: "HARMONIOUS" | "STABLE" | "CRITICAL" = "STABLE"
     if (stabilityScore > 85) stabilityStatus = "HARMONIOUS"
-    else if (stabilityScore < 60) stabilityStatus = "CRITICAL"
+    else if (stabilityScore < 60 && stabilityScore > 0) stabilityStatus = "CRITICAL"
 
     const chartData = [
       { name: 'Harmonis', value: harmonisCount, color: 'var(--color-tertiary)' },
@@ -114,13 +137,30 @@ export default function DashboardPage() {
       { name: 'Disharmonis', value: criticalCount, color: 'var(--color-error)' },
     ]
 
-    const recentActivities = surveys.slice(0, 3).map(s => ({
-      id: s.id,
-      kkks: s.kkks,
-      action: `Survey submitted for ${s.month} ${s.year}`,
-      time: new Date(s.created_at).toLocaleDateString(),
-      status: s.relationship_rating === "Kurang Baik" ? "warning" : "success",
-      score: s.compliance || "N/A"
+    const allActivities = [
+      ...surveys.map(s => ({
+        id: `s-${s.id}`,
+        kkks: s.kkks,
+        action: `Survey submitted for ${s.month} ${s.year}`,
+        time: new Date(s.created_at).getTime(),
+        timeStr: new Date(s.created_at).toLocaleDateString(),
+        status: s.relationship_rating === "Kurang Baik" ? "warning" : "success",
+        score: s.compliance || "N/A"
+      })),
+      ...interactions.map(i => ({
+        id: `i-${i.id}`,
+        kkks: i.stakeholder,
+        action: `Interaction data submitted for ${i.period.split(' ')[0]}`,
+        time: new Date(i.created_at).getTime(),
+        timeStr: new Date(i.created_at).toLocaleDateString(),
+        status: "success",
+        score: i.compliance ? `${i.compliance}%` : "N/A"
+      }))
+    ].sort((a, b) => b.time - a.time)
+
+    const recentActivities = allActivities.slice(0, 3).map(a => ({
+      ...a,
+      time: a.timeStr
     }))
 
     return {
@@ -133,7 +173,7 @@ export default function DashboardPage() {
       chartData,
       recentActivities
     }
-  }, [surveys])
+  }, [surveys, interactions])
   return (
     <div className="p-8 space-y-8 max-w-[1600px] mx-auto">
       {/* Welcome Header */}
