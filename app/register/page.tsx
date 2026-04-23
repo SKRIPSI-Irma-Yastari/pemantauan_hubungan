@@ -61,24 +61,8 @@ export default function RegisterPage() {
       if (authError) throw authError
 
       if (authData.user) {
-        // Create profile record
-        const { error: profileError } = await supabase
-          .from("profiles")
-          .insert([
-            {
-              id: authData.user.id,
-              email: email,
-              role: role,
-              full_name: fullName,
-            },
-          ])
-
-        if (profileError) throw profileError
+        setSuccess(true)
       }
-
-      setSuccess(true)
-      // Optional: Auto login or redirect
-      // router.push("/login?message=Check your email to confirm your registration")
     } catch (err: any) {
       setError(err.message || "Gagal mendaftar. Silakan coba lagi.")
     } finally {

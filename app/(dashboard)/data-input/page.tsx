@@ -18,6 +18,7 @@ import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { useProfile } from "@/hooks/use-profile"
 import { useRouter } from "next/navigation"
+import { supabase } from "@/lib/supabase"
 
 export default function DataInputPage() {
   const { profile, loading: profileLoading } = useProfile()
@@ -128,6 +129,8 @@ export default function DataInputPage() {
     } finally {
       setIsSubmitting(false)
     }
+  }
+
   if (profileLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">

@@ -1,4 +1,5 @@
 "use client"
+import { useState, useEffect } from "react"
 
 import { 
   ShieldCheck,
@@ -7,7 +8,12 @@ import {
   Edit2,
   X,
   Loader2,
-  AlertCircle
+  AlertCircle,
+  Building2,
+  MapPin,
+  ChevronRight,
+  Mail,
+  Search
 } from "lucide-react"
 import { useProfile } from "@/hooks/use-profile"
 import { supabase } from "@/lib/supabase"
