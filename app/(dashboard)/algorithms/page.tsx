@@ -9,9 +9,12 @@ import {
   CheckCircle2, 
   BrainCircuit,
   Binary,
-  GitBranch,
+  GitBranch
+} from "lucide-react"
 import { useProfile } from "@/hooks/use-profile"
 import { useRouter } from "next/navigation"
+import { motion, AnimatePresence } from "framer-motion"
+import { cn } from "@/lib/utils"
 
 const initialLogs = [
   { id: 1, type: "init", time: "10:12:01", message: "Inisialisasi Algoritma CART (Classification and Regression Trees)..." },

@@ -17,6 +17,7 @@ import {
   TrendingDown
 } from "lucide-react"
 import { useProfile } from "@/hooks/use-profile"
+import { useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { MetricCard } from "@/components/ui/metric-card"
 import { StabilityGauge } from "@/components/ui/stability-gauge"
@@ -54,10 +55,19 @@ export default function DashboardPage() {
   const [isLoading, setIsLoading] = useState(true)
 
   const { profile, loading: profileLoading } = useProfile()
+  const router = useRouter()
 
   useEffect(() => {
     async function fetchData() {
-      if (!profile || profile.role !== 'bpma') return
+      if (!profile) {
+        if (!profileLoading) setIsLoading(false)
+        return
+      }
+
+      if (profile.role !== 'bpma') {
+        setIsLoading(false)
+        return
+      }
 
       try {
         setIsLoading(true)
@@ -69,9 +79,8 @@ export default function DashboardPage() {
         ])
 
         if (stakeholdersRes.error) throw stakeholdersRes.error
-        setSurveys(stakeholdersRes.data || []) // Using surveys state as placeholders for now or refactoring
+        setSurveys(stakeholdersRes.data || [])
 
-        // Fetch metrics logic
         setInteractions(interactionsRes.data || [])
       } catch (err) {
         console.error("Error fetching dashboard data:", err)
@@ -80,9 +89,7 @@ export default function DashboardPage() {
       }
     }
 
-    if (!profileLoading) {
-      fetchData()
-    }
+    fetchData()
   }, [profile, profileLoading])
 
   const metrics = useMemo(() => {

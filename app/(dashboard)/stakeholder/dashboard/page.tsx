@@ -27,7 +27,15 @@ export default function StakeholderDashboard() {
 
   useEffect(() => {
     async function fetchData() {
-      if (!profile || profile.role !== 'stakeholder' || !profile.stakeholder_id) return
+      if (!profile) {
+        if (!profileLoading) setIsLoading(false)
+        return
+      }
+
+      if (profile.role !== 'stakeholder' || !profile.stakeholder_id) {
+        setIsLoading(false)
+        return
+      }
 
       try {
         setIsLoading(true)
@@ -47,9 +55,7 @@ export default function StakeholderDashboard() {
       }
     }
 
-    if (!profileLoading) {
-      fetchData()
-    }
+    fetchData()
   }, [profile, profileLoading])
 
   if (profileLoading || isLoading) {
@@ -94,35 +100,34 @@ export default function StakeholderDashboard() {
         </div>
       </div>
 
-      {/* Quick Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <MetricCard 
           title="Kepatuhan Laporan"
           value="95%"
-          trend="+2.5%"
+          trend={{ value: 2.5, positive: true }}
           icon={FileText}
-          status="success"
+          color="tertiary"
         />
         <MetricCard 
           title="Kehadiran Rapat"
           value="12"
-          trend="Sempurna"
+          subtitle="Sempurna"
           icon={Calendar}
-          status="success"
+          color="tertiary"
         />
         <MetricCard 
           title="Respons Komunikasi"
           value="1.2 hr"
-          trend="Sangat Cepat"
+          subtitle="Sangat Cepat"
           icon={MessageSquare}
-          status="success"
+          color="tertiary"
         />
         <MetricCard 
           title="Tugas Pending"
           value="0"
-          trend="Tuntas"
+          subtitle="Tuntas"
           icon={AlertTriangle}
-          status="neutral"
+          color="primary"
         />
       </div>
 

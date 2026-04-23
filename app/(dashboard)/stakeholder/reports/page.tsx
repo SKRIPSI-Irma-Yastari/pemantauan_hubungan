@@ -33,8 +33,12 @@ export default function StakeholderReportsPage() {
   const [statusMsg, setStatusMsg] = useState<{ type: 'success' | 'error' | null, msg: string }>({ type: null, msg: "" })
 
   useEffect(() => {
-    if (!profileLoading && profile?.stakeholder_id) {
-      fetchPageData()
+    if (!profileLoading) {
+      if (profile?.stakeholder_id) {
+        fetchPageData()
+      } else {
+        setIsLoading(false)
+      }
     }
   }, [profile, profileLoading])
 
