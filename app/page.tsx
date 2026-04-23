@@ -52,7 +52,7 @@ export default function LandingPage() {
             ))}
           </div>
 
-          <Link href="/dashboard">
+          <Link href="/login">
             <button className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-surface-container-high border border-outline-variant/10 text-[10px] font-black uppercase tracking-[0.15em] text-on-surface hover:bg-primary hover:text-on-primary hover:border-primary transition-all active:scale-95">
               Portal Internal
               <LayoutDashboard size={14} />
@@ -325,7 +325,7 @@ export default function LandingPage() {
           </div>
 
           <div className="relative flex flex-col sm:flex-row items-center justify-center gap-6">
-             <Link href="/dashboard">
+             <Link href="/login">
                 <button className="w-full sm:w-auto px-12 py-5 rounded-full bg-on-primary text-primary font-heading font-black text-sm hover:opacity-90 active:scale-95 transition-all shadow-xl shadow-black/10">
                    Buka Dashboard Internal
                 </button>
@@ -360,7 +360,7 @@ export default function LandingPage() {
               <p className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">Portal</p>
               <div className="flex flex-col gap-2">
                 {["Public Survey", "Dashboard", "Ecosystem"].map((item) => (
-                  <Link key={item} href={item === "Public Survey" ? "/public/surveys/new" : "/dashboard"} className="text-xs font-bold text-on-surface-variant hover:text-primary transition-colors">{item}</Link>
+                  <Link key={item} href={item === "Public Survey" ? "/public/surveys/new" : "/login"} className="text-xs font-bold text-on-surface-variant hover:text-primary transition-colors">{item}</Link>
                 ))}
               </div>
             </div>

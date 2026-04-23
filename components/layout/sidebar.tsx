@@ -26,8 +26,18 @@ const navItems = [
   { name: "Survey Management", href: "/surveys", icon: Library },
 ]
 
+import { supabase } from "@/lib/supabase"
+import { useRouter } from "next/navigation"
+
 export function Sidebar() {
   const pathname = usePathname()
+  const router = useRouter()
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut()
+    router.push("/login")
+    router.refresh()
+  }
 
   return (
     <aside className="fixed inset-y-0 left-0 z-50 w-64 border-r border-outline-variant/20 bg-surface-container-low transition-all duration-300 lg:static">
@@ -88,7 +98,10 @@ export function Sidebar() {
             <Settings className="h-5 w-5 opacity-60 group-hover:opacity-100" />
             Settings
           </Link>
-          <button className="flex w-full items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium text-error hover:bg-error-container/10 transition-all">
+          <button 
+            onClick={handleLogout}
+            className="flex w-full items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium text-error hover:bg-error-container/10 transition-all cursor-pointer active:scale-95"
+          >
             <LogOut className="h-5 w-5" />
             Logout
           </button>
