@@ -4,26 +4,36 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { 
-  LayoutDashboard, 
-  Users, 
-  FileEdit, 
-  Network, 
-  BarChart3, 
+  LayoutDashboard,
+  Users,
+  FileEdit,
+  Network,
   History, 
   Settings, 
   LogOut,
-  Library
+  Library,
+  UploadCloud,
+  CalendarDays,
+  MessageSquare,
+  ShieldCheck,
+  Building2,
+  LineChart
 } from "lucide-react"
+import { useProfile } from "@/hooks/use-profile"
 
-const navItems = [
+const bpmaNavItems = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
   { name: "Stakeholders", href: "/stakeholders", icon: Users },
-  { name: "Data Input", href: "/data-input", icon: FileEdit },
-  { name: "Algorithms", href: "/algorithms", icon: Network },
-  { name: "Classification", href: "/classification", icon: BarChart3 },
-  { name: "History", href: "/history", icon: History },
-  { name: "Survey Input", href: "/surveys/new", icon: FileEdit },
-  { name: "Survey Management", href: "/surveys", icon: Library },
+  { name: "Input Data", href: "/data-input", icon: FileEdit },
+  { name: "Proses CART", href: "/algorithms/cart", icon: Network },
+  { name: "Evaluasi & Tren", href: "/history", icon: LineChart },
+]
+
+const stakeholderNavItems = [
+  { name: "Dashboard KKKS", href: "/stakeholder/dashboard", icon: Building2 },
+  { name: "Kirim Laporan", href: "/stakeholder/reports", icon: UploadCloud },
+  { name: "Jadwal Rapat", href: "/stakeholder/meetings", icon: CalendarDays },
+  { name: "Hubungi BPMA", href: "/stakeholder/communication", icon: MessageSquare },
 ]
 
 import { supabase } from "@/lib/supabase"
@@ -32,12 +42,15 @@ import { useRouter } from "next/navigation"
 export function Sidebar() {
   const pathname = usePathname()
   const router = useRouter()
+  const { profile, loading } = useProfile()
 
   const handleLogout = async () => {
     await supabase.auth.signOut()
     router.push("/login")
     router.refresh()
   }
+
+  const navItems = profile?.role === "bpma" ? bpmaNavItems : stakeholderNavItems
 
   return (
     <aside className="fixed inset-y-0 left-0 z-50 w-64 border-r border-outline-variant/20 bg-surface-container-low transition-all duration-300 lg:static">
@@ -61,27 +74,36 @@ export function Sidebar() {
 
         {/* Navigation */}
         <nav className="flex-1 space-y-1.5 px-2">
-          {navItems.map((item) => {
-            const isActive = pathname === item.href
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "group flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-200",
-                  isActive
-                    ? "bg-surface-container-lowest text-primary shadow-sm border-r-4 border-primary"
-                    : "text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface"
-                )}
-              >
-                <item.icon className={cn(
-                  "h-5 w-5 transition-colors",
-                  isActive ? "text-primary" : "text-on-surface-variant/60 group-hover:text-on-surface"
-                )} />
-                {item.name}
-              </Link>
-            )
-          })}
+          {loading ? (
+            <div className="space-y-3 px-4">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="h-10 w-full animate-pulse rounded-xl bg-surface-container-high" />
+              ))}
+            </div>
+          ) : (
+            navItems.map((item) => {
+              const isActive = pathname === item.href
+              return (
+                <Link
+                  key={item.href}
+                  target={item.href.startsWith("http") ? "_blank" : undefined}
+                  href={item.href}
+                  className={cn(
+                    "group flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-200",
+                    isActive
+                      ? "bg-surface-container-lowest text-primary shadow-sm border-r-4 border-primary"
+                      : "text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface"
+                  )}
+                >
+                  <item.icon className={cn(
+                    "h-5 w-5 transition-colors",
+                    isActive ? "text-primary" : "text-on-surface-variant/60 group-hover:text-on-surface"
+                  )} />
+                  {item.name}
+                </Link>
+              )
+            })
+          )}
         </nav>
 
         {/* Bottom Actions */}

@@ -10,28 +10,29 @@ import {
   BrainCircuit,
   Binary,
   GitBranch,
-  ChevronDown
-} from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
-import { cn } from "@/lib/utils"
+import { useProfile } from "@/hooks/use-profile"
+import { useRouter } from "next/navigation"
 
 const initialLogs = [
-  { id: 1, type: "init", time: "08:42:01", message: "Starting Preprocessing Pipeline..." },
-  { id: 2, type: "validate", time: "08:42:03", message: "Dataset 'Migas_Q3' loaded. N=1,248" },
-  { id: 3, type: "clean", time: "08:42:04", message: "Imputing missing 'kehadiran' values using mean (0.88)" },
-  { id: 4, type: "clean", time: "08:42:05", message: "Removed 12 outliers in 'respons' > 3\u03c3" },
-  { id: 5, type: "ready", time: "08:42:07", message: "Data normalized (0-1). Accuracy target: 94.2%" },
+  { id: 1, type: "init", time: "10:12:01", message: "Inisialisasi Algoritma CART (Classification and Regression Trees)..." },
+  { id: 2, type: "validate", time: "10:12:03", message: "Dataset Stakeholder dimuat. N=48 Entitas (KKKS)" },
+  { id: 3, type: "clean", time: "10:12:04", message: "Menghilangkan nilai null pada atribut 'Respons Komunikasi'..." },
+  { id: 4, type: "clean", time: "10:12:05", message: "Normalisasi data (Rentang 0-1) menggunakan Min-Max Scaler." },
+  { id: 5, type: "ready", time: "10:12:07", message: "Preprocessing Selesai. Data siap untuk kalkulasi Gini Index." },
 ]
 
 const giniData = [
-  { attribute: "kepatuhan", samples: 1248, gini: 0.342, gain: 0.148, status: "Root Node" },
-  { attribute: "kehadiran", samples: 842, gini: 0.415, gain: 0.075, status: "Split Node" },
-  { attribute: "respons", samples: 406, gini: 0.456, gain: 0.034, status: "Leaf Pending" },
+  { attribute: "Kepatuhan Laporan", samples: 48, gini: 0.485, gain: 0.210, status: "Root Node" },
+  { attribute: "Kehadiran Rapat", samples: 32, gini: 0.320, gain: 0.125, status: "Split Node" },
+  { attribute: "Respons Komunikasi", samples: 16, gini: 0.110, gain: 0.045, status: "Leaf Node" },
+  { attribute: "Partisipasi", samples: 48, gini: 0.450, gain: 0.080, status: "Lower Gain" },
 ]
 
 export default function AlgorithmsPage() {
+  const { profile, loading: profileLoading } = useProfile()
+  const router = useRouter()
   const [logs, setLogs] = useState(initialLogs)
-  const [isRunning, setIsRunning] = useState(true)
+  const [isRunning, setIsRunning] = useState(false)
 
   useEffect(() => {
     if (isRunning) {
@@ -41,14 +42,42 @@ export default function AlgorithmsPage() {
           { 
             id: Date.now(), 
             type: "proc", 
-            time: new Date().toLocaleTimeString([], { hour12: false }), 
-            message: "Calculating Gini impurity for attribute 'partisipasi'..." 
+            time: new Date().toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' }), 
+            message: "Mengkalkulasi Gini Impurity untuk atribut 'Partisipasi'..." 
           }
         ])
       }, 3000)
       return () => clearInterval(interval)
     }
   }, [isRunning])
+
+  if (profileLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="h-12 w-12 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+          <p className="text-xs font-black uppercase tracking-widest text-on-surface-variant/40">Analyzing Logic...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (profile?.role !== 'bpma') {
+    return (
+      <div className="p-8">
+        <div className="bg-error/5 border border-error/20 p-8 rounded-[2.5rem] text-center max-w-2xl mx-auto">
+          <h2 className="text-2xl font-black text-error mb-4">Akses Ditolak</h2>
+          <p className="text-on-surface-variant font-medium">Halaman ini hanya dapat diakses oleh administrator BPMA untuk melihat transparansi proses algoritma CART.</p>
+          <button 
+            onClick={() => router.push('/dashboard')}
+            className="mt-8 px-8 py-3 bg-error text-on-error rounded-xl font-black text-sm hover:scale-105 transition-transform"
+          >
+            Kembali ke Dashboard
+          </button>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="p-8 space-y-8 max-w-[1400px] mx-auto">
@@ -60,10 +89,10 @@ export default function AlgorithmsPage() {
       >
         <div>
           <h2 className="font-heading text-3xl font-extrabold tracking-tight text-on-background">
-            Processing Transparency
+            Transparansi Proses CART
           </h2>
           <p className="mt-1 text-on-surface-variant font-medium">
-            Real-time analysis of the Decision Tree induction process using ID3 Logic.
+            Analisis real-time induksi Pohon Keputusan menggunakan Algoritma CART (Classification and Regression Trees).
           </p>
         </div>
         <div className="flex gap-3">
@@ -167,7 +196,7 @@ export default function AlgorithmsPage() {
               <div>
                 <h4 className="font-heading text-xl font-bold text-on-surface">Tabel Perhitungan Gini Index</h4>
                 <p className="text-xs font-medium text-on-surface-variant opacity-60 mt-1">
-                  Attribute selection based on impurity minimization.
+                  Seleksi atribut berdasarkan minimalisasi Gini Impurity.
                 </p>
               </div>
               <div className="flex bg-surface-container rounded-lg p-1">
@@ -258,8 +287,8 @@ export default function AlgorithmsPage() {
                     <div className="h-8 w-px bg-outline-variant/30 mt-4" />
                     {/* Final Leaves */}
                     <div className="flex gap-4">
-                      <div className="bg-error-container/10 border border-error/20 px-4 py-2 rounded-xl text-[10px] font-bold text-error uppercase">Rejected</div>
-                      <div className="bg-surface-container-high border border-outline-variant/10 px-4 py-2 rounded-xl text-[10px] font-bold text-on-surface-variant opacity-60 uppercase">Review</div>
+                      <div className="bg-error-container/10 border border-error/20 px-4 py-2 rounded-xl text-[10px] font-bold text-error uppercase">Kurang Harmonis</div>
+                      <div className="bg-surface-container-high border border-outline-variant/10 px-4 py-2 rounded-xl text-[10px] font-bold text-on-surface-variant opacity-60 uppercase">Moderate</div>
                     </div>
                   </div>
 
@@ -275,8 +304,8 @@ export default function AlgorithmsPage() {
                       className="bg-tertiary-container/30 p-6 rounded-2xl shadow-lg border-2 border-tertiary/20 w-56 text-center shadow-tertiary/5"
                     >
                       <CheckCircle2 className="h-6 w-6 text-tertiary mx-auto mb-2" />
-                      <p className="font-heading font-extrabold text-tertiary tracking-tight">APPROVED</p>
-                      <p className="text-[9px] font-bold text-on-tertiary-container/60 mt-1">High Confidence Level</p>
+                      <p className="font-heading font-extrabold text-tertiary tracking-tight">HARMONIS</p>
+                      <p className="text-[9px] font-bold text-on-tertiary-container/60 mt-1">Confidence Score Tinggi</p>
                     </motion.div>
                   </div>
                 </div>

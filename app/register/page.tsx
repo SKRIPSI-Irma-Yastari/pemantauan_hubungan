@@ -9,11 +9,14 @@ import {
   Lock, 
   ArrowRight, 
   Loader2, 
+  UserPlus,
+  ShieldCheck,
+  Building2,
+  CheckCircle2,
   AlertCircle,
   Home,
   Eye,
-  EyeOff,
-  UserPlus
+  EyeOff
 } from "lucide-react"
 import Link from "next/link"
 import { supabase } from "@/lib/supabase"
@@ -28,6 +31,8 @@ export default function RegisterPage() {
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
+  const [role, setRole] = useState<"bpma" | "stakeholder">("stakeholder")
+  const [fullName, setFullName] = useState("")
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -41,16 +46,34 @@ export default function RegisterPage() {
     }
 
     try {
-      const { error: authError } = await supabase.auth.signUp({
+      const { data: authData, error: authError } = await supabase.auth.signUp({
         email,
         password,
         options: {
+          data: {
+            full_name: fullName,
+            role: role,
+          },
           emailRedirectTo: `${window.location.origin}/auth/callback`,
         },
       })
 
-      if (authError) {
-        throw authError
+      if (authError) throw authError
+
+      if (authData.user) {
+        // Create profile record
+        const { error: profileError } = await supabase
+          .from("profiles")
+          .insert([
+            {
+              id: authData.user.id,
+              email: email,
+              role: role,
+              full_name: fullName,
+            },
+          ])
+
+        if (profileError) throw profileError
       }
 
       setSuccess(true)
@@ -134,6 +157,57 @@ export default function RegisterPage() {
             )}
 
             <div className="space-y-4">
+              {/* Name Field */}
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/60 ml-4">Nama Lengkap</label>
+                <div className="relative group">
+                  <div className="absolute left-5 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors">
+                    <UserPlus size={18} />
+                  </div>
+                  <input
+                    type="text"
+                    required
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    className="w-full pl-12 pr-6 py-4 bg-surface-container rounded-2xl border border-outline-variant/5 focus:border-primary focus:ring-4 focus:ring-primary/5 outline-none text-sm font-medium transition-all"
+                    placeholder="Nama Lengkap / Instansi"
+                  />
+                </div>
+              </div>
+
+              {/* Role Selection */}
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/60 ml-4">Pilih Peran</label>
+                <div className="grid grid-cols-2 gap-4">
+                  <button
+                    type="button"
+                    onClick={() => setRole("bpma")}
+                    className={cn(
+                      "flex flex-col items-center gap-3 p-4 rounded-2xl border-2 transition-all",
+                      role === "bpma" 
+                        ? "bg-primary/10 border-primary text-primary" 
+                        : "bg-surface-container border-outline-variant/5 text-on-surface-variant/60 hover:border-primary/30"
+                    )}
+                  >
+                    <ShieldCheck size={24} />
+                    <span className="text-[10px] font-black uppercase tracking-tighter">BPMA (Admin)</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setRole("stakeholder")}
+                    className={cn(
+                      "flex flex-col items-center gap-3 p-4 rounded-2xl border-2 transition-all",
+                      role === "stakeholder" 
+                        ? "bg-secondary/10 border-secondary text-secondary" 
+                        : "bg-surface-container border-outline-variant/5 text-on-surface-variant/60 hover:border-secondary/30"
+                    )}
+                  >
+                    <Building2 size={24} />
+                    <span className="text-[10px] font-black uppercase tracking-tighter">Stakeholder</span>
+                  </button>
+                </div>
+              </div>
+
               {/* Email Field */}
               <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/60 ml-4">Email Instansi</label>

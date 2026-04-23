@@ -11,8 +11,12 @@ import {
   MoreHorizontal,
   Clock,
   ArrowRight,
-  History
+  History,
+  FileClock,
+  MessageCircle,
+  TrendingDown
 } from "lucide-react"
+import { useProfile } from "@/hooks/use-profile"
 import { cn } from "@/lib/utils"
 import { MetricCard } from "@/components/ui/metric-card"
 import { StabilityGauge } from "@/components/ui/stability-gauge"
@@ -49,19 +53,25 @@ export default function DashboardPage() {
   const [interactions, setInteractions] = useState<any[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
+  const { profile, loading: profileLoading } = useProfile()
+
   useEffect(() => {
     async function fetchData() {
+      if (!profile || profile.role !== 'bpma') return
+
       try {
         setIsLoading(true)
-        const [surveysRes, interactionsRes] = await Promise.all([
-          supabase.from('surveys').select('*').order('created_at', { ascending: false }),
-          supabase.from('interaction_data').select('*').order('created_at', { ascending: false })
+        const [stakeholdersRes, reportsRes, interactionsRes, commsRes] = await Promise.all([
+          supabase.from('stakeholders').select('*'),
+          supabase.from('reports').select('*, stakeholders(name)').order('submitted_at', { ascending: false }),
+          supabase.from('interaction_data').select('*, stakeholders(name)').order('period', { ascending: false }),
+          supabase.from('communications').select('*, stakeholders(name)').order('sent_at', { ascending: false })
         ])
 
-        if (surveysRes.error) throw surveysRes.error
-        if (interactionsRes.error) throw interactionsRes.error
-        
-        setSurveys(surveysRes.data || [])
+        if (stakeholdersRes.error) throw stakeholdersRes.error
+        setSurveys(stakeholdersRes.data || []) // Using surveys state as placeholders for now or refactoring
+
+        // Fetch metrics logic
         setInteractions(interactionsRes.data || [])
       } catch (err) {
         console.error("Error fetching dashboard data:", err)
@@ -70,8 +80,10 @@ export default function DashboardPage() {
       }
     }
 
-    fetchData()
-  }, [])
+    if (!profileLoading) {
+      fetchData()
+    }
+  }, [profile, profileLoading])
 
   const metrics = useMemo(() => {
     if (surveys.length === 0 && interactions.length === 0) return {
@@ -174,6 +186,34 @@ export default function DashboardPage() {
       recentActivities
     }
   }, [surveys, interactions])
+
+  if (profileLoading || isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="h-12 w-12 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+          <p className="text-xs font-black uppercase tracking-widest text-on-surface-variant/40">Loading Intelligence...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (profile?.role !== 'bpma') {
+    return (
+      <div className="p-8">
+        <div className="bg-error/5 border border-error/20 p-8 rounded-[2.5rem] text-center max-w-2xl mx-auto">
+          <h2 className="text-2xl font-black text-error mb-4">Akses Ditolak</h2>
+          <p className="text-on-surface-variant font-medium">Halaman ini hanya dapat diakses oleh administrator BPMA.</p>
+          <button 
+            onClick={() => router.push('/stakeholder/dashboard')}
+            className="mt-8 px-8 py-3 bg-error text-on-error rounded-xl font-black text-sm hover:scale-105 transition-transform"
+          >
+            Buka Dashboard Stakeholder
+          </button>
+        </div>
+      </div>
+    )
+  }
   return (
     <div className="p-8 space-y-8 max-w-[1600px] mx-auto">
       {/* Welcome Header */}
@@ -277,54 +317,84 @@ export default function DashboardPage() {
             </div>
           </section>
 
-          {/* Monitoring Alerts */}
-          <section className="space-y-4">
-            <div className="flex items-center justify-between px-2">
-              <h3 className="font-heading text-lg font-bold text-on-surface">
-                Aktivitas Terkini
-              </h3>
-              <button className="text-xs font-bold text-primary hover:underline flex items-center gap-1">
-                LIHAT SEMUA <ArrowRight className="h-3 w-3" />
-              </button>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {metrics.recentActivities.length === 0 ? (
-                <div className="col-span-3 p-10 text-center text-on-surface-variant/40 font-bold uppercase tracking-widest text-[10px] bg-surface-container-low rounded-xl">
-                  No recent institutional activities detected.
-                </div>
-              ) : (
-                metrics.recentActivities.map((activity) => (
-                  <div 
-                    key={activity.id}
-                    className="group bg-surface-container-low p-4 rounded-xl border border-transparent transition-all hover:bg-surface-container-lowest hover:shadow-md hover:border-outline-variant/10 cursor-pointer"
-                  >
-                    <div className="flex justify-between items-start mb-2">
-                      <p className="font-bold text-sm text-on-surface truncate pr-2">
-                        {activity.kkks}
-                      </p>
-                      <span className="text-[10px] font-bold text-on-surface-variant opacity-50 flex-shrink-0">
-                        {activity.time}
-                      </span>
+            {/* Compliance Notifications */}
+            <section className="space-y-4">
+              <div className="flex items-center justify-between px-2">
+                <h3 className="font-heading text-lg font-bold text-on-surface">
+                  Notifikasi Kepatuhan
+                </h3>
+              </div>
+              
+              <div className="bg-surface-container-lowest rounded-2xl border border-outline-variant/10 overflow-hidden shadow-sm">
+                <div className="divide-y divide-outline-variant/10">
+                  {/* Placeholder for compliance alerts - would be calculated from real data */}
+                  <div className="p-4 flex items-center gap-4 hover:bg-surface-container-low transition-colors group cursor-pointer">
+                    <div className="h-10 w-10 rounded-full bg-error/10 flex items-center justify-center text-error">
+                      <FileClock size={20} />
                     </div>
-                    <p className="text-xs text-on-surface-variant/80 mb-3 line-clamp-2 leading-relaxed">
-                      {activity.action}
-                    </p>
-                    <div className="flex items-center gap-2">
-                      <span className={cn(
-                        "px-2 py-0.5 rounded text-[9px] font-bold border",
-                        activity.status === "success" 
-                          ? "bg-tertiary-container/20 text-tertiary border-tertiary/10" 
-                          : "bg-error-container/20 text-error border-error/10"
-                      )}>
-                        {activity.score}
-                      </span>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-bold text-on-surface truncate">Mubadala Energy</p>
+                      <p className="text-xs text-on-surface-variant/60 font-medium">Belum mengirimkan Laporan Bulanan (Maret 2024)</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-[10px] font-black uppercase text-error tracking-widest">TERLAMBAT</p>
                     </div>
                   </div>
-                ))
-              )}
-            </div>
-          </section>
+
+                  <div className="p-4 flex items-center gap-4 hover:bg-surface-container-low transition-colors group cursor-pointer">
+                    <div className="h-10 w-10 rounded-full bg-warning/10 flex items-center justify-center text-warning">
+                      <MessageCircle size={20} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-bold text-on-surface truncate">Premier Oil</p>
+                      <p className="text-xs text-on-surface-variant/60 font-medium">Respon komunikasi melambat (Rata-rata 4.2 hari)</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-[10px] font-black uppercase text-warning tracking-widest">PERINGATAN</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Monitoring Alerts */}
+            <section className="space-y-4">
+              <div className="flex items-center justify-between px-2">
+                <h3 className="font-heading text-lg font-bold text-on-surface">
+                  Aktivitas Terkini
+                </h3>
+                <button className="text-xs font-bold text-primary hover:underline flex items-center gap-1">
+                  LIHAT SEMUA <ArrowRight className="h-3 w-3" />
+                </button>
+              </div>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {metrics.recentActivities.length === 0 ? (
+                  <div className="col-span-2 p-10 text-center text-on-surface-variant/40 font-bold uppercase tracking-widest text-[10px] bg-surface-container-low rounded-xl">
+                    No recent institutional activities detected.
+                  </div>
+                ) : (
+                  metrics.recentActivities.map((activity) => (
+                    <div 
+                      key={activity.id}
+                      className="group bg-surface-container-low p-4 rounded-xl border border-transparent transition-all hover:bg-surface-container-lowest hover:shadow-md hover:border-outline-variant/10 cursor-pointer"
+                    >
+                      <div className="flex justify-between items-start mb-2">
+                        <p className="font-bold text-sm text-on-surface truncate pr-2">
+                          {activity.kkks}
+                        </p>
+                        <span className="text-[10px] font-bold text-on-surface-variant opacity-50 flex-shrink-0">
+                          {activity.time}
+                        </span>
+                      </div>
+                      <p className="text-xs text-on-surface-variant/80 mb-3 line-clamp-2 leading-relaxed">
+                        {activity.action}
+                      </p>
+                    </div>
+                  ))
+                )}
+              </div>
+            </section>
         </div>
 
         {/* Sidebar Widgets Section */}

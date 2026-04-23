@@ -16,12 +16,18 @@ import {
 } from "lucide-react"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
-import { supabase } from "@/lib/supabase"
+import { useProfile } from "@/hooks/use-profile"
+import { useRouter } from "next/navigation"
 
 export default function DataInputPage() {
+  const { profile, loading: profileLoading } = useProfile()
+  const router = useRouter()
+  const [stakeholders, setStakeholders] = useState<any[]>([])
+  const [isLoadingStakeholders, setIsLoadingStakeholders] = useState(true)
+
   const [formData, setFormData] = useState({
     period: "Semester I (Januari - Juni 2024)",
-    stakeholder: "Pertamina Hulu Rokan",
+    stakeholder_id: "",
     compliance: "",
     attendance: "",
     response: "",
@@ -33,8 +39,31 @@ export default function DataInputPage() {
   const [recentSubmissions, setRecentSubmissions] = useState<any[]>([])
 
   useEffect(() => {
-    fetchRecentSubmissions()
-  }, [])
+    if (!profileLoading && profile?.role === 'bpma') {
+      fetchRecentSubmissions()
+      fetchStakeholders()
+    }
+  }, [profile, profileLoading])
+
+  const fetchStakeholders = async () => {
+    try {
+      setIsLoadingStakeholders(true)
+      const { data, error } = await supabase
+        .from('stakeholders')
+        .select('id, name')
+        .order('name')
+      
+      if (error) throw error
+      setStakeholders(data || [])
+      if (data && data.length > 0) {
+        setFormData(prev => ({ ...prev, stakeholder_id: data[0].id }))
+      }
+    } catch (err) {
+      console.error("Error fetching stakeholders:", err)
+    } finally {
+      setIsLoadingStakeholders(false)
+    }
+  }
 
   const fetchRecentSubmissions = async () => {
     try {
@@ -45,15 +74,15 @@ export default function DataInputPage() {
         .limit(3)
       
       if (error) throw error
-      if (data) {
-        setRecentSubmissions(data.map(item => ({
-          id: item.id,
-          kkks: item.stakeholder,
-          period: item.period.split(' ')[0] + ' ' + item.period.split(' ').pop(), // Shorten period
-          compliance: item.compliance ? `${item.compliance}%` : "N/A",
-          time: new Date(item.created_at).toLocaleDateString()
-        })))
-      }
+        if (data) {
+          setRecentSubmissions(data.map(item => ({
+            id: item.id,
+            kkks: item.stakeholders?.name || "Unknown",
+            period: item.period.split(' ')[0] + ' ' + (item.period.split(' ').pop() || ""), 
+            compliance: item.compliance ? `${item.compliance}%` : "N/A",
+            time: new Date(item.created_at).toLocaleDateString()
+          })))
+        }
     } catch (err) {
       console.error("Error fetching recent submissions:", err)
     }
@@ -75,7 +104,7 @@ export default function DataInputPage() {
         .from('interaction_data')
         .insert([{
           period: formData.period,
-          stakeholder: formData.stakeholder,
+          stakeholder_id: formData.stakeholder_id,
           compliance: parseFloat(formData.compliance),
           attendance: parseInt(formData.attendance),
           response_speed: parseFloat(formData.response),
@@ -87,7 +116,7 @@ export default function DataInputPage() {
       setStatus({ type: 'success', message: "Data successfully submitted!" })
       setFormData({
         period: "Semester I (Januari - Juni 2024)",
-        stakeholder: "Pertamina Hulu Rokan",
+        stakeholder_id: stakeholders[0]?.id || "",
         compliance: "",
         attendance: "",
         response: "",
@@ -99,6 +128,32 @@ export default function DataInputPage() {
     } finally {
       setIsSubmitting(false)
     }
+  if (profileLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="h-12 w-12 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+          <p className="text-xs font-black uppercase tracking-widest text-on-surface-variant/40">Securing Access...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (profile?.role !== 'bpma') {
+    return (
+      <div className="p-8">
+        <div className="bg-error/5 border border-error/20 p-8 rounded-[2.5rem] text-center max-w-2xl mx-auto">
+          <h2 className="text-2xl font-black text-error mb-4">Akses Ditolak</h2>
+          <p className="text-on-surface-variant font-medium">Halaman ini hanya dapat diakses oleh administrator BPMA untuk melakukan input data interaksi.</p>
+          <button 
+            onClick={() => router.push('/dashboard')}
+            className="mt-8 px-8 py-3 bg-error text-on-error rounded-xl font-black text-sm hover:scale-105 transition-transform"
+          >
+            Kembali ke Dashboard
+          </button>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -151,13 +206,18 @@ export default function DataInputPage() {
                   <div className="relative group">
                     <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-on-surface-variant/50 group-focus-within:text-primary transition-colors" />
                     <select 
-                      className="w-full h-11 bg-surface-container-low border border-transparent rounded-xl pl-10 pr-4 text-sm font-medium outline-none focus:ring-2 focus:ring-primary/20 focus:bg-surface-container transition-all appearance-none"
-                      value={formData.stakeholder}
-                      onChange={(e) => setFormData({...formData, stakeholder: e.target.value})}
+                      className="w-full h-11 bg-surface-container-low border border-transparent rounded-xl pl-10 pr-4 text-sm font-medium outline-none focus:ring-2 focus:ring-primary/20 focus:bg-surface-container transition-all appearance-none disabled:opacity-50"
+                      value={formData.stakeholder_id}
+                      disabled={isLoadingStakeholders}
+                      onChange={(e) => setFormData({...formData, stakeholder_id: e.target.value})}
                     >
-                      <option>Pertamina Hulu Rokan</option>
-                      <option>Chevron Pacific Indonesia</option>
-                      <option>ExxonMobil Cepu</option>
+                      {isLoadingStakeholders ? (
+                        <option>Loading Stakeholders...</option>
+                      ) : (
+                        stakeholders.map(s => (
+                          <option key={s.id} value={s.id}>{s.name}</option>
+                        ))
+                      )}
                     </select>
                   </div>
                 </div>
@@ -246,7 +306,7 @@ export default function DataInputPage() {
                   type="button"
                   onClick={() => setFormData({
                     period: "Semester I (Januari - Juni 2024)",
-                    stakeholder: "Pertamina Hulu Rokan",
+                    stakeholder_id: stakeholders[0]?.id || "",
                     compliance: "",
                     attendance: "",
                     response: "",
