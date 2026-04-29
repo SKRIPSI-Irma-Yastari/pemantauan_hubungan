@@ -150,10 +150,10 @@ export default function PublicSurveyPage() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
             </span>
-            Formulir Survey Publik
+            Formulir Survey II
           </div>
           <h1 className="text-5xl md:text-6xl font-heading font-extrabold text-on-background tracking-tighter leading-none">
-            Monitoring Hubungan <span className="text-primary">Kerja Sama</span>
+            Evaluasi Hubungan <span className="text-primary">Kerja Sama</span>
           </h1>
           <p className="text-on-surface-variant font-medium text-lg leading-relaxed max-w-2xl opacity-80 mx-auto md:mx-0">
             Platform terbuka untuk pengumpulan data indikator hubungan kerja sama antara stakeholder dengan instansi. Masukan Anda membantu kami meningkatkan transparansi dan efisiensi operasional.

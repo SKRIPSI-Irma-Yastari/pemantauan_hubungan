@@ -83,7 +83,7 @@ export default function LandingPage() {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
-              <Link href="/public/surveys/new">
+              <Link href="/public/surveys">
                 <button className="group w-full sm:w-auto relative flex items-center justify-center gap-3 px-10 py-5 rounded-full bg-primary text-on-primary font-heading font-black text-sm shadow-[0_20px_50px_rgba(var(--primary-rgb),0.3)] hover:-translate-y-1 active:scale-95 transition-all overflow-hidden">
                   <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                   Isi Survey Publik
@@ -256,7 +256,7 @@ export default function LandingPage() {
               ))}
             </div>
 
-            <Link href="/public/surveys/new">
+            <Link href="/public/surveys">
               <button className="flex items-center gap-3 px-10 py-5 rounded-full bg-on-background text-background font-heading font-black text-sm hover:opacity-90 active:scale-95 transition-all">
                 Mulai Survey Sekarang
                 <ArrowRight size={18} />
@@ -330,7 +330,7 @@ export default function LandingPage() {
                    Buka Dashboard Internal
                 </button>
              </Link>
-             <Link href="/public/surveys/new">
+             <Link href="/public/surveys">
                 <button className="group w-full sm:w-auto px-12 py-5 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-on-primary font-heading font-black text-sm hover:bg-white/20 transition-all flex items-center justify-center gap-2">
                    Portal Survey Publik
                    <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
@@ -360,7 +360,7 @@ export default function LandingPage() {
               <p className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">Portal</p>
               <div className="flex flex-col gap-2">
                 {["Public Survey", "Dashboard", "Ecosystem"].map((item) => (
-                  <Link key={item} href={item === "Public Survey" ? "/public/surveys/new" : "/login"} className="text-xs font-bold text-on-surface-variant hover:text-primary transition-colors">{item}</Link>
+                  <Link key={item} href={item === "Public Survey" ? "/public/surveys" : "/login"} className="text-xs font-bold text-on-surface-variant hover:text-primary transition-colors">{item}</Link>
                 ))}
               </div>
             </div>
