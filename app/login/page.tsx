@@ -32,7 +32,7 @@ export default function LoginPage() {
     setError(null)
 
     try {
-      const { error: authError } = await supabase.auth.signInWithPassword({
+      const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
         email,
         password,
       })
@@ -41,7 +41,26 @@ export default function LoginPage() {
         throw authError
       }
 
-      router.push("/dashboard")
+      const user = authData?.user
+      if (user) {
+        const { data: profile, error: profileError } = await supabase
+          .from("profiles")
+          .select("role")
+          .eq("id", user.id)
+          .single()
+
+        if (profileError) {
+          console.error("Error fetching profile:", profileError)
+          router.push("/dashboard")
+        } else if (profile?.role === "stakeholder") {
+          router.push("/stakeholder/dashboard")
+        } else {
+          router.push("/dashboard")
+        }
+      } else {
+        router.push("/dashboard")
+      }
+
       router.refresh()
     } catch (err: any) {
       setError(err.message || "Gagal masuk. Silakan periksa kredensial Anda.")

@@ -27,12 +27,12 @@ export default function DataInputPage() {
   const [isLoadingStakeholders, setIsLoadingStakeholders] = useState(true)
 
   const [formData, setFormData] = useState({
-    period: "Semester I (Januari - Juni 2024)",
     stakeholder_id: "",
-    compliance: "",
-    attendance: "",
-    response: "",
-    participation: "Aktif (Diatas 80%)",
+    tahun: new Date().getFullYear().toString(),
+    bulan: "Januari",
+    jenis_interaksi: "Rapat Resmi",
+    detail_aktivitas: "",
+    keterangan: ""
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -56,9 +56,6 @@ export default function DataInputPage() {
       
       if (error) throw error
       setStakeholders(data || [])
-      if (data && data.length > 0) {
-        setFormData(prev => ({ ...prev, stakeholder_id: data[0].id }))
-      }
     } catch (err) {
       console.error("Error fetching stakeholders:", err)
     } finally {
@@ -70,20 +67,21 @@ export default function DataInputPage() {
     try {
       const { data, error } = await supabase
         .from('interaction_data')
-        .select('*')
+        .select('*, stakeholders(name)')
         .order('created_at', { ascending: false })
         .limit(3)
       
       if (error) throw error
-        if (data) {
-          setRecentSubmissions(data.map(item => ({
-            id: item.id,
-            kkks: item.stakeholders?.name || "Unknown",
-            period: item.period.split(' ')[0] + ' ' + (item.period.split(' ').pop() || ""), 
-            compliance: item.compliance ? `${item.compliance}%` : "N/A",
-            time: new Date(item.created_at).toLocaleDateString()
-          })))
-        }
+      if (data) {
+        setRecentSubmissions(data.map(item => ({
+          id: item.id,
+          kkks: item.stakeholders?.name || "Unknown",
+          jenis_interaksi: item.jenis_interaksi || "Interaksi",
+          period: `${item.bulan || ''} ${item.tahun || ''}`, 
+          detail: item.detail_aktivitas || "-",
+          time: new Date(item.created_at).toLocaleDateString('id-ID')
+        })))
+      }
     } catch (err) {
       console.error("Error fetching recent submissions:", err)
     }
@@ -92,8 +90,12 @@ export default function DataInputPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
-    if (!formData.compliance || !formData.attendance || !formData.response) {
-      setStatus({ type: 'error', message: "Please fill in all numerical fields." })
+    if (!formData.stakeholder_id) {
+      setStatus({ type: 'error', message: "Silakan pilih KKKS terlebih dahulu." })
+      return
+    }
+    if (!formData.detail_aktivitas.trim()) {
+      setStatus({ type: 'error', message: "Silakan isi detail aktivitas interaksi." })
       return
     }
 
@@ -104,28 +106,28 @@ export default function DataInputPage() {
       const { error } = await supabase
         .from('interaction_data')
         .insert([{
-          period: formData.period,
           stakeholder_id: formData.stakeholder_id,
-          compliance: parseFloat(formData.compliance),
-          attendance: parseInt(formData.attendance),
-          response_speed: parseFloat(formData.response),
-          participation: formData.participation
+          tahun: parseInt(formData.tahun),
+          bulan: formData.bulan,
+          jenis_interaksi: formData.jenis_interaksi,
+          detail_aktivitas: formData.detail_aktivitas,
+          keterangan: formData.keterangan
         }])
 
       if (error) throw error
 
-      setStatus({ type: 'success', message: "Data successfully submitted!" })
+      setStatus({ type: 'success', message: "Data interaksi berhasil disimpan!" })
       setFormData({
-        period: "Semester I (Januari - Juni 2024)",
-        stakeholder_id: stakeholders[0]?.id || "",
-        compliance: "",
-        attendance: "",
-        response: "",
-        participation: "Aktif (Diatas 80%)",
+        stakeholder_id: "",
+        tahun: new Date().getFullYear().toString(),
+        bulan: "Januari",
+        jenis_interaksi: "Rapat Resmi",
+        detail_aktivitas: "",
+        keterangan: ""
       })
       fetchRecentSubmissions() // Refresh recent list
     } catch (err: any) {
-      setStatus({ type: 'error', message: err.message || "An error occurred during submission." })
+      setStatus({ type: 'error', message: err.message || "Terjadi kesalahan saat menyimpan data." })
     } finally {
       setIsSubmitting(false)
     }
@@ -186,26 +188,11 @@ export default function DataInputPage() {
               </span>
             </div>
 
-            <form className="space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-8">
               {/* Selectors */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Pilihan Periode</label>
-                  <div className="relative group">
-                    <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-on-surface-variant/50 group-focus-within:text-primary transition-colors" />
-                    <select 
-                      className="w-full h-11 bg-surface-container-low border border-transparent rounded-xl pl-10 pr-4 text-sm font-medium outline-none focus:ring-2 focus:ring-primary/20 focus:bg-surface-container transition-all appearance-none"
-                      value={formData.period}
-                      onChange={(e) => setFormData({...formData, period: e.target.value})}
-                    >
-                      <option>Semester I (Januari - Juni 2024)</option>
-                      <option>Semester II (Juli - Desember 2024)</option>
-                      <option>Semester I (Januari - Juni 2023)</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Stakeholder Target</label>
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Nama KKKS</label>
                   <div className="relative group">
                     <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-on-surface-variant/50 group-focus-within:text-primary transition-colors" />
                     <select 
@@ -217,78 +204,103 @@ export default function DataInputPage() {
                       {isLoadingStakeholders ? (
                         <option>Loading Stakeholders...</option>
                       ) : (
-                        stakeholders.map(s => (
-                          <option key={s.id} value={s.id}>{s.name}</option>
-                        ))
+                        <>
+                          <option value="">Pilih KKKS</option>
+                          {stakeholders.map(s => (
+                            <option key={s.id} value={s.id}>{s.name}</option>
+                          ))}
+                        </>
                       )}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Tahun</label>
+                  <div className="relative group">
+                    <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-on-surface-variant/50 group-focus-within:text-primary transition-colors" />
+                    <select 
+                      className="w-full h-11 bg-surface-container-low border border-transparent rounded-xl pl-10 pr-4 text-sm font-medium outline-none focus:ring-2 focus:ring-primary/20 focus:bg-surface-container transition-all appearance-none"
+                      value={formData.tahun}
+                      onChange={(e) => setFormData({...formData, tahun: e.target.value})}
+                    >
+                      <option>2023</option>
+                      <option>2024</option>
+                      <option>2025</option>
+                      <option>2026</option>
+                      <option>2027</option>
                     </select>
                   </div>
                 </div>
               </div>
 
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Bulan</label>
+                  <select 
+                    className="w-full h-11 bg-surface-container-low border border-transparent rounded-xl px-4 text-sm font-medium outline-none focus:ring-2 focus:ring-primary/20 focus:bg-surface-container transition-all"
+                    value={formData.bulan}
+                    onChange={(e) => setFormData({...formData, bulan: e.target.value})}
+                  >
+                    <option>Januari</option>
+                    <option>Februari</option>
+                    <option>Maret</option>
+                    <option>April</option>
+                    <option>Mei</option>
+                    <option>Juni</option>
+                    <option>Juli</option>
+                    <option>Agustus</option>
+                    <option>September</option>
+                    <option>Oktober</option>
+                    <option>November</option>
+                    <option>Desember</option>
+                  </select>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Jenis Interaksi</label>
+                  <select 
+                    className="w-full h-11 bg-surface-container-low border border-transparent rounded-xl px-4 text-sm font-medium outline-none focus:ring-2 focus:ring-primary/20 focus:bg-surface-container transition-all"
+                    value={formData.jenis_interaksi}
+                    onChange={(e) => setFormData({...formData, jenis_interaksi: e.target.value})}
+                  >
+                    <option>Rapat Resmi</option>
+                    <option>Surat Menyurat</option>
+                    <option>Kunjungan Lapangan</option>
+                    <option>Audiensi</option>
+                    <option>Sosialisasi</option>
+                    <option>Workshop / FGD</option>
+                    <option>Lainnya</option>
+                  </select>
+                </div>
+              </div>
+
               <div className="h-px bg-outline-variant/10" />
 
-              {/* Numerical Inputs */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
+              {/* Text Area Inputs */}
+              <div className="space-y-6">
                 <div className="space-y-2">
                   <label className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant flex items-center gap-2">
-                    Kepatuhan Laporan
-                    <Info className="h-3 w-3 opacity-40" />
+                    Detail Aktivitas
                   </label>
-                  <div className="relative group">
-                    <div className="absolute right-4 top-1/2 -translate-y-1/2 text-sm font-bold text-on-surface-variant opacity-40">%</div>
-                    <input 
-                      type="number"
-                      placeholder="0 - 100"
-                      value={formData.compliance}
-                      onChange={(e) => setFormData({...formData, compliance: e.target.value})}
-                      className="w-full h-11 bg-surface-container-low border border-transparent rounded-xl px-4 text-sm font-medium outline-none focus:ring-2 focus:ring-primary/20 focus:bg-surface-container transition-all"
-                    />
-                  </div>
-                  <p className="text-[10px] italic text-on-surface-variant/60">Persentase laporan teknis tepat waktu.</p>
+                  <textarea 
+                    rows={4}
+                    placeholder="Tuliskan detail agenda rapat, topik koordinasi, atau isi surat..."
+                    value={formData.detail_aktivitas}
+                    onChange={(e) => setFormData({...formData, detail_aktivitas: e.target.value})}
+                    className="w-full bg-surface-container-low border border-transparent rounded-xl p-4 text-sm font-medium outline-none focus:ring-2 focus:ring-primary/20 focus:bg-surface-container transition-all resize-none"
+                  />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Kehadiran Rapat</label>
-                  <div className="relative group">
-                    <input 
-                      type="number"
-                      placeholder="Jumlah sesi"
-                      value={formData.attendance}
-                      onChange={(e) => setFormData({...formData, attendance: e.target.value})}
-                      className="w-full h-11 bg-surface-container-low border border-transparent rounded-xl px-4 text-sm font-medium outline-none focus:ring-2 focus:ring-primary/20 focus:bg-surface-container transition-all"
-                    />
-                  </div>
-                  <p className="text-[10px] italic text-on-surface-variant/60">Total kehadiran dalam rapat resmi.</p>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Respon Komunikasi</label>
-                  <div className="relative group">
-                    <div className="absolute right-4 top-1/2 -translate-y-1/2 text-[10px] font-bold text-on-surface-variant opacity-40 uppercase tracking-tighter">Hari</div>
-                    <input 
-                      type="number"
-                      placeholder="Rata-rata hari"
-                      value={formData.response}
-                      onChange={(e) => setFormData({...formData, response: e.target.value})}
-                      className="w-full h-11 bg-surface-container-low border border-transparent rounded-xl px-4 text-sm font-medium outline-none focus:ring-2 focus:ring-primary/20 focus:bg-surface-container transition-all"
-                    />
-                  </div>
-                  <p className="text-[10px] italic text-on-surface-variant/60">Kecepatan membalas korespendensi.</p>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Partisipasi Kegiatan</label>
-                  <select 
-                    value={formData.participation}
-                    onChange={(e) => setFormData({...formData, participation: e.target.value})}
-                    className="w-full h-11 bg-surface-container-low border border-transparent rounded-xl px-4 text-sm font-medium outline-none focus:ring-2 focus:ring-primary/20 focus:bg-surface-container transition-all"
-                  >
-                    <option>Aktif (Diatas 80%)</option>
-                    <option>Moderat (50% - 80%)</option>
-                    <option>Pasif (Dibawah 50%)</option>
-                  </select>
-                  <p className="text-[10px] italic text-on-surface-variant/60">Keterlibatan dalam workshop non-rutin.</p>
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Keterangan</label>
+                  <textarea 
+                    rows={3}
+                    placeholder="Tuliskan catatan tambahan, hasil keputusan interaksi, atau tindak lanjut..."
+                    value={formData.keterangan}
+                    onChange={(e) => setFormData({...formData, keterangan: e.target.value})}
+                    className="w-full bg-surface-container-low border border-transparent rounded-xl p-4 text-sm font-medium outline-none focus:ring-2 focus:ring-primary/20 focus:bg-surface-container transition-all resize-none"
+                  />
                 </div>
               </div>
 
@@ -308,17 +320,17 @@ export default function DataInputPage() {
                 <button 
                   type="button"
                   onClick={() => setFormData({
-                    period: "Semester I (Januari - Juni 2024)",
-                    stakeholder_id: stakeholders[0]?.id || "",
-                    compliance: "",
-                    attendance: "",
-                    response: "",
-                    participation: "Aktif (Diatas 80%)",
+                    stakeholder_id: "",
+                    tahun: new Date().getFullYear().toString(),
+                    bulan: "Januari",
+                    jenis_interaksi: "Rapat Resmi",
+                    detail_aktivitas: "",
+                    keterangan: ""
                   })}
                   className="flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-bold text-on-surface-variant hover:bg-surface-container-high transition-all active:scale-95"
                 >
                   <Trash2 className="h-4 w-4" />
-                  Discard
+                  Batal
                 </button>
                 <button 
                   type="submit"
@@ -326,7 +338,7 @@ export default function DataInputPage() {
                   className="flex items-center gap-2 rounded-xl bg-primary px-8 py-2.5 text-sm font-bold text-on-primary shadow-lg shadow-primary/20 hover:opacity-90 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
-                  {isSubmitting ? "Submitting..." : "Submit Data"}
+                  {isSubmitting ? "Menyimpan..." : "Simpan Data"}
                 </button>
               </div>
             </form>
@@ -340,8 +352,8 @@ export default function DataInputPage() {
             <div>
               <h4 className="text-sm font-bold text-primary mb-1 uppercase tracking-tight">Standardisasi Input</h4>
               <p className="text-xs text-on-surface-variant leading-relaxed">
-                Pastikan semua data numerik telah divalidasi sesuai dengan Berita Acara Rapat Bulanan. 
-                Kesalahan input data akan mempengaruhi skor algoritma klasifikasi secara otomatis.
+                Pastikan semua detail aktivitas interaksi dicatat dengan lengkap dan jelas sesuai dengan Berita Acara atau korespondensi resmi. 
+                Data ini akan tercatat dalam riwayat data pemantauan hubungan kerja sama.
               </p>
             </div>
           </div>
@@ -359,13 +371,16 @@ export default function DataInputPage() {
                     <p className="font-bold text-sm text-on-surface">{sub.kkks}</p>
                     <span className="text-[10px] font-bold text-on-surface-variant opacity-40">{sub.time}</span>
                   </div>
-                  <div className="flex gap-2">
-                    <span className="rounded bg-white px-2 py-0.5 text-[9px] font-bold text-on-surface-variant/70 border border-outline-variant/10">
-                      {sub.period}
-                    </span>
-                    <span className="rounded bg-white px-2 py-0.5 text-[9px] font-bold text-primary border border-primary/10">
-                      {sub.compliance} Compliance
-                    </span>
+                  <div className="flex flex-col gap-1">
+                    <div className="flex gap-2">
+                      <span className="rounded bg-white px-2 py-0.5 text-[9px] font-bold text-on-surface-variant/70 border border-outline-variant/10">
+                        {sub.period}
+                      </span>
+                      <span className="rounded bg-white px-2 py-0.5 text-[9px] font-bold text-primary border border-primary/10">
+                        {sub.jenis_interaksi}
+                      </span>
+                    </div>
+                    <p className="text-[10px] text-on-surface-variant/60 line-clamp-1">{sub.detail}</p>
                   </div>
                 </div>
               ))}

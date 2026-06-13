@@ -24,16 +24,17 @@ import { useProfile } from "@/hooks/use-profile"
 const bpmaNavItems = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
   { name: "Stakeholders", href: "/stakeholders", icon: Users },
-  { name: "Input Data", href: "/data-input", icon: FileEdit },
-  { name: "Proses CART", href: "/algorithms/cart", icon: Network },
-  { name: "Evaluasi & Tren", href: "/history", icon: LineChart },
+  { name: "Input Data Interaksi", href: "/data-input", icon: FileEdit },
+  { name: "Proses CART", href: "/algorithms", icon: Network },
+  { name: "Riwayat Data", href: "/history", icon: LineChart },
+  { name: "Kelola Pengguna", href: "/users", icon: ShieldCheck },
 ]
 
 const stakeholderNavItems = [
-  { name: "Dashboard KKKS", href: "/stakeholder/dashboard", icon: Building2 },
-  { name: "Kirim Laporan", href: "/stakeholder/reports", icon: UploadCloud },
-  { name: "Jadwal Rapat", href: "/stakeholder/meetings", icon: CalendarDays },
-  { name: "Hubungi BPMA", href: "/stakeholder/communication", icon: MessageSquare },
+  { name: "Dashboard KKKS", href: "/stakeholder/dashboard", icon: LayoutDashboard },
+  { name: "Hasil Klasifikasi", href: "/stakeholder/classification", icon: Network },
+  { name: "Riwayat Data", href: "/stakeholder/history", icon: LineChart },
+  { name: "Profil Akun", href: "/stakeholder/profile", icon: Users },
 ]
 
 import { supabase } from "@/lib/supabase"

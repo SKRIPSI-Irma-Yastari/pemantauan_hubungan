@@ -104,13 +104,8 @@ export default function LandingPage() {
               </div>
               <div className="h-8 w-px bg-outline-variant/20" />
               <div className="space-y-1">
-                <p className="text-3xl font-heading font-black text-on-background tracking-tighter">12+</p>
+                <p className="text-3xl font-heading font-black text-on-background tracking-tighter">5</p>
                 <p className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/40 leading-none">Active KKKS</p>
-              </div>
-              <div className="h-8 w-px bg-outline-variant/20" />
-              <div className="space-y-1">
-                <p className="text-3xl font-heading font-black text-on-background tracking-tighter">Real-time</p>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/40 leading-none">Sync Status</p>
               </div>
             </div>
           </motion.div>

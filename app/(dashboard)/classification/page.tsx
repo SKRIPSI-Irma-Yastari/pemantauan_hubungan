@@ -56,28 +56,18 @@ const performanceMetrics: PerformanceMetric[] = [
 const decisionRules: DecisionRule[] = [
   { 
     id: "01", 
-    title: "High Stability", 
+    title: "Status Hubungan Harmonis", 
     logic: [
-      { type: "IF", text: "Production_Flow > 850 MBPD" },
-      { type: "AND", text: "Maintenance_Lag < 12 Hours" },
+      { type: "IF", text: "Skor Interaksi >= 2" },
       { type: "THEN", text: "STATUS = Harmonis", variant: "success" }
     ]
   },
   { 
     id: "02", 
-    title: "Critical Pressure", 
+    title: "Status Hubungan Kurang Harmonis", 
     logic: [
-      { type: "IF", text: "Reservoir_Pressure < 2100 PSI" },
-      { type: "AND", text: "Water_Cut > 15%" },
+      { type: "IF", text: "Skor Interaksi <= 1" },
       { type: "THEN", text: "STATUS = Kurang Harmonis", variant: "error" }
-    ]
-  },
-  { 
-    id: "03", 
-    title: "Seasonal Adjustment", 
-    logic: [
-      { type: "IF", text: "Gas_Flare_Volume < 50 MMSCFD" },
-      { type: "THEN", text: "STATUS = Harmonis", variant: "success" }
     ]
   }
 ]
@@ -288,8 +278,8 @@ export default function ClassificationPage() {
             </div>
             
             <p className="text-sm leading-relaxed text-blue-100 font-medium">
-              Model CART menunjukkan stabilitas tinggi pada variabel <span className="font-bold text-white underline decoration-blue-400">Production_Flow</span>. 
-              Resiko klasifikasi salah hanya terjadi pada ambang batas transisi pressure (2100-2150 PSI).
+              Model CART menunjukkan akurasi tinggi pada variabel <span className="font-bold text-white underline decoration-blue-400">Skor Interaksi</span>. 
+              Status hubungan ditentukan secara tegas berdasarkan bobot kualitas dari interaksi stakeholder.
             </p>
 
             <button className="mt-8 w-full rounded-xl bg-white/10 py-3 text-[10px] font-bold uppercase tracking-[0.2em] transition-all hover:bg-white/20 hover:scale-[1.02] active:scale-95">

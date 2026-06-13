@@ -24,14 +24,12 @@ import { StabilityGauge } from "@/components/ui/stability-gauge"
 import { motion } from "framer-motion"
 import { supabase } from "@/lib/supabase"
 import { 
-  BarChart, 
-  Bar, 
-  XAxis, 
-  YAxis, 
-  CartesianGrid, 
+  PieChart, 
+  Pie, 
   Tooltip, 
   ResponsiveContainer,
-  Cell 
+  Cell,
+  Legend
 } from 'recharts'
 
 // Dynamic data helpers
@@ -71,15 +69,15 @@ export default function DashboardPage() {
 
       try {
         setIsLoading(true)
-        const [stakeholdersRes, reportsRes, interactionsRes, commsRes] = await Promise.all([
-          supabase.from('stakeholders').select('*'),
+        const [surveysRes, reportsRes, interactionsRes, commsRes] = await Promise.all([
+          supabase.from('surveys').select('*'),
           supabase.from('reports').select('*, stakeholders(name)').order('submitted_at', { ascending: false }),
-          supabase.from('interaction_data').select('*, stakeholders(name)').order('period', { ascending: false }),
+          supabase.from('interaction_data').select('*, stakeholders(name)').order('created_at', { ascending: false }),
           supabase.from('communications').select('*, stakeholders(name)').order('sent_at', { ascending: false })
         ])
 
-        if (stakeholdersRes.error) throw stakeholdersRes.error
-        setSurveys(stakeholdersRes.data || [])
+        if (surveysRes.error) throw surveysRes.error
+        setSurveys(surveysRes.data || [])
 
         setInteractions(interactionsRes.data || [])
       } catch (err) {
@@ -102,36 +100,43 @@ export default function DashboardPage() {
       stabilityStatus: "STABLE" as const,
       chartData: [
         { name: 'Harmonis', value: 0, color: 'var(--color-tertiary)' },
-        { name: 'Stable', value: 0, color: 'var(--color-primary)' },
-        { name: 'Disharmonis', value: 0, color: 'var(--color-error)' },
+        { name: 'Kurang Harmonis', value: 0, color: 'var(--color-error)' },
       ],
       recentActivities: []
     }
 
     const uniqueKKKS = new Set([
       ...surveys.map(s => s.kkks),
-      ...interactions.map(i => i.stakeholder)
+      ...interactions.map(i => i.stakeholders?.name).filter(Boolean)
     ]).size
     
     let harmonisCount = 0
-    let stableCount = 0
-    let criticalCount = 0
+    let kurangHarmonisCount = 0
     let totalComplianceNumeric = 0
     let complianceCount = 0
 
     surveys.forEach(s => {
-      if (s.relationship_rating === "Sangat Baik") harmonisCount++
-      else if (s.relationship_rating === "Cukup") stableCount++
-      else criticalCount++
+      if (s.relationship_rating === "Sangat Baik" || s.relationship_rating === "Cukup" || s.relationship_rating === "Harmonis") {
+        harmonisCount++
+      } else {
+        kurangHarmonisCount++
+      }
 
       totalComplianceNumeric += getComplianceNumericScore(s.compliance)
       complianceCount++
     })
 
     interactions.forEach(i => {
-      if (i.compliance !== null && i.compliance !== undefined) {
-        totalComplianceNumeric += Number(i.compliance)
+      if (i.compliance_score !== null && i.compliance_score !== undefined) {
+        totalComplianceNumeric += Number(i.compliance_score)
         complianceCount++
+      }
+      if (i.status) {
+        if (i.status === "Harmonis") {
+          harmonisCount++
+        } else {
+          kurangHarmonisCount++
+        }
       }
     })
 
@@ -152,8 +157,7 @@ export default function DashboardPage() {
 
     const chartData = [
       { name: 'Harmonis', value: harmonisCount, color: 'var(--color-tertiary)' },
-      { name: 'Stable', value: stableCount, color: 'var(--color-primary)' },
-      { name: 'Disharmonis', value: criticalCount, color: 'var(--color-error)' },
+      { name: 'Kurang Harmonis', value: kurangHarmonisCount, color: 'var(--color-error)' },
     ]
 
     const allActivities = [
@@ -168,12 +172,12 @@ export default function DashboardPage() {
       })),
       ...interactions.map(i => ({
         id: `i-${i.id}`,
-        kkks: i.stakeholder,
-        action: `Interaction data submitted for ${i.period.split(' ')[0]}`,
+        kkks: i.stakeholders?.name || "KKKS",
+        action: `${i.jenis_interaksi || 'Interaksi'}: ${i.detail_aktivitas || '-'}`,
         time: new Date(i.created_at).getTime(),
-        timeStr: new Date(i.created_at).toLocaleDateString(),
+        timeStr: `${i.bulan || ''} ${i.tahun || ''}` || new Date(i.created_at).toLocaleDateString(),
         status: "success",
-        score: i.compliance ? `${i.compliance}%` : "N/A"
+        score: i.keterangan || "-"
       }))
     ].sort((a, b) => b.time - a.time)
 
@@ -185,7 +189,7 @@ export default function DashboardPage() {
     return {
       totalKKKS: uniqueKKKS,
       harmonis: harmonisCount,
-      attention: criticalCount,
+      attention: kurangHarmonisCount,
       compliance: complianceStatus,
       stabilityScore: Math.round(stabilityScore),
       stabilityStatus,
@@ -239,10 +243,10 @@ export default function DashboardPage() {
           </p>
         </div>
         <div className="flex gap-3">
-          <button className="flex items-center gap-2 rounded-xl bg-surface-container-high px-4 py-2.5 text-sm font-bold text-on-surface transition-all hover:bg-surface-variant active:scale-95">
-            Unduh Laporan
-          </button>
-          <button className="flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-on-primary shadow-lg shadow-primary/20 transition-all hover:opacity-90 active:scale-95">
+          <button 
+            onClick={() => router.push('/data-input')}
+            className="flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-on-primary shadow-lg shadow-primary/20 transition-all hover:opacity-90 active:scale-95"
+          >
             Analisis Baru
             <ArrowUpRight className="h-4 w-4" />
           </button>
@@ -295,31 +299,40 @@ export default function DashboardPage() {
               </h3>
               <select className="bg-transparent border-none font-bold text-primary outline-none cursor-pointer">
                 <option>Semester I 2024</option>
-                <option>Semester II 2023</option>
+                <option>Semester II 2024</option>
+                <option>Semester I 2025</option>
+                <option>Semester II 2025</option>
+                <option>Semester I 2026</option>
+                <option>Semester II 2026</option>
               </select>
             </div>
             
-            <div className="h-[300px] w-full">
+            <div className="h-[300px] w-full flex items-center justify-center">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={metrics.chartData} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--outline-variant)" opacity={0.1} />
-                  <XAxis 
-                    dataKey="name" 
-                    axisLine={false} 
-                    tickLine={false} 
-                    tick={{ fontSize: 12, fontWeight: 600, fill: 'var(--on-surface-variant)' }} 
-                  />
-                  <YAxis hide />
+                <PieChart>
                   <Tooltip 
-                    cursor={{ fill: 'var(--surface-container-low)', radius: 8 }}
                     contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }}
                   />
-                  <Bar dataKey="value" radius={[8, 8, 0, 0]} barSize={60}>
+                  <Pie
+                    data={metrics.chartData}
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={60}
+                    outerRadius={90}
+                    paddingAngle={4}
+                    dataKey="value"
+                  >
                     {metrics.chartData.map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={entry.color} />
                     ))}
-                  </Bar>
-                </BarChart>
+                  </Pie>
+                  <Legend 
+                    verticalAlign="bottom" 
+                    height={36}
+                    iconType="circle"
+                    formatter={(value) => <span className="text-xs font-bold text-on-surface-variant ml-1">{value}</span>}
+                  />
+                </PieChart>
               </ResponsiveContainer>
             </div>
           </section>
