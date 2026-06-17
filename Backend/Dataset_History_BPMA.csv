@@ -1,0 +1,981 @@
+No,Nama KKKS,Tahun,Bulan,Jenis Interaksi,Detail Aktivitas,Keterangan,Label
+1,Conrad Asia Energy,2024,Januari,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+2,Conrad Asia Energy,2024,Januari,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+3,Conrad Asia Energy,2024,Januari,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+4,Conrad Asia Energy,2024,Januari,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+5,Conrad Asia Energy,2024,Januari,Partisipasi,Program Pengembangan SDM,Mengadakan sertifikasi gratis untuk teknisi lokal,Harmonis
+6,Conrad Asia Energy,2024,Januari,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+7,Conrad Asia Energy,2024,Januari,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+8,PT Medco E&P Malaka,2024,Januari,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+9,PT Medco E&P Malaka,2024,Januari,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+10,PT Medco E&P Malaka,2024,Januari,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+11,PT Medco E&P Malaka,2024,Januari,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+12,PT Medco E&P Malaka,2024,Januari,Partisipasi,Forum Kapasitas Nasional,Menjadi narasumber utama & membawa vendor lokal,Harmonis
+13,PT Medco E&P Malaka,2024,Januari,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+14,PT Medco E&P Malaka,2024,Januari,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+15,PT Pema Global Energi,2024,Januari,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+16,PT Pema Global Energi,2024,Januari,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+17,PT Pema Global Energi,2024,Januari,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+18,PT Pema Global Energi,2024,Januari,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+19,PT Pema Global Energi,2024,Januari,Partisipasi,Workshop Teknis Migas,Proaktif berbagi studi kasus pengeboran,Harmonis
+20,PT Pema Global Energi,2024,Januari,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+21,PT Pema Global Energi,2024,Januari,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+22,Triangle Pase,2024,Januari,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+23,Triangle Pase,2024,Januari,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+24,Triangle Pase,2024,Januari,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+25,Triangle Pase,2024,Januari,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+26,Triangle Pase,2024,Januari,Partisipasi,Sosialisasi Lingkungan,Koordinasi program lingkungan sangat baik,Harmonis
+27,Triangle Pase,2024,Januari,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+28,Triangle Pase,2024,Januari,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+29,Zaratex N.V.,2024,Januari,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+30,Zaratex N.V.,2024,Januari,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+31,Zaratex N.V.,2024,Januari,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+32,Zaratex N.V.,2024,Januari,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+33,Zaratex N.V.,2024,Januari,Partisipasi,Program Magang Lokal,Belum membuka kuota magang lokal / tidak kooperatif,Kurang Harmonis
+34,Zaratex N.V.,2024,Januari,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+35,Zaratex N.V.,2024,Januari,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+36,Conrad Asia Energy,2024,Februari,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+37,Conrad Asia Energy,2024,Februari,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+38,Conrad Asia Energy,2024,Februari,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+39,Conrad Asia Energy,2024,Februari,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+40,Conrad Asia Energy,2024,Februari,Partisipasi,Sosialisasi Lingkungan,Koordinasi program lingkungan sangat baik,Harmonis
+41,Conrad Asia Energy,2024,Februari,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+42,Conrad Asia Energy,2024,Februari,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+43,PT Medco E&P Malaka,2024,Februari,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+44,PT Medco E&P Malaka,2024,Februari,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+45,PT Medco E&P Malaka,2024,Februari,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+46,PT Medco E&P Malaka,2024,Februari,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+47,PT Medco E&P Malaka,2024,Februari,Partisipasi,Knowledge Sharing Session,Memberikan edukasi K3LL kepada tim teknis BPMA,Harmonis
+48,PT Medco E&P Malaka,2024,Februari,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+49,PT Medco E&P Malaka,2024,Februari,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+50,PT Pema Global Energi,2024,Februari,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+51,PT Pema Global Energi,2024,Februari,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+52,PT Pema Global Energi,2024,Februari,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+53,PT Pema Global Energi,2024,Februari,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+54,PT Pema Global Energi,2024,Februari,Partisipasi,Workshop Teknis Migas,Proaktif berbagi studi kasus pengeboran,Harmonis
+55,PT Pema Global Energi,2024,Februari,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+56,PT Pema Global Energi,2024,Februari,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+57,Triangle Pase,2024,Februari,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+58,Triangle Pase,2024,Februari,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+59,Triangle Pase,2024,Februari,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+60,Triangle Pase,2024,Februari,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+61,Triangle Pase,2024,Februari,Partisipasi,Forum Kapasitas Nasional,Menjadi narasumber utama & membawa vendor lokal,Harmonis
+62,Triangle Pase,2024,Februari,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+63,Triangle Pase,2024,Februari,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+64,Zaratex N.V.,2024,Februari,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+65,Zaratex N.V.,2024,Februari,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+66,Zaratex N.V.,2024,Februari,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+67,Zaratex N.V.,2024,Februari,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+68,Zaratex N.V.,2024,Februari,Partisipasi,Kegiatan CSR Bersama,Koordinasi program pemberdayaan masyarakat sangat baik,Harmonis
+69,Zaratex N.V.,2024,Februari,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+70,Zaratex N.V.,2024,Februari,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+71,Conrad Asia Energy,2024,Maret,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+72,Conrad Asia Energy,2024,Maret,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+73,Conrad Asia Energy,2024,Maret,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+74,Conrad Asia Energy,2024,Maret,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+75,Conrad Asia Energy,2024,Maret,Partisipasi,Forum Kapasitas Nasional,Menjadi narasumber utama & membawa vendor lokal,Harmonis
+76,Conrad Asia Energy,2024,Maret,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+77,Conrad Asia Energy,2024,Maret,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+78,PT Medco E&P Malaka,2024,Maret,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+79,PT Medco E&P Malaka,2024,Maret,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+80,PT Medco E&P Malaka,2024,Maret,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+81,PT Medco E&P Malaka,2024,Maret,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+82,PT Medco E&P Malaka,2024,Maret,Partisipasi,Kegiatan CSR Bersama,Koordinasi program pemberdayaan masyarakat sangat baik,Harmonis
+83,PT Medco E&P Malaka,2024,Maret,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+84,PT Medco E&P Malaka,2024,Maret,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+85,PT Pema Global Energi,2024,Maret,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+86,PT Pema Global Energi,2024,Maret,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+87,PT Pema Global Energi,2024,Maret,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+88,PT Pema Global Energi,2024,Maret,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+89,PT Pema Global Energi,2024,Maret,Partisipasi,Kegiatan CSR Bersama,Koordinasi program pemberdayaan masyarakat sangat baik,Harmonis
+90,PT Pema Global Energi,2024,Maret,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+91,PT Pema Global Energi,2024,Maret,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+92,Triangle Pase,2024,Maret,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+93,Triangle Pase,2024,Maret,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+94,Triangle Pase,2024,Maret,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+95,Triangle Pase,2024,Maret,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+96,Triangle Pase,2024,Maret,Partisipasi,Kegiatan CSR Bersama,Koordinasi program pemberdayaan masyarakat sangat baik,Harmonis
+97,Triangle Pase,2024,Maret,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+98,Triangle Pase,2024,Maret,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+99,Zaratex N.V.,2024,Maret,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+100,Zaratex N.V.,2024,Maret,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+101,Zaratex N.V.,2024,Maret,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+102,Zaratex N.V.,2024,Maret,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+103,Zaratex N.V.,2024,Maret,Partisipasi,Sosialisasi Lingkungan,Koordinasi program lingkungan sangat baik,Harmonis
+104,Zaratex N.V.,2024,Maret,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+105,Zaratex N.V.,2024,Maret,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+106,Conrad Asia Energy,2024,April,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+107,Conrad Asia Energy,2024,April,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+108,Conrad Asia Energy,2024,April,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+109,Conrad Asia Energy,2024,April,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+110,Conrad Asia Energy,2024,April,Partisipasi,Sosialisasi Lingkungan,Koordinasi program lingkungan sangat baik,Harmonis
+111,Conrad Asia Energy,2024,April,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+112,Conrad Asia Energy,2024,April,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+113,PT Medco E&P Malaka,2024,April,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+114,PT Medco E&P Malaka,2024,April,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+115,PT Medco E&P Malaka,2024,April,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+116,PT Medco E&P Malaka,2024,April,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+117,PT Medco E&P Malaka,2024,April,Partisipasi,Sosialisasi Lingkungan,Koordinasi program lingkungan sangat baik,Harmonis
+118,PT Medco E&P Malaka,2024,April,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+119,PT Medco E&P Malaka,2024,April,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+120,PT Pema Global Energi,2024,April,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+121,PT Pema Global Energi,2024,April,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+122,PT Pema Global Energi,2024,April,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+123,PT Pema Global Energi,2024,April,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+124,PT Pema Global Energi,2024,April,Partisipasi,Program Magang Lokal,Penyerapan tenaga kerja magang dari univ lokal,Harmonis
+125,PT Pema Global Energi,2024,April,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+126,PT Pema Global Energi,2024,April,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+127,Triangle Pase,2024,April,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+128,Triangle Pase,2024,April,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+129,Triangle Pase,2024,April,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+130,Triangle Pase,2024,April,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+131,Triangle Pase,2024,April,Partisipasi,Program Pengembangan SDM,Mengadakan sertifikasi gratis untuk teknisi lokal,Harmonis
+132,Triangle Pase,2024,April,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+133,Triangle Pase,2024,April,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+134,Zaratex N.V.,2024,April,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+135,Zaratex N.V.,2024,April,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+136,Zaratex N.V.,2024,April,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+137,Zaratex N.V.,2024,April,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+138,Zaratex N.V.,2024,April,Partisipasi,Program Magang Lokal,Belum membuka kuota magang lokal / tidak kooperatif,Kurang Harmonis
+139,Zaratex N.V.,2024,April,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+140,Zaratex N.V.,2024,April,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+141,Conrad Asia Energy,2024,Mei,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+142,Conrad Asia Energy,2024,Mei,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+143,Conrad Asia Energy,2024,Mei,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+144,Conrad Asia Energy,2024,Mei,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+145,Conrad Asia Energy,2024,Mei,Partisipasi,Program Pengembangan SDM,Mengadakan sertifikasi gratis untuk teknisi lokal,Harmonis
+146,Conrad Asia Energy,2024,Mei,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+147,Conrad Asia Energy,2024,Mei,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+148,PT Medco E&P Malaka,2024,Mei,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+149,PT Medco E&P Malaka,2024,Mei,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+150,PT Medco E&P Malaka,2024,Mei,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+151,PT Medco E&P Malaka,2024,Mei,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+152,PT Medco E&P Malaka,2024,Mei,Partisipasi,Kegiatan CSR Bersama,Koordinasi program pemberdayaan masyarakat sangat baik,Harmonis
+153,PT Medco E&P Malaka,2024,Mei,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+154,PT Medco E&P Malaka,2024,Mei,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+155,PT Pema Global Energi,2024,Mei,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+156,PT Pema Global Energi,2024,Mei,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+157,PT Pema Global Energi,2024,Mei,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+158,PT Pema Global Energi,2024,Mei,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+159,PT Pema Global Energi,2024,Mei,Partisipasi,Program Magang Lokal,Penyerapan tenaga kerja magang dari univ lokal,Harmonis
+160,PT Pema Global Energi,2024,Mei,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+161,PT Pema Global Energi,2024,Mei,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+162,Triangle Pase,2024,Mei,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+163,Triangle Pase,2024,Mei,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+164,Triangle Pase,2024,Mei,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+165,Triangle Pase,2024,Mei,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+166,Triangle Pase,2024,Mei,Partisipasi,Kegiatan CSR Bersama,Koordinasi program pemberdayaan masyarakat sangat baik,Harmonis
+167,Triangle Pase,2024,Mei,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+168,Triangle Pase,2024,Mei,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+169,Zaratex N.V.,2024,Mei,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+170,Zaratex N.V.,2024,Mei,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+171,Zaratex N.V.,2024,Mei,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+172,Zaratex N.V.,2024,Mei,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+173,Zaratex N.V.,2024,Mei,Partisipasi,Forum Vendor Lokal,Hadir namun kontribusi data vendor masih minim,Harmonis
+174,Zaratex N.V.,2024,Mei,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+175,Zaratex N.V.,2024,Mei,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+176,Conrad Asia Energy,2024,Juni,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+177,Conrad Asia Energy,2024,Juni,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+178,Conrad Asia Energy,2024,Juni,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+179,Conrad Asia Energy,2024,Juni,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+180,Conrad Asia Energy,2024,Juni,Partisipasi,Kegiatan CSR Bersama,Koordinasi program pemberdayaan masyarakat sangat baik,Harmonis
+181,Conrad Asia Energy,2024,Juni,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+182,Conrad Asia Energy,2024,Juni,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+183,PT Medco E&P Malaka,2024,Juni,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+184,PT Medco E&P Malaka,2024,Juni,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+185,PT Medco E&P Malaka,2024,Juni,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+186,PT Medco E&P Malaka,2024,Juni,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+187,PT Medco E&P Malaka,2024,Juni,Partisipasi,Program Pengembangan SDM,Mengadakan sertifikasi gratis untuk teknisi lokal,Harmonis
+188,PT Medco E&P Malaka,2024,Juni,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+189,PT Medco E&P Malaka,2024,Juni,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+190,PT Pema Global Energi,2024,Juni,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+191,PT Pema Global Energi,2024,Juni,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+192,PT Pema Global Energi,2024,Juni,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+193,PT Pema Global Energi,2024,Juni,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+194,PT Pema Global Energi,2024,Juni,Partisipasi,Forum Vendor Lokal,Hadir namun kontribusi data vendor masih minim,Harmonis
+195,PT Pema Global Energi,2024,Juni,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+196,PT Pema Global Energi,2024,Juni,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+197,Triangle Pase,2024,Juni,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+198,Triangle Pase,2024,Juni,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+199,Triangle Pase,2024,Juni,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+200,Triangle Pase,2024,Juni,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+201,Triangle Pase,2024,Juni,Partisipasi,Forum Kapasitas Nasional,Menjadi narasumber utama & membawa vendor lokal,Harmonis
+202,Triangle Pase,2024,Juni,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+203,Triangle Pase,2024,Juni,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+204,Zaratex N.V.,2024,Juni,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+205,Zaratex N.V.,2024,Juni,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+206,Zaratex N.V.,2024,Juni,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+207,Zaratex N.V.,2024,Juni,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+208,Zaratex N.V.,2024,Juni,Partisipasi,Sosialisasi Lingkungan,Koordinasi program lingkungan sangat baik,Harmonis
+209,Zaratex N.V.,2024,Juni,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+210,Zaratex N.V.,2024,Juni,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+211,Conrad Asia Energy,2024,Juli,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+212,Conrad Asia Energy,2024,Juli,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+213,Conrad Asia Energy,2024,Juli,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+214,Conrad Asia Energy,2024,Juli,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+215,Conrad Asia Energy,2024,Juli,Partisipasi,Forum Kapasitas Nasional,Menjadi narasumber utama & membawa vendor lokal,Harmonis
+216,Conrad Asia Energy,2024,Juli,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+217,Conrad Asia Energy,2024,Juli,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+218,PT Medco E&P Malaka,2024,Juli,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+219,PT Medco E&P Malaka,2024,Juli,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+220,PT Medco E&P Malaka,2024,Juli,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+221,PT Medco E&P Malaka,2024,Juli,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+222,PT Medco E&P Malaka,2024,Juli,Partisipasi,Program Pengembangan SDM,Mengadakan sertifikasi gratis untuk teknisi lokal,Harmonis
+223,PT Medco E&P Malaka,2024,Juli,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+224,PT Medco E&P Malaka,2024,Juli,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+225,PT Pema Global Energi,2024,Juli,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+226,PT Pema Global Energi,2024,Juli,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+227,PT Pema Global Energi,2024,Juli,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+228,PT Pema Global Energi,2024,Juli,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+229,PT Pema Global Energi,2024,Juli,Partisipasi,Sosialisasi Lingkungan,Koordinasi program lingkungan sangat baik,Harmonis
+230,PT Pema Global Energi,2024,Juli,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+231,PT Pema Global Energi,2024,Juli,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+232,Triangle Pase,2024,Juli,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+233,Triangle Pase,2024,Juli,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+234,Triangle Pase,2024,Juli,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+235,Triangle Pase,2024,Juli,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+236,Triangle Pase,2024,Juli,Partisipasi,Kegiatan CSR Bersama,Koordinasi program pemberdayaan masyarakat sangat baik,Harmonis
+237,Triangle Pase,2024,Juli,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+238,Triangle Pase,2024,Juli,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+239,Zaratex N.V.,2024,Juli,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+240,Zaratex N.V.,2024,Juli,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+241,Zaratex N.V.,2024,Juli,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+242,Zaratex N.V.,2024,Juli,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+243,Zaratex N.V.,2024,Juli,Partisipasi,Program Pengembangan SDM,Mengadakan sertifikasi gratis untuk teknisi lokal,Harmonis
+244,Zaratex N.V.,2024,Juli,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+245,Zaratex N.V.,2024,Juli,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+246,Conrad Asia Energy,2024,Agustus,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+247,Conrad Asia Energy,2024,Agustus,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+248,Conrad Asia Energy,2024,Agustus,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+249,Conrad Asia Energy,2024,Agustus,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+250,Conrad Asia Energy,2024,Agustus,Partisipasi,Workshop Teknis Migas,Proaktif berbagi studi kasus pengeboran,Harmonis
+251,Conrad Asia Energy,2024,Agustus,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+252,Conrad Asia Energy,2024,Agustus,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+253,PT Medco E&P Malaka,2024,Agustus,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+254,PT Medco E&P Malaka,2024,Agustus,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+255,PT Medco E&P Malaka,2024,Agustus,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+256,PT Medco E&P Malaka,2024,Agustus,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+257,PT Medco E&P Malaka,2024,Agustus,Partisipasi,Program Pengembangan SDM,Mengadakan sertifikasi gratis untuk teknisi lokal,Harmonis
+258,PT Medco E&P Malaka,2024,Agustus,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+259,PT Medco E&P Malaka,2024,Agustus,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+260,PT Pema Global Energi,2024,Agustus,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+261,PT Pema Global Energi,2024,Agustus,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+262,PT Pema Global Energi,2024,Agustus,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+263,PT Pema Global Energi,2024,Agustus,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+264,PT Pema Global Energi,2024,Agustus,Partisipasi,Sosialisasi Lingkungan,Koordinasi program lingkungan sangat baik,Harmonis
+265,PT Pema Global Energi,2024,Agustus,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+266,PT Pema Global Energi,2024,Agustus,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+267,Triangle Pase,2024,Agustus,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+268,Triangle Pase,2024,Agustus,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+269,Triangle Pase,2024,Agustus,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+270,Triangle Pase,2024,Agustus,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+271,Triangle Pase,2024,Agustus,Partisipasi,Forum Vendor Lokal,Hadir namun kontribusi data vendor masih minim,Harmonis
+272,Triangle Pase,2024,Agustus,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+273,Triangle Pase,2024,Agustus,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+274,Zaratex N.V.,2024,Agustus,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+275,Zaratex N.V.,2024,Agustus,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+276,Zaratex N.V.,2024,Agustus,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+277,Zaratex N.V.,2024,Agustus,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+278,Zaratex N.V.,2024,Agustus,Partisipasi,Program Magang Lokal,Belum membuka kuota magang lokal / tidak kooperatif,Kurang Harmonis
+279,Zaratex N.V.,2024,Agustus,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+280,Zaratex N.V.,2024,Agustus,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+281,Conrad Asia Energy,2024,September,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+282,Conrad Asia Energy,2024,September,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+283,Conrad Asia Energy,2024,September,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+284,Conrad Asia Energy,2024,September,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+285,Conrad Asia Energy,2024,September,Partisipasi,Sosialisasi Lingkungan,Koordinasi program lingkungan sangat baik,Harmonis
+286,Conrad Asia Energy,2024,September,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+287,Conrad Asia Energy,2024,September,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+288,PT Medco E&P Malaka,2024,September,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+289,PT Medco E&P Malaka,2024,September,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+290,PT Medco E&P Malaka,2024,September,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+291,PT Medco E&P Malaka,2024,September,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+292,PT Medco E&P Malaka,2024,September,Partisipasi,Forum Vendor Lokal,Hadir namun kontribusi data vendor masih minim,Harmonis
+293,PT Medco E&P Malaka,2024,September,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+294,PT Medco E&P Malaka,2024,September,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+295,PT Pema Global Energi,2024,September,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+296,PT Pema Global Energi,2024,September,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+297,PT Pema Global Energi,2024,September,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+298,PT Pema Global Energi,2024,September,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+299,PT Pema Global Energi,2024,September,Partisipasi,Forum Vendor Lokal,Hadir namun kontribusi data vendor masih minim,Harmonis
+300,PT Pema Global Energi,2024,September,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+301,PT Pema Global Energi,2024,September,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+302,Triangle Pase,2024,September,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+303,Triangle Pase,2024,September,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+304,Triangle Pase,2024,September,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+305,Triangle Pase,2024,September,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+306,Triangle Pase,2024,September,Partisipasi,Workshop Teknis Migas,Proaktif berbagi studi kasus pengeboran,Harmonis
+307,Triangle Pase,2024,September,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+308,Triangle Pase,2024,September,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+309,Zaratex N.V.,2024,September,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+310,Zaratex N.V.,2024,September,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+311,Zaratex N.V.,2024,September,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+312,Zaratex N.V.,2024,September,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+313,Zaratex N.V.,2024,September,Partisipasi,Forum Kapasitas Nasional,Menjadi narasumber utama & membawa vendor lokal,Harmonis
+314,Zaratex N.V.,2024,September,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+315,Zaratex N.V.,2024,September,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+316,Conrad Asia Energy,2024,Oktober,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+317,Conrad Asia Energy,2024,Oktober,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+318,Conrad Asia Energy,2024,Oktober,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+319,Conrad Asia Energy,2024,Oktober,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+320,Conrad Asia Energy,2024,Oktober,Partisipasi,Forum Vendor Lokal,Hadir namun kontribusi data vendor masih minim,Harmonis
+321,Conrad Asia Energy,2024,Oktober,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+322,Conrad Asia Energy,2024,Oktober,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+323,PT Medco E&P Malaka,2024,Oktober,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+324,PT Medco E&P Malaka,2024,Oktober,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+325,PT Medco E&P Malaka,2024,Oktober,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+326,PT Medco E&P Malaka,2024,Oktober,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+327,PT Medco E&P Malaka,2024,Oktober,Partisipasi,Program Pengembangan SDM,Mengadakan sertifikasi gratis untuk teknisi lokal,Harmonis
+328,PT Medco E&P Malaka,2024,Oktober,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+329,PT Medco E&P Malaka,2024,Oktober,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+330,PT Pema Global Energi,2024,Oktober,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+331,PT Pema Global Energi,2024,Oktober,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+332,PT Pema Global Energi,2024,Oktober,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+333,PT Pema Global Energi,2024,Oktober,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+334,PT Pema Global Energi,2024,Oktober,Partisipasi,Forum Vendor Lokal,Hadir namun kontribusi data vendor masih minim,Harmonis
+335,PT Pema Global Energi,2024,Oktober,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+336,PT Pema Global Energi,2024,Oktober,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+337,Triangle Pase,2024,Oktober,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+338,Triangle Pase,2024,Oktober,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+339,Triangle Pase,2024,Oktober,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+340,Triangle Pase,2024,Oktober,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+341,Triangle Pase,2024,Oktober,Partisipasi,Forum Kapasitas Nasional,Menjadi narasumber utama & membawa vendor lokal,Harmonis
+342,Triangle Pase,2024,Oktober,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+343,Triangle Pase,2024,Oktober,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+344,Zaratex N.V.,2024,Oktober,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+345,Zaratex N.V.,2024,Oktober,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+346,Zaratex N.V.,2024,Oktober,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+347,Zaratex N.V.,2024,Oktober,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+348,Zaratex N.V.,2024,Oktober,Partisipasi,Program Magang Lokal,Belum membuka kuota magang lokal / tidak kooperatif,Kurang Harmonis
+349,Zaratex N.V.,2024,Oktober,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+350,Zaratex N.V.,2024,Oktober,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+351,Conrad Asia Energy,2024,November,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+352,Conrad Asia Energy,2024,November,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+353,Conrad Asia Energy,2024,November,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+354,Conrad Asia Energy,2024,November,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+355,Conrad Asia Energy,2024,November,Partisipasi,Program Pengembangan SDM,Mengadakan sertifikasi gratis untuk teknisi lokal,Harmonis
+356,Conrad Asia Energy,2024,November,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+357,Conrad Asia Energy,2024,November,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+358,PT Medco E&P Malaka,2024,November,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+359,PT Medco E&P Malaka,2024,November,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+360,PT Medco E&P Malaka,2024,November,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+361,PT Medco E&P Malaka,2024,November,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+362,PT Medco E&P Malaka,2024,November,Partisipasi,Workshop Teknis Migas,Proaktif berbagi studi kasus pengeboran,Harmonis
+363,PT Medco E&P Malaka,2024,November,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+364,PT Medco E&P Malaka,2024,November,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+365,PT Pema Global Energi,2024,November,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+366,PT Pema Global Energi,2024,November,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+367,PT Pema Global Energi,2024,November,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+368,PT Pema Global Energi,2024,November,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+369,PT Pema Global Energi,2024,November,Partisipasi,Sosialisasi Lingkungan,Koordinasi program lingkungan sangat baik,Harmonis
+370,PT Pema Global Energi,2024,November,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+371,PT Pema Global Energi,2024,November,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+372,Triangle Pase,2024,November,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+373,Triangle Pase,2024,November,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+374,Triangle Pase,2024,November,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+375,Triangle Pase,2024,November,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+376,Triangle Pase,2024,November,Partisipasi,Forum Kapasitas Nasional,Menjadi narasumber utama & membawa vendor lokal,Harmonis
+377,Triangle Pase,2024,November,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+378,Triangle Pase,2024,November,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+379,Zaratex N.V.,2024,November,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+380,Zaratex N.V.,2024,November,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+381,Zaratex N.V.,2024,November,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+382,Zaratex N.V.,2024,November,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+383,Zaratex N.V.,2024,November,Partisipasi,Program Magang Lokal,Belum membuka kuota magang lokal / tidak kooperatif,Kurang Harmonis
+384,Zaratex N.V.,2024,November,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+385,Zaratex N.V.,2024,November,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+386,Conrad Asia Energy,2024,Desember,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+387,Conrad Asia Energy,2024,Desember,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+388,Conrad Asia Energy,2024,Desember,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+389,Conrad Asia Energy,2024,Desember,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+390,Conrad Asia Energy,2024,Desember,Partisipasi,Program Pengembangan SDM,Mengadakan sertifikasi gratis untuk teknisi lokal,Harmonis
+391,Conrad Asia Energy,2024,Desember,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+392,Conrad Asia Energy,2024,Desember,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+393,PT Medco E&P Malaka,2024,Desember,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+394,PT Medco E&P Malaka,2024,Desember,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+395,PT Medco E&P Malaka,2024,Desember,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+396,PT Medco E&P Malaka,2024,Desember,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+397,PT Medco E&P Malaka,2024,Desember,Partisipasi,Workshop Teknis Migas,Proaktif berbagi studi kasus pengeboran,Harmonis
+398,PT Medco E&P Malaka,2024,Desember,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+399,PT Medco E&P Malaka,2024,Desember,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+400,PT Pema Global Energi,2024,Desember,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+401,PT Pema Global Energi,2024,Desember,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+402,PT Pema Global Energi,2024,Desember,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+403,PT Pema Global Energi,2024,Desember,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+404,PT Pema Global Energi,2024,Desember,Partisipasi,Program Magang Lokal,Penyerapan tenaga kerja magang dari univ lokal,Harmonis
+405,PT Pema Global Energi,2024,Desember,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+406,PT Pema Global Energi,2024,Desember,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+407,Triangle Pase,2024,Desember,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+408,Triangle Pase,2024,Desember,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+409,Triangle Pase,2024,Desember,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+410,Triangle Pase,2024,Desember,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+411,Triangle Pase,2024,Desember,Partisipasi,Sosialisasi Lingkungan,Koordinasi program lingkungan sangat baik,Harmonis
+412,Triangle Pase,2024,Desember,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+413,Triangle Pase,2024,Desember,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+414,Zaratex N.V.,2024,Desember,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+415,Zaratex N.V.,2024,Desember,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+416,Zaratex N.V.,2024,Desember,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+417,Zaratex N.V.,2024,Desember,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+418,Zaratex N.V.,2024,Desember,Partisipasi,Program Magang Lokal,Belum membuka kuota magang lokal / tidak kooperatif,Kurang Harmonis
+419,Zaratex N.V.,2024,Desember,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+420,Zaratex N.V.,2024,Desember,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+421,Conrad Asia Energy,2025,Januari,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+422,Conrad Asia Energy,2025,Januari,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+423,Conrad Asia Energy,2025,Januari,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+424,Conrad Asia Energy,2025,Januari,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+425,Conrad Asia Energy,2025,Januari,Partisipasi,Knowledge Sharing Session,Memberikan edukasi K3LL kepada tim teknis BPMA,Harmonis
+426,Conrad Asia Energy,2025,Januari,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+427,Conrad Asia Energy,2025,Januari,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+428,PT Medco E&P Malaka,2025,Januari,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+429,PT Medco E&P Malaka,2025,Januari,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+430,PT Medco E&P Malaka,2025,Januari,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+431,PT Medco E&P Malaka,2025,Januari,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+432,PT Medco E&P Malaka,2025,Januari,Partisipasi,Sosialisasi Lingkungan,Koordinasi program lingkungan sangat baik,Harmonis
+433,PT Medco E&P Malaka,2025,Januari,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+434,PT Medco E&P Malaka,2025,Januari,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+435,PT Pema Global Energi,2025,Januari,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+436,PT Pema Global Energi,2025,Januari,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+437,PT Pema Global Energi,2025,Januari,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+438,PT Pema Global Energi,2025,Januari,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+439,PT Pema Global Energi,2025,Januari,Partisipasi,Program Pengembangan SDM,Mengadakan sertifikasi gratis untuk teknisi lokal,Harmonis
+440,PT Pema Global Energi,2025,Januari,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+441,PT Pema Global Energi,2025,Januari,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+442,Triangle Pase,2025,Januari,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+443,Triangle Pase,2025,Januari,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+444,Triangle Pase,2025,Januari,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+445,Triangle Pase,2025,Januari,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+446,Triangle Pase,2025,Januari,Partisipasi,Forum Kapasitas Nasional,Menjadi narasumber utama & membawa vendor lokal,Harmonis
+447,Triangle Pase,2025,Januari,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+448,Triangle Pase,2025,Januari,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+449,Zaratex N.V.,2025,Januari,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+450,Zaratex N.V.,2025,Januari,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+451,Zaratex N.V.,2025,Januari,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+452,Zaratex N.V.,2025,Januari,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+453,Zaratex N.V.,2025,Januari,Partisipasi,Program Magang Lokal,Belum membuka kuota magang lokal / tidak kooperatif,Kurang Harmonis
+454,Zaratex N.V.,2025,Januari,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+455,Zaratex N.V.,2025,Januari,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+456,Conrad Asia Energy,2025,Februari,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+457,Conrad Asia Energy,2025,Februari,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+458,Conrad Asia Energy,2025,Februari,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+459,Conrad Asia Energy,2025,Februari,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+460,Conrad Asia Energy,2025,Februari,Partisipasi,Kegiatan CSR Bersama,Koordinasi program pemberdayaan masyarakat sangat baik,Harmonis
+461,Conrad Asia Energy,2025,Februari,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+462,Conrad Asia Energy,2025,Februari,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+463,PT Medco E&P Malaka,2025,Februari,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+464,PT Medco E&P Malaka,2025,Februari,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+465,PT Medco E&P Malaka,2025,Februari,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+466,PT Medco E&P Malaka,2025,Februari,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+467,PT Medco E&P Malaka,2025,Februari,Partisipasi,Program Pengembangan SDM,Mengadakan sertifikasi gratis untuk teknisi lokal,Harmonis
+468,PT Medco E&P Malaka,2025,Februari,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+469,PT Medco E&P Malaka,2025,Februari,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+470,PT Pema Global Energi,2025,Februari,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+471,PT Pema Global Energi,2025,Februari,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+472,PT Pema Global Energi,2025,Februari,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+473,PT Pema Global Energi,2025,Februari,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+474,PT Pema Global Energi,2025,Februari,Partisipasi,Forum Kapasitas Nasional,Menjadi narasumber utama & membawa vendor lokal,Harmonis
+475,PT Pema Global Energi,2025,Februari,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+476,PT Pema Global Energi,2025,Februari,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+477,Triangle Pase,2025,Februari,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+478,Triangle Pase,2025,Februari,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+479,Triangle Pase,2025,Februari,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+480,Triangle Pase,2025,Februari,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+481,Triangle Pase,2025,Februari,Partisipasi,Program Magang Lokal,Penyerapan tenaga kerja magang dari univ lokal,Harmonis
+482,Triangle Pase,2025,Februari,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+483,Triangle Pase,2025,Februari,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+484,Zaratex N.V.,2025,Februari,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+485,Zaratex N.V.,2025,Februari,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+486,Zaratex N.V.,2025,Februari,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+487,Zaratex N.V.,2025,Februari,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+488,Zaratex N.V.,2025,Februari,Partisipasi,Program Magang Lokal,Belum membuka kuota magang lokal / tidak kooperatif,Kurang Harmonis
+489,Zaratex N.V.,2025,Februari,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+490,Zaratex N.V.,2025,Februari,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+491,Conrad Asia Energy,2025,Maret,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+492,Conrad Asia Energy,2025,Maret,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+493,Conrad Asia Energy,2025,Maret,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+494,Conrad Asia Energy,2025,Maret,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+495,Conrad Asia Energy,2025,Maret,Partisipasi,Kegiatan CSR Bersama,Koordinasi program pemberdayaan masyarakat sangat baik,Harmonis
+496,Conrad Asia Energy,2025,Maret,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+497,Conrad Asia Energy,2025,Maret,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+498,PT Medco E&P Malaka,2025,Maret,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+499,PT Medco E&P Malaka,2025,Maret,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+500,PT Medco E&P Malaka,2025,Maret,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+501,PT Medco E&P Malaka,2025,Maret,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+502,PT Medco E&P Malaka,2025,Maret,Partisipasi,Kegiatan CSR Bersama,Koordinasi program pemberdayaan masyarakat sangat baik,Harmonis
+503,PT Medco E&P Malaka,2025,Maret,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+504,PT Medco E&P Malaka,2025,Maret,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+505,PT Pema Global Energi,2025,Maret,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+506,PT Pema Global Energi,2025,Maret,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+507,PT Pema Global Energi,2025,Maret,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+508,PT Pema Global Energi,2025,Maret,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+509,PT Pema Global Energi,2025,Maret,Partisipasi,Kegiatan CSR Bersama,Koordinasi program pemberdayaan masyarakat sangat baik,Harmonis
+510,PT Pema Global Energi,2025,Maret,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+511,PT Pema Global Energi,2025,Maret,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+512,Triangle Pase,2025,Maret,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+513,Triangle Pase,2025,Maret,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+514,Triangle Pase,2025,Maret,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+515,Triangle Pase,2025,Maret,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+516,Triangle Pase,2025,Maret,Partisipasi,Workshop Teknis Migas,Proaktif berbagi studi kasus pengeboran,Harmonis
+517,Triangle Pase,2025,Maret,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+518,Triangle Pase,2025,Maret,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+519,Zaratex N.V.,2025,Maret,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+520,Zaratex N.V.,2025,Maret,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+521,Zaratex N.V.,2025,Maret,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+522,Zaratex N.V.,2025,Maret,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+523,Zaratex N.V.,2025,Maret,Partisipasi,Workshop Teknis Migas,Proaktif berbagi studi kasus pengeboran,Harmonis
+524,Zaratex N.V.,2025,Maret,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+525,Zaratex N.V.,2025,Maret,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+526,Conrad Asia Energy,2025,April,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+527,Conrad Asia Energy,2025,April,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+528,Conrad Asia Energy,2025,April,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+529,Conrad Asia Energy,2025,April,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+530,Conrad Asia Energy,2025,April,Partisipasi,Program Pengembangan SDM,Mengadakan sertifikasi gratis untuk teknisi lokal,Harmonis
+531,Conrad Asia Energy,2025,April,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+532,Conrad Asia Energy,2025,April,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+533,PT Medco E&P Malaka,2025,April,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+534,PT Medco E&P Malaka,2025,April,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+535,PT Medco E&P Malaka,2025,April,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+536,PT Medco E&P Malaka,2025,April,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+537,PT Medco E&P Malaka,2025,April,Partisipasi,Sosialisasi Lingkungan,Koordinasi program lingkungan sangat baik,Harmonis
+538,PT Medco E&P Malaka,2025,April,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+539,PT Medco E&P Malaka,2025,April,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+540,PT Pema Global Energi,2025,April,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+541,PT Pema Global Energi,2025,April,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+542,PT Pema Global Energi,2025,April,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+543,PT Pema Global Energi,2025,April,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+544,PT Pema Global Energi,2025,April,Partisipasi,Knowledge Sharing Session,Memberikan edukasi K3LL kepada tim teknis BPMA,Harmonis
+545,PT Pema Global Energi,2025,April,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+546,PT Pema Global Energi,2025,April,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+547,Triangle Pase,2025,April,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+548,Triangle Pase,2025,April,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+549,Triangle Pase,2025,April,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+550,Triangle Pase,2025,April,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+551,Triangle Pase,2025,April,Partisipasi,Kegiatan CSR Bersama,Koordinasi program pemberdayaan masyarakat sangat baik,Harmonis
+552,Triangle Pase,2025,April,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+553,Triangle Pase,2025,April,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+554,Zaratex N.V.,2025,April,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+555,Zaratex N.V.,2025,April,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+556,Zaratex N.V.,2025,April,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+557,Zaratex N.V.,2025,April,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+558,Zaratex N.V.,2025,April,Partisipasi,Program Magang Lokal,Belum membuka kuota magang lokal / tidak kooperatif,Kurang Harmonis
+559,Zaratex N.V.,2025,April,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+560,Zaratex N.V.,2025,April,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+561,Conrad Asia Energy,2025,Mei,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+562,Conrad Asia Energy,2025,Mei,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+563,Conrad Asia Energy,2025,Mei,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+564,Conrad Asia Energy,2025,Mei,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+565,Conrad Asia Energy,2025,Mei,Partisipasi,Sosialisasi Lingkungan,Koordinasi program lingkungan sangat baik,Harmonis
+566,Conrad Asia Energy,2025,Mei,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+567,Conrad Asia Energy,2025,Mei,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+568,PT Medco E&P Malaka,2025,Mei,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+569,PT Medco E&P Malaka,2025,Mei,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+570,PT Medco E&P Malaka,2025,Mei,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+571,PT Medco E&P Malaka,2025,Mei,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+572,PT Medco E&P Malaka,2025,Mei,Partisipasi,Kegiatan CSR Bersama,Koordinasi program pemberdayaan masyarakat sangat baik,Harmonis
+573,PT Medco E&P Malaka,2025,Mei,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+574,PT Medco E&P Malaka,2025,Mei,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+575,PT Pema Global Energi,2025,Mei,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+576,PT Pema Global Energi,2025,Mei,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+577,PT Pema Global Energi,2025,Mei,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+578,PT Pema Global Energi,2025,Mei,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+579,PT Pema Global Energi,2025,Mei,Partisipasi,Program Pengembangan SDM,Mengadakan sertifikasi gratis untuk teknisi lokal,Harmonis
+580,PT Pema Global Energi,2025,Mei,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+581,PT Pema Global Energi,2025,Mei,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+582,Triangle Pase,2025,Mei,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+583,Triangle Pase,2025,Mei,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+584,Triangle Pase,2025,Mei,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+585,Triangle Pase,2025,Mei,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+586,Triangle Pase,2025,Mei,Partisipasi,Kegiatan CSR Bersama,Koordinasi program pemberdayaan masyarakat sangat baik,Harmonis
+587,Triangle Pase,2025,Mei,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+588,Triangle Pase,2025,Mei,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+589,Zaratex N.V.,2025,Mei,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+590,Zaratex N.V.,2025,Mei,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+591,Zaratex N.V.,2025,Mei,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+592,Zaratex N.V.,2025,Mei,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+593,Zaratex N.V.,2025,Mei,Partisipasi,Program Magang Lokal,Belum membuka kuota magang lokal / tidak kooperatif,Kurang Harmonis
+594,Zaratex N.V.,2025,Mei,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+595,Zaratex N.V.,2025,Mei,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+596,Conrad Asia Energy,2025,Juni,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+597,Conrad Asia Energy,2025,Juni,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+598,Conrad Asia Energy,2025,Juni,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+599,Conrad Asia Energy,2025,Juni,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+600,Conrad Asia Energy,2025,Juni,Partisipasi,Forum Kapasitas Nasional,Menjadi narasumber utama & membawa vendor lokal,Harmonis
+601,Conrad Asia Energy,2025,Juni,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+602,Conrad Asia Energy,2025,Juni,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+603,PT Medco E&P Malaka,2025,Juni,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+604,PT Medco E&P Malaka,2025,Juni,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+605,PT Medco E&P Malaka,2025,Juni,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+606,PT Medco E&P Malaka,2025,Juni,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+607,PT Medco E&P Malaka,2025,Juni,Partisipasi,Knowledge Sharing Session,Memberikan edukasi K3LL kepada tim teknis BPMA,Harmonis
+608,PT Medco E&P Malaka,2025,Juni,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+609,PT Medco E&P Malaka,2025,Juni,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+610,PT Pema Global Energi,2025,Juni,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+611,PT Pema Global Energi,2025,Juni,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+612,PT Pema Global Energi,2025,Juni,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+613,PT Pema Global Energi,2025,Juni,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+614,PT Pema Global Energi,2025,Juni,Partisipasi,Forum Vendor Lokal,Hadir namun kontribusi data vendor masih minim,Harmonis
+615,PT Pema Global Energi,2025,Juni,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+616,PT Pema Global Energi,2025,Juni,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+617,Triangle Pase,2025,Juni,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+618,Triangle Pase,2025,Juni,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+619,Triangle Pase,2025,Juni,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+620,Triangle Pase,2025,Juni,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+621,Triangle Pase,2025,Juni,Partisipasi,Workshop Teknis Migas,Proaktif berbagi studi kasus pengeboran,Harmonis
+622,Triangle Pase,2025,Juni,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+623,Triangle Pase,2025,Juni,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+624,Zaratex N.V.,2025,Juni,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+625,Zaratex N.V.,2025,Juni,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+626,Zaratex N.V.,2025,Juni,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+627,Zaratex N.V.,2025,Juni,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+628,Zaratex N.V.,2025,Juni,Partisipasi,Knowledge Sharing Session,Memberikan edukasi K3LL kepada tim teknis BPMA,Harmonis
+629,Zaratex N.V.,2025,Juni,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+630,Zaratex N.V.,2025,Juni,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+631,Conrad Asia Energy,2025,Juli,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+632,Conrad Asia Energy,2025,Juli,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+633,Conrad Asia Energy,2025,Juli,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+634,Conrad Asia Energy,2025,Juli,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+635,Conrad Asia Energy,2025,Juli,Partisipasi,Sosialisasi Lingkungan,Koordinasi program lingkungan sangat baik,Harmonis
+636,Conrad Asia Energy,2025,Juli,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+637,Conrad Asia Energy,2025,Juli,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+638,PT Medco E&P Malaka,2025,Juli,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+639,PT Medco E&P Malaka,2025,Juli,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+640,PT Medco E&P Malaka,2025,Juli,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+641,PT Medco E&P Malaka,2025,Juli,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+642,PT Medco E&P Malaka,2025,Juli,Partisipasi,Forum Kapasitas Nasional,Menjadi narasumber utama & membawa vendor lokal,Harmonis
+643,PT Medco E&P Malaka,2025,Juli,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+644,PT Medco E&P Malaka,2025,Juli,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+645,PT Pema Global Energi,2025,Juli,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+646,PT Pema Global Energi,2025,Juli,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+647,PT Pema Global Energi,2025,Juli,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+648,PT Pema Global Energi,2025,Juli,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+649,PT Pema Global Energi,2025,Juli,Partisipasi,Program Magang Lokal,Penyerapan tenaga kerja magang dari univ lokal,Harmonis
+650,PT Pema Global Energi,2025,Juli,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+651,PT Pema Global Energi,2025,Juli,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+652,Triangle Pase,2025,Juli,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+653,Triangle Pase,2025,Juli,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+654,Triangle Pase,2025,Juli,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+655,Triangle Pase,2025,Juli,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+656,Triangle Pase,2025,Juli,Partisipasi,Program Magang Lokal,Penyerapan tenaga kerja magang dari univ lokal,Harmonis
+657,Triangle Pase,2025,Juli,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+658,Triangle Pase,2025,Juli,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+659,Zaratex N.V.,2025,Juli,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+660,Zaratex N.V.,2025,Juli,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+661,Zaratex N.V.,2025,Juli,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+662,Zaratex N.V.,2025,Juli,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+663,Zaratex N.V.,2025,Juli,Partisipasi,Program Magang Lokal,Belum membuka kuota magang lokal / tidak kooperatif,Kurang Harmonis
+664,Zaratex N.V.,2025,Juli,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+665,Zaratex N.V.,2025,Juli,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+666,Conrad Asia Energy,2025,Agustus,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+667,Conrad Asia Energy,2025,Agustus,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+668,Conrad Asia Energy,2025,Agustus,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+669,Conrad Asia Energy,2025,Agustus,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+670,Conrad Asia Energy,2025,Agustus,Partisipasi,Forum Kapasitas Nasional,Menjadi narasumber utama & membawa vendor lokal,Harmonis
+671,Conrad Asia Energy,2025,Agustus,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+672,Conrad Asia Energy,2025,Agustus,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+673,PT Medco E&P Malaka,2025,Agustus,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+674,PT Medco E&P Malaka,2025,Agustus,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+675,PT Medco E&P Malaka,2025,Agustus,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+676,PT Medco E&P Malaka,2025,Agustus,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+677,PT Medco E&P Malaka,2025,Agustus,Partisipasi,Forum Vendor Lokal,Hadir namun kontribusi data vendor masih minim,Harmonis
+678,PT Medco E&P Malaka,2025,Agustus,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+679,PT Medco E&P Malaka,2025,Agustus,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+680,PT Pema Global Energi,2025,Agustus,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+681,PT Pema Global Energi,2025,Agustus,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+682,PT Pema Global Energi,2025,Agustus,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+683,PT Pema Global Energi,2025,Agustus,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+684,PT Pema Global Energi,2025,Agustus,Partisipasi,Program Magang Lokal,Penyerapan tenaga kerja magang dari univ lokal,Harmonis
+685,PT Pema Global Energi,2025,Agustus,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+686,PT Pema Global Energi,2025,Agustus,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+687,Triangle Pase,2025,Agustus,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+688,Triangle Pase,2025,Agustus,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+689,Triangle Pase,2025,Agustus,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+690,Triangle Pase,2025,Agustus,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+691,Triangle Pase,2025,Agustus,Partisipasi,Forum Kapasitas Nasional,Menjadi narasumber utama & membawa vendor lokal,Harmonis
+692,Triangle Pase,2025,Agustus,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+693,Triangle Pase,2025,Agustus,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+694,Zaratex N.V.,2025,Agustus,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+695,Zaratex N.V.,2025,Agustus,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+696,Zaratex N.V.,2025,Agustus,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+697,Zaratex N.V.,2025,Agustus,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+698,Zaratex N.V.,2025,Agustus,Partisipasi,Program Magang Lokal,Belum membuka kuota magang lokal / tidak kooperatif,Kurang Harmonis
+699,Zaratex N.V.,2025,Agustus,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+700,Zaratex N.V.,2025,Agustus,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+701,Conrad Asia Energy,2025,September,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+702,Conrad Asia Energy,2025,September,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+703,Conrad Asia Energy,2025,September,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+704,Conrad Asia Energy,2025,September,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+705,Conrad Asia Energy,2025,September,Partisipasi,Forum Vendor Lokal,Hadir namun kontribusi data vendor masih minim,Harmonis
+706,Conrad Asia Energy,2025,September,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+707,Conrad Asia Energy,2025,September,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+708,PT Medco E&P Malaka,2025,September,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+709,PT Medco E&P Malaka,2025,September,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+710,PT Medco E&P Malaka,2025,September,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+711,PT Medco E&P Malaka,2025,September,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+712,PT Medco E&P Malaka,2025,September,Partisipasi,Forum Kapasitas Nasional,Menjadi narasumber utama & membawa vendor lokal,Harmonis
+713,PT Medco E&P Malaka,2025,September,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+714,PT Medco E&P Malaka,2025,September,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+715,PT Pema Global Energi,2025,September,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+716,PT Pema Global Energi,2025,September,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+717,PT Pema Global Energi,2025,September,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+718,PT Pema Global Energi,2025,September,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+719,PT Pema Global Energi,2025,September,Partisipasi,Program Pengembangan SDM,Mengadakan sertifikasi gratis untuk teknisi lokal,Harmonis
+720,PT Pema Global Energi,2025,September,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+721,PT Pema Global Energi,2025,September,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+722,Triangle Pase,2025,September,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+723,Triangle Pase,2025,September,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+724,Triangle Pase,2025,September,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+725,Triangle Pase,2025,September,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+726,Triangle Pase,2025,September,Partisipasi,Workshop Teknis Migas,Proaktif berbagi studi kasus pengeboran,Harmonis
+727,Triangle Pase,2025,September,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+728,Triangle Pase,2025,September,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+729,Zaratex N.V.,2025,September,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+730,Zaratex N.V.,2025,September,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+731,Zaratex N.V.,2025,September,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+732,Zaratex N.V.,2025,September,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+733,Zaratex N.V.,2025,September,Partisipasi,Program Magang Lokal,Belum membuka kuota magang lokal / tidak kooperatif,Kurang Harmonis
+734,Zaratex N.V.,2025,September,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+735,Zaratex N.V.,2025,September,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+736,Conrad Asia Energy,2025,Oktober,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+737,Conrad Asia Energy,2025,Oktober,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+738,Conrad Asia Energy,2025,Oktober,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+739,Conrad Asia Energy,2025,Oktober,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+740,Conrad Asia Energy,2025,Oktober,Partisipasi,Workshop Teknis Migas,Proaktif berbagi studi kasus pengeboran,Harmonis
+741,Conrad Asia Energy,2025,Oktober,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+742,Conrad Asia Energy,2025,Oktober,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+743,PT Medco E&P Malaka,2025,Oktober,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+744,PT Medco E&P Malaka,2025,Oktober,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+745,PT Medco E&P Malaka,2025,Oktober,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+746,PT Medco E&P Malaka,2025,Oktober,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+747,PT Medco E&P Malaka,2025,Oktober,Partisipasi,Kegiatan CSR Bersama,Koordinasi program pemberdayaan masyarakat sangat baik,Harmonis
+748,PT Medco E&P Malaka,2025,Oktober,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+749,PT Medco E&P Malaka,2025,Oktober,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+750,PT Pema Global Energi,2025,Oktober,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+751,PT Pema Global Energi,2025,Oktober,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+752,PT Pema Global Energi,2025,Oktober,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+753,PT Pema Global Energi,2025,Oktober,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+754,PT Pema Global Energi,2025,Oktober,Partisipasi,Workshop Teknis Migas,Proaktif berbagi studi kasus pengeboran,Harmonis
+755,PT Pema Global Energi,2025,Oktober,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+756,PT Pema Global Energi,2025,Oktober,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+757,Triangle Pase,2025,Oktober,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+758,Triangle Pase,2025,Oktober,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+759,Triangle Pase,2025,Oktober,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+760,Triangle Pase,2025,Oktober,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+761,Triangle Pase,2025,Oktober,Partisipasi,Forum Vendor Lokal,Hadir namun kontribusi data vendor masih minim,Harmonis
+762,Triangle Pase,2025,Oktober,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+763,Triangle Pase,2025,Oktober,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+764,Zaratex N.V.,2025,Oktober,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+765,Zaratex N.V.,2025,Oktober,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+766,Zaratex N.V.,2025,Oktober,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+767,Zaratex N.V.,2025,Oktober,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+768,Zaratex N.V.,2025,Oktober,Partisipasi,Program Magang Lokal,Belum membuka kuota magang lokal / tidak kooperatif,Kurang Harmonis
+769,Zaratex N.V.,2025,Oktober,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+770,Zaratex N.V.,2025,Oktober,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+771,Conrad Asia Energy,2025,November,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+772,Conrad Asia Energy,2025,November,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+773,Conrad Asia Energy,2025,November,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+774,Conrad Asia Energy,2025,November,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+775,Conrad Asia Energy,2025,November,Partisipasi,Program Pengembangan SDM,Mengadakan sertifikasi gratis untuk teknisi lokal,Harmonis
+776,Conrad Asia Energy,2025,November,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+777,Conrad Asia Energy,2025,November,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+778,PT Medco E&P Malaka,2025,November,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+779,PT Medco E&P Malaka,2025,November,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+780,PT Medco E&P Malaka,2025,November,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+781,PT Medco E&P Malaka,2025,November,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+782,PT Medco E&P Malaka,2025,November,Partisipasi,Program Magang Lokal,Penyerapan tenaga kerja magang dari univ lokal,Harmonis
+783,PT Medco E&P Malaka,2025,November,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+784,PT Medco E&P Malaka,2025,November,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+785,PT Pema Global Energi,2025,November,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+786,PT Pema Global Energi,2025,November,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+787,PT Pema Global Energi,2025,November,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+788,PT Pema Global Energi,2025,November,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+789,PT Pema Global Energi,2025,November,Partisipasi,Forum Vendor Lokal,Hadir namun kontribusi data vendor masih minim,Harmonis
+790,PT Pema Global Energi,2025,November,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+791,PT Pema Global Energi,2025,November,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+792,Triangle Pase,2025,November,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+793,Triangle Pase,2025,November,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+794,Triangle Pase,2025,November,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+795,Triangle Pase,2025,November,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+796,Triangle Pase,2025,November,Partisipasi,Program Pengembangan SDM,Mengadakan sertifikasi gratis untuk teknisi lokal,Harmonis
+797,Triangle Pase,2025,November,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+798,Triangle Pase,2025,November,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+799,Zaratex N.V.,2025,November,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+800,Zaratex N.V.,2025,November,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+801,Zaratex N.V.,2025,November,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+802,Zaratex N.V.,2025,November,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+803,Zaratex N.V.,2025,November,Partisipasi,Program Magang Lokal,Belum membuka kuota magang lokal / tidak kooperatif,Kurang Harmonis
+804,Zaratex N.V.,2025,November,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+805,Zaratex N.V.,2025,November,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+806,Conrad Asia Energy,2025,Desember,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+807,Conrad Asia Energy,2025,Desember,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+808,Conrad Asia Energy,2025,Desember,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+809,Conrad Asia Energy,2025,Desember,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+810,Conrad Asia Energy,2025,Desember,Partisipasi,Kegiatan CSR Bersama,Koordinasi program pemberdayaan masyarakat sangat baik,Harmonis
+811,Conrad Asia Energy,2025,Desember,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+812,Conrad Asia Energy,2025,Desember,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+813,PT Medco E&P Malaka,2025,Desember,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+814,PT Medco E&P Malaka,2025,Desember,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+815,PT Medco E&P Malaka,2025,Desember,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+816,PT Medco E&P Malaka,2025,Desember,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+817,PT Medco E&P Malaka,2025,Desember,Partisipasi,Kegiatan CSR Bersama,Koordinasi program pemberdayaan masyarakat sangat baik,Harmonis
+818,PT Medco E&P Malaka,2025,Desember,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+819,PT Medco E&P Malaka,2025,Desember,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+820,PT Pema Global Energi,2025,Desember,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+821,PT Pema Global Energi,2025,Desember,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+822,PT Pema Global Energi,2025,Desember,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+823,PT Pema Global Energi,2025,Desember,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+824,PT Pema Global Energi,2025,Desember,Partisipasi,Forum Kapasitas Nasional,Menjadi narasumber utama & membawa vendor lokal,Harmonis
+825,PT Pema Global Energi,2025,Desember,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+826,PT Pema Global Energi,2025,Desember,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+827,Triangle Pase,2025,Desember,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+828,Triangle Pase,2025,Desember,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+829,Triangle Pase,2025,Desember,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+830,Triangle Pase,2025,Desember,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+831,Triangle Pase,2025,Desember,Partisipasi,Workshop Teknis Migas,Proaktif berbagi studi kasus pengeboran,Harmonis
+832,Triangle Pase,2025,Desember,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+833,Triangle Pase,2025,Desember,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+834,Zaratex N.V.,2025,Desember,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+835,Zaratex N.V.,2025,Desember,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+836,Zaratex N.V.,2025,Desember,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+837,Zaratex N.V.,2025,Desember,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+838,Zaratex N.V.,2025,Desember,Partisipasi,Forum Kapasitas Nasional,Menjadi narasumber utama & membawa vendor lokal,Harmonis
+839,Zaratex N.V.,2025,Desember,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+840,Zaratex N.V.,2025,Desember,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+841,Conrad Asia Energy,2026,Januari,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+842,Conrad Asia Energy,2026,Januari,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+843,Conrad Asia Energy,2026,Januari,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+844,Conrad Asia Energy,2026,Januari,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+845,Conrad Asia Energy,2026,Januari,Partisipasi,Kegiatan CSR Bersama,Koordinasi program pemberdayaan masyarakat sangat baik,Harmonis
+846,Conrad Asia Energy,2026,Januari,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+847,Conrad Asia Energy,2026,Januari,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+848,PT Medco E&P Malaka,2026,Januari,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+849,PT Medco E&P Malaka,2026,Januari,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+850,PT Medco E&P Malaka,2026,Januari,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+851,PT Medco E&P Malaka,2026,Januari,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+852,PT Medco E&P Malaka,2026,Januari,Partisipasi,Program Pengembangan SDM,Mengadakan sertifikasi gratis untuk teknisi lokal,Harmonis
+853,PT Medco E&P Malaka,2026,Januari,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+854,PT Medco E&P Malaka,2026,Januari,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+855,PT Pema Global Energi,2026,Januari,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+856,PT Pema Global Energi,2026,Januari,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+857,PT Pema Global Energi,2026,Januari,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+858,PT Pema Global Energi,2026,Januari,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+859,PT Pema Global Energi,2026,Januari,Partisipasi,Program Magang Lokal,Penyerapan tenaga kerja magang dari univ lokal,Harmonis
+860,PT Pema Global Energi,2026,Januari,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+861,PT Pema Global Energi,2026,Januari,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+862,Triangle Pase,2026,Januari,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+863,Triangle Pase,2026,Januari,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+864,Triangle Pase,2026,Januari,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+865,Triangle Pase,2026,Januari,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+866,Triangle Pase,2026,Januari,Partisipasi,Sosialisasi Lingkungan,Koordinasi program lingkungan sangat baik,Harmonis
+867,Triangle Pase,2026,Januari,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+868,Triangle Pase,2026,Januari,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+869,Zaratex N.V.,2026,Januari,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+870,Zaratex N.V.,2026,Januari,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+871,Zaratex N.V.,2026,Januari,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+872,Zaratex N.V.,2026,Januari,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+873,Zaratex N.V.,2026,Januari,Partisipasi,Program Magang Lokal,Belum membuka kuota magang lokal / tidak kooperatif,Kurang Harmonis
+874,Zaratex N.V.,2026,Januari,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+875,Zaratex N.V.,2026,Januari,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+876,Conrad Asia Energy,2026,Februari,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+877,Conrad Asia Energy,2026,Februari,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+878,Conrad Asia Energy,2026,Februari,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+879,Conrad Asia Energy,2026,Februari,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+880,Conrad Asia Energy,2026,Februari,Partisipasi,Knowledge Sharing Session,Memberikan edukasi K3LL kepada tim teknis BPMA,Harmonis
+881,Conrad Asia Energy,2026,Februari,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+882,Conrad Asia Energy,2026,Februari,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+883,PT Medco E&P Malaka,2026,Februari,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+884,PT Medco E&P Malaka,2026,Februari,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+885,PT Medco E&P Malaka,2026,Februari,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+886,PT Medco E&P Malaka,2026,Februari,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+887,PT Medco E&P Malaka,2026,Februari,Partisipasi,Program Pengembangan SDM,Mengadakan sertifikasi gratis untuk teknisi lokal,Harmonis
+888,PT Medco E&P Malaka,2026,Februari,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+889,PT Medco E&P Malaka,2026,Februari,Rapat,Technical Review Meeting,Pemaparan data teknis sangat akurat & solutif,Harmonis
+890,PT Pema Global Energi,2026,Februari,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+891,PT Pema Global Energi,2026,Februari,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+892,PT Pema Global Energi,2026,Februari,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+893,PT Pema Global Energi,2026,Februari,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+894,PT Pema Global Energi,2026,Februari,Partisipasi,Knowledge Sharing Session,Memberikan edukasi K3LL kepada tim teknis BPMA,Harmonis
+895,PT Pema Global Energi,2026,Februari,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+896,PT Pema Global Energi,2026,Februari,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+897,Triangle Pase,2026,Februari,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+898,Triangle Pase,2026,Februari,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+899,Triangle Pase,2026,Februari,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+900,Triangle Pase,2026,Februari,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+901,Triangle Pase,2026,Februari,Partisipasi,Forum Kapasitas Nasional,Menjadi narasumber utama & membawa vendor lokal,Harmonis
+902,Triangle Pase,2026,Februari,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+903,Triangle Pase,2026,Februari,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+904,Zaratex N.V.,2026,Februari,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+905,Zaratex N.V.,2026,Februari,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+906,Zaratex N.V.,2026,Februari,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+907,Zaratex N.V.,2026,Februari,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+908,Zaratex N.V.,2026,Februari,Partisipasi,Sosialisasi Lingkungan,Koordinasi program lingkungan sangat baik,Harmonis
+909,Zaratex N.V.,2026,Februari,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+910,Zaratex N.V.,2026,Februari,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+911,Conrad Asia Energy,2026,Maret,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+912,Conrad Asia Energy,2026,Maret,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+913,Conrad Asia Energy,2026,Maret,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+914,Conrad Asia Energy,2026,Maret,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+915,Conrad Asia Energy,2026,Maret,Partisipasi,Sosialisasi Lingkungan,Koordinasi program lingkungan sangat baik,Harmonis
+916,Conrad Asia Energy,2026,Maret,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+917,Conrad Asia Energy,2026,Maret,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+918,PT Medco E&P Malaka,2026,Maret,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+919,PT Medco E&P Malaka,2026,Maret,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+920,PT Medco E&P Malaka,2026,Maret,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+921,PT Medco E&P Malaka,2026,Maret,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+922,PT Medco E&P Malaka,2026,Maret,Partisipasi,Forum Kapasitas Nasional,Menjadi narasumber utama & membawa vendor lokal,Harmonis
+923,PT Medco E&P Malaka,2026,Maret,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+924,PT Medco E&P Malaka,2026,Maret,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+925,PT Pema Global Energi,2026,Maret,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+926,PT Pema Global Energi,2026,Maret,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+927,PT Pema Global Energi,2026,Maret,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+928,PT Pema Global Energi,2026,Maret,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+929,PT Pema Global Energi,2026,Maret,Partisipasi,Program Magang Lokal,Penyerapan tenaga kerja magang dari univ lokal,Harmonis
+930,PT Pema Global Energi,2026,Maret,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+931,PT Pema Global Energi,2026,Maret,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+932,Triangle Pase,2026,Maret,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+933,Triangle Pase,2026,Maret,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+934,Triangle Pase,2026,Maret,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+935,Triangle Pase,2026,Maret,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+936,Triangle Pase,2026,Maret,Partisipasi,Workshop Teknis Migas,Proaktif berbagi studi kasus pengeboran,Harmonis
+937,Triangle Pase,2026,Maret,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+938,Triangle Pase,2026,Maret,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+939,Zaratex N.V.,2026,Maret,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+940,Zaratex N.V.,2026,Maret,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+941,Zaratex N.V.,2026,Maret,Laporan,Laporan Produksi Harian (Daily),"Submit tepat waktu, ada revisi minor",Harmonis
+942,Zaratex N.V.,2026,Maret,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+943,Zaratex N.V.,2026,Maret,Partisipasi,Program Magang Lokal,Belum membuka kuota magang lokal / tidak kooperatif,Kurang Harmonis
+944,Zaratex N.V.,2026,Maret,Rapat,MCM (Monthly Coordination Meeting),"Hadir diwakili staf teknis, cukup kooperatif",Harmonis
+945,Zaratex N.V.,2026,Maret,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+946,Conrad Asia Energy,2026,April,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+947,Conrad Asia Energy,2026,April,Komunikasi,Surat Korespondensi Resmi,Administrasi rapi & tindak lanjut cepat,Harmonis
+948,Conrad Asia Energy,2026,April,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+949,Conrad Asia Energy,2026,April,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+950,Conrad Asia Energy,2026,April,Partisipasi,Workshop Teknis Migas,Proaktif berbagi studi kasus pengeboran,Harmonis
+951,Conrad Asia Energy,2026,April,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+952,Conrad Asia Energy,2026,April,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+953,PT Medco E&P Malaka,2026,April,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+954,PT Medco E&P Malaka,2026,April,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+955,PT Medco E&P Malaka,2026,April,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+956,PT Medco E&P Malaka,2026,April,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+957,PT Medco E&P Malaka,2026,April,Partisipasi,Program Magang Lokal,Penyerapan tenaga kerja magang dari univ lokal,Harmonis
+958,PT Medco E&P Malaka,2026,April,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+959,PT Medco E&P Malaka,2026,April,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+960,PT Pema Global Energi,2026,April,Komunikasi,Email Klarifikasi Teknis,Dibalas dalam 2-3 hari kerja,Harmonis
+961,PT Pema Global Energi,2026,April,Komunikasi,Surat Korespondensi Resmi,Tanggapan diterima sesuai durasi standar,Harmonis
+962,PT Pema Global Energi,2026,April,Laporan,Laporan Produksi Harian (Daily),Submit via portal tepat waktu & data sinkron,Harmonis
+963,PT Pema Global Energi,2026,April,Laporan,FQR (Financial Quarterly Report),"Dokumen lengkap, lampiran sesuai regulasi",Harmonis
+964,PT Pema Global Energi,2026,April,Partisipasi,Kegiatan CSR Bersama,Koordinasi program pemberdayaan masyarakat sangat baik,Harmonis
+965,PT Pema Global Energi,2026,April,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+966,PT Pema Global Energi,2026,April,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis
+967,Triangle Pase,2026,April,Komunikasi,Email Klarifikasi Teknis,Tidak ada balasan setelah 3 hari kerja,Kurang Harmonis
+968,Triangle Pase,2026,April,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+969,Triangle Pase,2026,April,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+970,Triangle Pase,2026,April,Laporan,FQR (Financial Quarterly Report),"Lampiran tidak lengkap, butuh revisi besar",Kurang Harmonis
+971,Triangle Pase,2026,April,Partisipasi,Forum Vendor Lokal,Hadir namun kontribusi data vendor masih minim,Harmonis
+972,Triangle Pase,2026,April,Rapat,MCM (Monthly Coordination Meeting),Tidak hadir tanpa konfirmasi/berhalangan,Kurang Harmonis
+973,Triangle Pase,2026,April,Rapat,Technical Review Meeting,Data teknis tidak siap saat pemaparan,Kurang Harmonis
+974,Zaratex N.V.,2026,April,Komunikasi,Email Klarifikasi Teknis,Respon sangat cepat (< 24 jam),Harmonis
+975,Zaratex N.V.,2026,April,Komunikasi,Surat Korespondensi Resmi,Sering membutuhkan follow-up berkali-kali,Kurang Harmonis
+976,Zaratex N.V.,2026,April,Laporan,Laporan Produksi Harian (Daily),Keterlambatan submit > 24 jam,Kurang Harmonis
+977,Zaratex N.V.,2026,April,Laporan,FQR (Financial Quarterly Report),Laporan diterima dengan catatan kecil,Harmonis
+978,Zaratex N.V.,2026,April,Partisipasi,Program Magang Lokal,Belum membuka kuota magang lokal / tidak kooperatif,Kurang Harmonis
+979,Zaratex N.V.,2026,April,Rapat,MCM (Monthly Coordination Meeting),"Dihadiri GM/Manager, proaktif dalam diskusi",Harmonis
+980,Zaratex N.V.,2026,April,Rapat,Technical Review Meeting,"Pemaparan cukup, ada tindak lanjut tambahan",Harmonis

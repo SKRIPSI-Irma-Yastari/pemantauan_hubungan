@@ -14,6 +14,7 @@ interface MetricCardProps {
   icon: LucideIcon
   color?: "primary" | "secondary" | "tertiary" | "error"
   className?: string
+  onClick?: () => void
 }
 
 export function MetricCard({
@@ -23,7 +24,8 @@ export function MetricCard({
   trend,
   icon: Icon,
   color = "primary",
-  className
+  className,
+  onClick
 }: MetricCardProps) {
   const colorMap = {
     primary: "text-primary bg-primary/10",
@@ -33,10 +35,14 @@ export function MetricCard({
   }
 
   return (
-    <div className={cn(
-      "group relative overflow-hidden rounded-2xl bg-surface-container-lowest p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1",
-      className
-    )}>
+    <div 
+      onClick={onClick}
+      className={cn(
+        "group relative overflow-hidden rounded-2xl bg-surface-container-lowest p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1",
+        onClick && "cursor-pointer active:scale-[0.98] select-none hover:border-primary/20 border border-transparent",
+        className
+      )}
+    >
       <div className="flex items-start justify-between">
         <div>
           <p className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/70">

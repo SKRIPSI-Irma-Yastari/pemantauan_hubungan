@@ -14,14 +14,19 @@ import {
   History,
   FileClock,
   MessageCircle,
-  TrendingDown
+  TrendingDown,
+  X,
+  Building2,
+  MapPin,
+  Mail,
+  Phone
 } from "lucide-react"
 import { useProfile } from "@/hooks/use-profile"
 import { useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { MetricCard } from "@/components/ui/metric-card"
 import { StabilityGauge } from "@/components/ui/stability-gauge"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { supabase } from "@/lib/supabase"
 import { 
   PieChart, 
@@ -50,7 +55,9 @@ const getRatingStatus = (rating: string): "HARMONIOUS" | "STABLE" | "CRITICAL" =
 export default function DashboardPage() {
   const [surveys, setSurveys] = useState<any[]>([])
   const [interactions, setInteractions] = useState<any[]>([])
+  const [stakeholders, setStakeholders] = useState<any[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  const [isStakeholdersModalOpen, setIsStakeholdersModalOpen] = useState(false)
 
   const { profile, loading: profileLoading } = useProfile()
   const router = useRouter()
@@ -69,17 +76,18 @@ export default function DashboardPage() {
 
       try {
         setIsLoading(true)
-        const [surveysRes, reportsRes, interactionsRes, commsRes] = await Promise.all([
+        const [surveysRes, reportsRes, interactionsRes, commsRes, stakeholdersRes] = await Promise.all([
           supabase.from('surveys').select('*'),
           supabase.from('reports').select('*, stakeholders(name)').order('submitted_at', { ascending: false }),
           supabase.from('interaction_data').select('*, stakeholders(name)').order('created_at', { ascending: false }),
-          supabase.from('communications').select('*, stakeholders(name)').order('sent_at', { ascending: false })
+          supabase.from('communications').select('*, stakeholders(name)').order('sent_at', { ascending: false }),
+          supabase.from('stakeholders').select('*').order('name', { ascending: true })
         ])
 
         if (surveysRes.error) throw surveysRes.error
         setSurveys(surveysRes.data || [])
-
         setInteractions(interactionsRes.data || [])
+        setStakeholders(stakeholdersRes.data || [])
       } catch (err) {
         console.error("Error fetching dashboard data:", err)
       } finally {
@@ -236,7 +244,7 @@ export default function DashboardPage() {
       >
         <div>
           <h2 className="font-heading text-3xl font-extrabold tracking-tight text-on-background">
-            Executive Overview
+            Pemantauan Hubungan 
           </h2>
           <p className="mt-1 text-on-surface-variant/70 font-medium">
             Monitoring kestabilan hubungan KKKS & Stakeholder Migas Aceh.
@@ -258,10 +266,11 @@ export default function DashboardPage() {
         <MetricCard 
           title="Total KKKS"
           value={metrics.totalKKKS}
-          subtitle="Aktif di Wilayah Kerja Aceh"
+          subtitle="Aktif di Wilayah Kerja Aceh (Klik untuk detail)"
           icon={Users}
           color="primary"
           trend={{ value: 0, positive: true }}
+          onClick={() => setIsStakeholdersModalOpen(true)}
         />
         <MetricCard 
           title="Harmonis"
@@ -444,6 +453,108 @@ export default function DashboardPage() {
           </div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {isStakeholdersModalOpen && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            {/* Backdrop */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsStakeholdersModalOpen(false)}
+              className="absolute inset-0 bg-background/80 backdrop-blur-sm" 
+            />
+            {/* Content Container */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-full max-w-4xl max-h-[85vh] bg-surface-container-lowest p-6 sm:p-8 rounded-[2.5rem] border border-outline-variant/20 shadow-2xl overflow-y-auto flex flex-col z-10"
+            >
+              <button 
+                onClick={() => setIsStakeholdersModalOpen(false)}
+                className="absolute top-6 right-6 h-10 w-10 rounded-full flex items-center justify-center text-on-surface-variant/60 hover:bg-surface-container transition-colors z-20"
+              >
+                <X size={20} />
+              </button>
+
+              <div className="flex items-center gap-4 mb-6">
+                <div className="h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                  <Building2 size={24} />
+                </div>
+                <div>
+                  <h2 className="text-xl sm:text-2xl font-heading font-extrabold text-on-background">
+                    Daftar Kontraktor Kontrak Kerja Sama (KKKS)
+                  </h2>
+                  <p className="text-xs sm:text-sm text-on-surface-variant/75 font-medium mt-0.5">
+                    Terdapat {stakeholders.length} KKKS yang terdaftar di wilayah kerja Aceh.
+                  </p>
+                </div>
+              </div>
+
+              {stakeholders.length === 0 ? (
+                <div className="flex-1 flex flex-col items-center justify-center p-12 text-center text-on-surface-variant/40">
+                  <Building2 size={48} className="mb-4 opacity-30" />
+                  <p className="font-bold uppercase tracking-widest text-xs">Belum ada data KKKS</p>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1 overflow-y-auto pr-1">
+                  {stakeholders.map((sh) => (
+                    <div 
+                      key={sh.id}
+                      className="bg-surface-container-low/60 hover:bg-surface-container-low rounded-3xl p-6 border border-outline-variant/5 hover:border-primary/20 transition-all duration-300 flex flex-col justify-between"
+                    >
+                      <div>
+                        <h3 className="text-lg font-heading font-black text-on-surface mb-3">
+                          {sh.name}
+                        </h3>
+                        
+                        <div className="space-y-2.5 text-xs text-on-surface-variant/80 font-medium">
+                          <div className="flex items-center gap-2">
+                            <Users size={14} className="text-primary/75" />
+                            <span>P. Jawab: {sh.contact_person || 'Tidak ada data'}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Mail size={14} className="text-primary/75" />
+                            <span className="truncate">{sh.email || 'Tidak ada data'}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Phone size={14} className="text-primary/75" />
+                            <span>{sh.phone || 'Tidak ada data'}</span>
+                          </div>
+                          <div className="flex items-start gap-2 pt-2 border-t border-outline-variant/10 mt-2">
+                            <MapPin size={14} className="text-primary/75 mt-0.5 flex-shrink-0" />
+                            <span className="line-clamp-2">{sh.address || 'Tidak ada data'}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+              
+              <div className="flex justify-end gap-3 mt-6 pt-4 border-t border-outline-variant/10">
+                <button 
+                  onClick={() => {
+                    setIsStakeholdersModalOpen(false)
+                    router.push('/stakeholders')
+                  }}
+                  className="px-6 py-2.5 rounded-xl bg-primary text-on-primary text-xs font-bold shadow-md shadow-primary/10 hover:shadow-lg transition-all"
+                >
+                  Kelola Stakeholder
+                </button>
+                <button 
+                  onClick={() => setIsStakeholdersModalOpen(false)}
+                  className="px-6 py-2.5 rounded-xl bg-surface-container-high text-on-surface text-xs font-bold hover:bg-surface-variant transition-colors"
+                >
+                  Tutup
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
