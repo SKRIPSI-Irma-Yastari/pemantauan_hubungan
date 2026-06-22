@@ -13,7 +13,13 @@ import {
   MapPin,
   ChevronRight,
   Mail,
-  Search
+  Search,
+  Phone,
+  FileText,
+  Activity,
+  Calendar,
+  Clock,
+  Users
 } from "lucide-react"
 import { useProfile } from "@/hooks/use-profile"
 import { supabase } from "@/lib/supabase"
@@ -42,6 +48,15 @@ export default function StakeholdersPage() {
     phone: ""
   })
 
+  // Detail Modal states
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false)
+  const [selectedStakeholder, setSelectedStakeholder] = useState<any>(null)
+  const [detailLoading, setDetailLoading] = useState(false)
+  const [detailData, setDetailData] = useState<{
+    reports: any[]
+    interactions: any[]
+  }>({ reports: [], interactions: [] })
+
   useEffect(() => {
     fetchStakeholders()
   }, [])
@@ -60,6 +75,31 @@ export default function StakeholdersPage() {
       console.error("Error fetching stakeholders:", err)
     } finally {
       setIsLoading(false)
+    }
+  }
+
+  const handleOpenDetail = async (sh: any) => {
+    setSelectedStakeholder(sh)
+    setIsDetailModalOpen(true)
+    setDetailLoading(true)
+    try {
+      const { data, error } = await supabase
+        .from('interaction_data')
+        .select('*')
+        .eq('stakeholder_id', sh.id)
+        .order('created_at', { ascending: false })
+        .limit(3)
+      
+      if (error) throw error
+
+      setDetailData({
+        reports: [],
+        interactions: data || []
+      })
+    } catch (err) {
+      console.error("Error fetching detail data:", err)
+    } finally {
+      setDetailLoading(false)
     }
   }
 
@@ -139,7 +179,7 @@ export default function StakeholdersPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <div className="h-12 w-12 border-4 border-primary border-t-transparent rounded-full animate-spin" />
-          <p className="text-xs font-black uppercase tracking-widest text-on-surface-variant/40">Loading Directory...</p>
+          <p className="text-xs font-black uppercase tracking-widest text-on-surface-variant/40">Memuat Direktori...</p>
         </div>
       </div>
     )
@@ -152,13 +192,13 @@ export default function StakeholdersPage() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
           <nav className="flex items-center gap-2 text-[10px] font-bold tracking-widest text-on-surface-variant uppercase mb-2">
-            <span>Directory</span>
+            <span>Direktori</span>
             <ChevronRight className="h-3 w-3" />
-            <span className="text-primary">Stakeholders</span>
+            <span className="text-primary">Stakeholder</span>
           </nav>
-          <h1 className="text-3xl font-heading font-extrabold text-on-background tracking-tight">Stakeholder Ecosystem</h1>
+          <h1 className="text-3xl font-heading font-extrabold text-on-background tracking-tight">Ekosistem Stakeholder</h1>
           <p className="text-on-surface-variant font-medium text-sm mt-1 max-w-xl">
-            Directory of Kontraktor Kontrak Kerja Sama (KKKS) operating within the Aceh region.
+            Direktori Kontraktor Kontrak Kerja Sama (KKKS) yang beroperasi di wilayah kerja Aceh.
           </p>
         </div>
         
@@ -167,7 +207,7 @@ export default function StakeholdersPage() {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-on-surface-variant transition-colors group-focus-within:text-primary" />
             <input 
               type="text" 
-              placeholder="Search entities..." 
+              placeholder="Cari entitas..." 
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="bg-surface-container-low border border-outline-variant/10 rounded-xl pl-10 pr-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-primary/20 w-64 transition-all"
@@ -226,7 +266,7 @@ export default function StakeholdersPage() {
                 {sh.name}
               </h3>
               <p className="text-xs font-bold text-on-surface-variant/40 uppercase tracking-[0.2em] mb-6">
-                {sh.contact_person || 'No Contact Person'}
+                {sh.contact_person || 'Tidak Ada Penanggung Jawab'}
               </p>
 
               <div className="space-y-4">
@@ -234,20 +274,23 @@ export default function StakeholdersPage() {
                   <div className="h-8 w-8 rounded-lg bg-surface-container border border-outline-variant/5 flex items-center justify-center">
                     <MapPin size={14} className="opacity-60" />
                   </div>
-                  <span className="text-sm font-medium line-clamp-1">{sh.address || 'No Address'}</span>
+                  <span className="text-sm font-medium line-clamp-1">{sh.address || 'Tidak Ada Alamat'}</span>
                 </div>
                 <div className="flex items-center gap-3 text-on-surface-variant">
                   <div className="h-8 w-8 rounded-lg bg-surface-container border border-outline-variant/5 flex items-center justify-center">
                     <Mail size={14} className="opacity-60" />
                   </div>
-                  <span className="text-sm font-medium truncate">{sh.email || 'No Email'}</span>
+                  <span className="text-sm font-medium truncate">{sh.email || 'Tidak Ada Email'}</span>
                 </div>
               </div>
 
               <div className="mt-8 pt-8 border-t border-outline-variant/10 flex items-center justify-between">
-                <Link href={`#`} className="text-[10px] font-black uppercase tracking-widest text-primary flex items-center gap-1">
+                <button 
+                  onClick={() => handleOpenDetail(sh)}
+                  className="text-[10px] font-black uppercase tracking-widest text-primary flex items-center gap-1 hover:opacity-80 transition-opacity"
+                >
                   Detail KKKS <ChevronRight size={14} />
-                </Link>
+                </button>
                 <div className="h-10 w-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant/40">
                   <ShieldCheck size={18} />
                 </div>
@@ -268,8 +311,8 @@ export default function StakeholdersPage() {
               <Plus size={32} />
             </div>
             <div className="text-center">
-              <p className="font-heading font-bold text-on-background">Onboard New Entity</p>
-              <p className="text-xs font-medium text-on-surface-variant/60">Registry addition for upcoming projects</p>
+              <p className="font-heading font-bold text-on-background">Tambah Entitas Baru</p>
+              <p className="text-xs font-medium text-on-surface-variant/60">Penambahan registrasi untuk proyek mendatang</p>
             </div>
           </motion.button>
         )}
@@ -377,6 +420,144 @@ export default function StakeholdersPage() {
                 </button>
               </div>
             </form>
+          </motion.div>
+        </div>
+      )}
+
+      {/* Detail Modal */}
+      {isDetailModalOpen && selectedStakeholder && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsDetailModalOpen(false)}
+            className="absolute inset-0 bg-background/80 backdrop-blur-sm" 
+          />
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            className="relative w-full max-w-4xl max-h-[85vh] bg-surface-container-lowest p-6 sm:p-8 rounded-[2.5rem] border border-outline-variant/20 shadow-2xl overflow-y-auto flex flex-col z-10"
+          >
+            <button 
+              onClick={() => setIsDetailModalOpen(false)}
+              className="absolute top-6 right-6 h-10 w-10 rounded-full flex items-center justify-center text-on-surface-variant/60 hover:bg-surface-container transition-colors z-20"
+            >
+              <X size={20} />
+            </button>
+
+            <div className="flex items-center gap-4 mb-6">
+              <div className="h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                <Building2 size={24} />
+              </div>
+              <div>
+                <span className="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-[9px] font-black uppercase tracking-widest border border-primary/20">
+                  Profil Lengkap KKKS
+                </span>
+                <h2 className="text-xl sm:text-2xl font-heading font-extrabold text-on-background mt-1">
+                  {selectedStakeholder.name}
+                </h2>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 overflow-y-auto pr-1">
+              {/* Kolom Kiri: Informasi Profil */}
+              <div className="md:col-span-5 space-y-6">
+                <div className="bg-surface-container-low/60 rounded-3xl p-6 border border-outline-variant/5 space-y-4">
+                  <h3 className="text-xs font-black uppercase tracking-widest text-primary border-b border-outline-variant/10 pb-2">
+                    Informasi Kontak
+                  </h3>
+                  
+                  <div className="space-y-4 text-xs font-medium text-on-surface-variant/95">
+                    <div className="space-y-1">
+                      <p className="text-[10px] text-on-surface-variant/50 uppercase tracking-wider font-bold">Penanggung Jawab</p>
+                      <div className="flex items-center gap-2">
+                        <Users size={14} className="text-primary/75" />
+                        <span>{selectedStakeholder.contact_person || 'Tidak Ada Penanggung Jawab'}</span>
+                      </div>
+                    </div>
+
+                    <div className="space-y-1">
+                      <p className="text-[10px] text-on-surface-variant/50 uppercase tracking-wider font-bold">Email Perusahaan</p>
+                      <div className="flex items-center gap-2">
+                        <Mail size={14} className="text-primary/75" />
+                        <span className="break-all">{selectedStakeholder.email || 'Tidak Ada Email'}</span>
+                      </div>
+                    </div>
+
+                    <div className="space-y-1">
+                      <p className="text-[10px] text-on-surface-variant/50 uppercase tracking-wider font-bold">Nomor Telepon</p>
+                      <div className="flex items-center gap-2">
+                        <Phone size={14} className="text-primary/75" />
+                        <span>{selectedStakeholder.phone || 'Tidak Ada Telepon'}</span>
+                      </div>
+                    </div>
+
+                    <div className="space-y-1 pt-2 border-t border-outline-variant/10">
+                      <p className="text-[10px] text-on-surface-variant/50 uppercase tracking-wider font-bold">Wilayah Kerja / Alamat</p>
+                      <div className="flex items-start gap-2">
+                        <MapPin size={14} className="text-primary/75 mt-0.5 flex-shrink-0" />
+                        <span className="leading-relaxed">{selectedStakeholder.address || 'Tidak Ada Alamat'}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Kolom Kanan: Riwayat Koordinasi */}
+              <div className="md:col-span-7 space-y-6">
+                {detailLoading ? (
+                  <div className="h-64 flex flex-col items-center justify-center gap-3">
+                    <Loader2 size={32} className="animate-spin text-primary" />
+                    <p className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/40">Mengambil Data Riwayat...</p>
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    <h3 className="text-xs font-black uppercase tracking-widest text-on-surface-variant/60 ml-2">
+                      Catatan Interaksi Terakhir
+                    </h3>
+                    <div className="bg-surface-container-low/60 rounded-3xl p-6 border border-outline-variant/5 space-y-3">
+                      {detailData.interactions.length > 0 ? (
+                        detailData.interactions.map((item) => (
+                          <div key={item.id} className="flex flex-col gap-1.5 p-3 bg-surface-container-lowest rounded-2xl border border-outline-variant/5">
+                            <div className="flex justify-between items-center">
+                              <span className="px-2 py-0.5 rounded bg-primary/10 text-primary text-[9px] font-black uppercase tracking-widest border border-primary/20">
+                                {item.jenis_interaksi || 'Koordinasi'}
+                              </span>
+                              <span className="text-[10px] font-bold text-on-surface-variant/45">
+                                {item.bulan} {item.tahun}
+                              </span>
+                            </div>
+                            <p className="text-xs font-bold text-on-surface">{item.detail_aktivitas || 'Pertemuan rutin / korespondensi'}</p>
+                            {item.keterangan && (
+                              <p className="text-[10px] text-on-surface-variant/60 italic mt-0.5">
+                                Ket: {item.keterangan}
+                              </p>
+                            )}
+                            <div className="flex gap-4 mt-1 pt-1.5 border-t border-outline-variant/5 text-[10px] font-medium text-on-surface-variant/60">
+                              <span>Status Hubungan: <strong className={item.status === 'Harmonis' ? "text-tertiary" : "text-error"}>{item.status || '-'}</strong></span>
+                            </div>
+                          </div>
+                        ))
+                      ) : (
+                        <div className="text-center py-6 text-on-surface-variant/40 font-bold uppercase tracking-widest text-[9px]">
+                          Belum ada riwayat interaksi tercatat.
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="flex justify-end gap-3 mt-6 pt-4 border-t border-outline-variant/10">
+              <button 
+                onClick={() => setIsDetailModalOpen(false)}
+                className="px-6 py-2.5 rounded-xl bg-surface-container-high text-on-surface text-xs font-bold hover:bg-surface-variant transition-colors"
+              >
+                Tutup Detail
+              </button>
+            </div>
           </motion.div>
         </div>
       )}

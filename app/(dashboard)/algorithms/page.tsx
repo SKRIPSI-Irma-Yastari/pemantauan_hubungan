@@ -18,17 +18,17 @@ import { cn } from "@/lib/utils"
 
 const initialLogs = [
   { id: 1, type: "init", time: "10:12:01", message: "Inisialisasi Algoritma CART (Classification and Regression Trees)..." },
-  { id: 2, type: "validate", time: "10:12:03", message: "Dataset Stakeholder dimuat. N=48 Entitas (KKKS)" },
-  { id: 3, type: "clean", time: "10:12:04", message: "Menghilangkan nilai null pada atribut 'Respons Komunikasi'..." },
-  { id: 4, type: "clean", time: "10:12:05", message: "Normalisasi data (Rentang 0-1) menggunakan Min-Max Scaler." },
-  { id: 5, type: "ready", time: "10:12:07", message: "Preprocessing Selesai. Data siap untuk kalkulasi Gini Index." },
+  { id: 2, type: "validate", time: "10:12:03", message: "Dataset riwayat interaksi BPMA dimuat (N=48 baris)." },
+  { id: 3, type: "clean", time: "10:12:04", message: "Melakukan encoding pada atribut kategorikal (Jenis Interaksi, Detail Aktivitas, Keterangan)..." },
+  { id: 4, type: "clean", time: "10:12:05", message: "Mengonversi label target (Harmonis / Kurang Harmonis) menjadi biner." },
+  { id: 5, type: "ready", time: "10:12:07", message: "Preprocessing selesai. Model CART siap dilatih menggunakan Gini Index." },
 ]
 
 const giniData = [
-  { attribute: "Kepatuhan Laporan", samples: 48, gini: 0.485, gain: 0.210, status: "Root Node" },
-  { attribute: "Kehadiran Rapat", samples: 32, gini: 0.320, gain: 0.125, status: "Split Node" },
-  { attribute: "Respons Komunikasi", samples: 16, gini: 0.110, gain: 0.045, status: "Leaf Node" },
-  { attribute: "Partisipasi", samples: 48, gini: 0.450, gain: 0.080, status: "Lower Gain" },
+  { attribute: "Jenis Interaksi", desc: "Klasifikasi utama (Komunikasi, Laporan, Partisipasi, Rapat)", samples: 48, gini: 0.485, gain: 0.225, status: "Root Node" },
+  { attribute: "Detail Aktivitas", desc: "Kategori spesifik pertemuan atau jenis dokumen", samples: 48, gini: 0.350, gain: 0.148, status: "Split Node" },
+  { attribute: "Keterangan", desc: "Kondisi respon, ketepatan waktu, dan kontribusi data", samples: 48, gini: 0.180, gain: 0.092, status: "Leaf Node" },
+  { attribute: "Nama KKKS", desc: "Identitas Kontraktor Kontrak Kerja Sama", samples: 48, gini: 0.490, gain: 0.015, status: "Lower Gain" },
 ]
 
 export default function AlgorithmsPage() {
@@ -39,17 +39,36 @@ export default function AlgorithmsPage() {
 
   useEffect(() => {
     if (isRunning) {
+      let step = 0
+      const steps = [
+        "Mengkalkulasi Gini Impurity untuk atribut 'Jenis Interaksi'...",
+        "Mengkalkulasi Gini Impurity untuk atribut 'Detail Aktivitas'...",
+        "Mengkalkulasi Gini Impurity untuk atribut 'Keterangan'...",
+        "Kalkulasi selesai. Menentukan percabangan Pohon Keputusan...",
+        "Induksi Pohon Keputusan Selesai. Model disimpan ke 'model_cart.pkl'."
+      ]
+
       const interval = setInterval(() => {
-        setLogs(prev => [
-          ...prev.slice(-9),
-          { 
-            id: Date.now(), 
-            type: "proc", 
-            time: new Date().toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' }), 
-            message: "Mengkalkulasi Gini Impurity untuk atribut 'Partisipasi'..." 
-          }
-        ])
-      }, 3000)
+        if (step < steps.length) {
+          const currentStepMessage = steps[step]
+          const isLast = step === steps.length - 1
+          
+          setLogs(prev => [
+            ...prev.slice(-8),
+            { 
+              id: Date.now(), 
+              type: isLast ? "ready" : "proc", 
+              time: new Date().toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' }), 
+              message: currentStepMessage
+            }
+          ])
+          step++
+        } else {
+          setIsRunning(false)
+          clearInterval(interval)
+        }
+      }, 2500)
+
       return () => clearInterval(interval)
     }
   }, [isRunning])
@@ -95,14 +114,10 @@ export default function AlgorithmsPage() {
             Transparansi Proses CART
           </h2>
           <p className="mt-1 text-on-surface-variant font-medium">
-            Analisis real-time induksi Pohon Keputusan menggunakan Algoritma CART (Classification and Regression Trees).
+            Visualisasi analisis induksi Pohon Keputusan menggunakan Algoritma CART (Classification and Regression Trees).
           </p>
         </div>
         <div className="flex gap-3">
-          <button className="flex items-center gap-2 rounded-xl bg-surface-container-high px-4 py-2.5 text-sm font-bold text-on-surface transition-all hover:bg-surface-variant active:scale-95">
-            <Download className="h-4 w-4" />
-            Export Logic
-          </button>
           <button 
             onClick={() => setIsRunning(!isRunning)}
             className={cn(
@@ -179,13 +194,13 @@ export default function AlgorithmsPage() {
                   strokeWidth="12" 
                   strokeDasharray="440"
                   initial={{ strokeDashoffset: 440 }}
-                  animate={{ strokeDashoffset: 440 - (440 * 0.88) }}
+                  animate={{ strokeDashoffset: 440 - (440 * 0.98) }}
                   transition={{ duration: 2, ease: "easeOut" }}
                   strokeLinecap="round"
                 />
               </svg>
               <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <span className="font-heading text-3xl font-extrabold text-on-surface">88%</span>
+                <span className="font-heading text-3xl font-extrabold text-on-surface">98%</span>
                 <span className="text-[9px] font-bold text-tertiary uppercase tracking-tighter">Optimal Stability</span>
               </div>
             </div>
@@ -225,7 +240,7 @@ export default function AlgorithmsPage() {
                       <td className="py-5 px-2">
                         <div className="flex flex-col">
                           <span className="font-bold text-on-surface">{row.attribute}</span>
-                          <span className="text-[10px] text-on-surface-variant font-medium opacity-60">Mandatory reporting frequency</span>
+                          <span className="text-[10px] text-on-surface-variant font-medium opacity-60">{row.desc}</span>
                         </div>
                       </td>
                       <td className="py-5 px-2 text-center font-mono font-medium text-on-surface-variant">{row.samples.toLocaleString()}</td>
@@ -264,10 +279,10 @@ export default function AlgorithmsPage() {
                   className="relative z-10 flex flex-col items-center bg-white p-6 rounded-2xl shadow-xl border-t-4 border-primary w-64 text-center cursor-pointer mb-12"
                 >
                   <p className="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant mb-1">Root Attribute</p>
-                  <p className="font-heading text-xl font-extrabold text-on-surface">Kepatuhan</p>
+                  <p className="font-heading text-xl font-extrabold text-on-surface">Jenis Interaksi</p>
                   <div className="mt-2 bg-primary/5 py-1 px-3 rounded flex items-center justify-center gap-2">
                     <Binary className="h-3 w-3 text-primary" />
-                    <span className="font-mono text-[10px] font-bold text-primary">Gini Gain: 0.148</span>
+                    <span className="font-mono text-[10px] font-bold text-primary">Gini Gain: 0.225</span>
                   </div>
                 </motion.div>
 
@@ -279,19 +294,19 @@ export default function AlgorithmsPage() {
                   <div className="flex flex-col items-center">
                     <div className="h-8 w-px bg-outline-variant/30" />
                     <div className="mb-4 bg-surface-container-lowest px-3 py-1 rounded-full text-[10px] font-bold text-on-surface-variant border border-outline-variant/10">
-                      &lt; 0.75 (Low)
+                      Laporan / Rapat
                     </div>
                     
                     <motion.div className="bg-white p-5 rounded-2xl shadow-md border border-outline-variant/10 w-52 text-center">
                       <p className="text-[8px] font-bold uppercase tracking-widest text-on-surface-variant mb-1">Split Node</p>
-                      <p className="font-bold text-on-surface">Kehadiran</p>
+                      <p className="font-bold text-on-surface">Keterangan</p>
                     </motion.div>
 
                     <div className="h-8 w-px bg-outline-variant/30 mt-4" />
                     {/* Final Leaves */}
                     <div className="flex gap-4">
                       <div className="bg-error-container/10 border border-error/20 px-4 py-2 rounded-xl text-[10px] font-bold text-error uppercase">Kurang Harmonis</div>
-                      <div className="bg-surface-container-high border border-outline-variant/10 px-4 py-2 rounded-xl text-[10px] font-bold text-on-surface-variant opacity-60 uppercase">Moderate</div>
+                      <div className="bg-surface-container-high border border-outline-variant/10 px-4 py-2 rounded-xl text-[10px] font-bold text-on-surface-variant opacity-60 uppercase">Harmonis</div>
                     </div>
                   </div>
 
@@ -299,7 +314,7 @@ export default function AlgorithmsPage() {
                   <div className="flex flex-col items-center">
                     <div className="h-8 w-px bg-outline-variant/30" />
                     <div className="mb-4 bg-surface-container-lowest px-3 py-1 rounded-full text-[10px] font-bold text-on-surface-variant border border-outline-variant/10">
-                      &ge; 0.75 (High)
+                      Partisipasi / Komunikasi
                     </div>
                     
                     <motion.div 

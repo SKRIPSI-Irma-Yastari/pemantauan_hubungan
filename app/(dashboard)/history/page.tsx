@@ -13,7 +13,9 @@ import {
   ArrowRight,
   Loader2,
   FileText,
-  AlertCircle
+  AlertCircle,
+  MessageSquare,
+  Users
 } from "lucide-react"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
@@ -28,10 +30,10 @@ export default function HistoryPage() {
     async function fetchHistory() {
       try {
         setIsLoading(true)
-        // Fetching from surveys table as the primary source of historical records
+        // Fetching from interaction_data table as the primary source of historical records
         const { data, error } = await supabase
-          .from('surveys')
-          .select('*')
+          .from('interaction_data')
+          .select('*, stakeholders(name)')
           .order('created_at', { ascending: false })
 
         if (error) throw error
@@ -46,6 +48,16 @@ export default function HistoryPage() {
 
     fetchHistory()
   }, [])
+
+  const getInteractionIcon = (jenis: string) => {
+    switch (jenis) {
+      case 'Rapat': return <Calendar size={20} />
+      case 'Laporan': return <FileText size={20} />
+      case 'Komunikasi': return <MessageSquare size={20} />
+      case 'Partisipasi': return <Users size={20} />
+      default: return <History size={20} />
+    }
+  }
 
   return (
     <div className="p-8 space-y-10 max-w-[1200px] mx-auto min-h-screen">
@@ -144,11 +156,11 @@ export default function HistoryPage() {
                       <div className="flex justify-between items-start mb-4">
                         <div className="flex items-center gap-3">
                           <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
-                            <FileText size={20} />
+                            {getInteractionIcon(item.jenis_interaksi)}
                           </div>
                           <div>
-                            <h4 className="font-heading font-bold text-on-background">{item.kkks}</h4>
-                            <p className="text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-tight">Survey Entry • {item.month} {item.year}</p>
+                            <h4 className="font-heading font-bold text-on-background">{item.stakeholders?.name || 'KKKS'}</h4>
+                            <p className="text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-tight">{item.jenis_interaksi} • {item.detail_aktivitas}</p>
                           </div>
                         </div>
                         <div className="h-8 w-8 rounded-full border border-outline-variant/10 flex items-center justify-center text-on-surface-variant group-hover:bg-primary group-hover:text-on-primary transition-all">
@@ -156,14 +168,19 @@ export default function HistoryPage() {
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-4 mt-6 p-4 bg-surface-container-low rounded-xl">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 p-4 bg-surface-container-low rounded-xl">
                         <div>
-                          <p className="text-[9px] font-bold text-on-surface-variant/40 uppercase tracking-widest mb-1">Status</p>
-                          <span className="text-xs font-bold text-primary">{item.compliance}</span>
+                          <p className="text-[9px] font-bold text-on-surface-variant/40 uppercase tracking-widest mb-1">Keterangan</p>
+                          <span className="text-xs font-bold text-on-surface leading-relaxed">{item.keterangan || '-'}</span>
                         </div>
                         <div>
-                          <p className="text-[9px] font-bold text-on-surface-variant/40 uppercase tracking-widest mb-1">Rating</p>
-                          <span className="text-xs font-bold text-on-surface">{item.relationship_rating}</span>
+                          <p className="text-[9px] font-bold text-on-surface-variant/40 uppercase tracking-widest mb-1">Status Hubungan</p>
+                          <span className={cn(
+                            "px-2.5 py-0.5 rounded text-[10px] font-black uppercase tracking-wider inline-block",
+                            item.status === 'Harmonis' ? "bg-tertiary/10 text-tertiary border border-tertiary/20" : "bg-error/10 text-error border border-error/20"
+                          )}>
+                            {item.status || 'Harmonis'}
+                          </span>
                         </div>
                       </div>
                     </div>

@@ -11,7 +11,7 @@ interface StabilityGaugeProps {
 
 export function StabilityGauge({ 
   score, 
-  label = "Overall Index", 
+  label = "Indeks Kestabilan", 
   status = "HARMONIOUS",
   className 
 }: StabilityGaugeProps) {
@@ -23,11 +23,26 @@ export function StabilityGauge({
   const circumference = Math.PI * radius
   const offset = circumference - (score / 100) * circumference
 
+  const statusConfig = {
+    HARMONIOUS: {
+      label: "HARMONIS",
+      desc: "Hubungan kelembagaan berjalan dengan sangat harmonis dan optimal sesuai parameter regulasi."
+    },
+    STABLE: {
+      label: "STABIL",
+      desc: "Hubungan kelembagaan berada dalam kondisi stabil dan berjalan sesuai standar yang ditetapkan."
+    },
+    CRITICAL: {
+      label: "KURANG HARMONIS",
+      desc: "Hubungan kelembagaan menunjukkan indikasi kurang harmonis dan memerlukan perhatian khusus."
+    }
+  }
+
   return (
     <div className={cn("flex flex-col items-center justify-center text-center", className)}>
-      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant mb-6">
+      <p className="block text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant/60 mb-6">
         {label}
-      </span>
+      </p>
       
       <div className="relative h-24 w-48 mb-4">
         <svg className="h-full w-full" viewBox="0 0 100 50">
@@ -74,10 +89,10 @@ export function StabilityGauge({
           status === "STABLE" && "bg-secondary-container text-on-secondary-container",
           status === "CRITICAL" && "bg-error-container text-on-error-container"
         )}>
-          {status}
+          {statusConfig[status].label}
         </span>
         <p className="mt-3 px-6 text-[11px] leading-relaxed text-on-surface-variant opacity-70">
-          System behavior is within optimal regulatory parameters.
+          {statusConfig[status].desc}
         </p>
       </div>
     </div>

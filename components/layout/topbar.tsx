@@ -1,6 +1,6 @@
 "use client"
 
-import { Search, Bell, HelpCircle, ChevronDown, LogOut, User } from "lucide-react"
+import { Bell, HelpCircle, ChevronDown, LogOut, User } from "lucide-react"
 import { useProfile } from "@/hooks/use-profile"
 import { supabase } from "@/lib/supabase"
 import { useRouter } from "next/navigation"
@@ -21,14 +21,7 @@ export function TopBar() {
   return (
     <header className="sticky top-0 z-40 flex h-16 w-full items-center justify-between border-b border-outline-variant/10 bg-background/80 px-8 backdrop-blur-xl transition-all duration-300">
       <div className="flex flex-1 items-center gap-4">
-        <div className="relative w-full max-w-md">
-          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-on-surface-variant opacity-60" />
-          <input
-            type="text"
-            placeholder="Search stakeholders or analysis logs..."
-            className="h-10 w-full rounded-xl bg-surface-container-low pl-10 pr-4 text-sm outline-none transition-all placeholder:text-on-surface-variant/40 focus:ring-2 focus:ring-primary/20"
-          />
-        </div>
+        {/* Search bar removed */}
       </div>
 
       <div className="flex items-center gap-6">

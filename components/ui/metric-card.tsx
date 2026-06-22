@@ -43,27 +43,27 @@ export function MetricCard({
         className
       )}
     >
-      <div className="flex items-start justify-between">
-        <div>
+      <div className="flex flex-col items-center text-center justify-center space-y-4">
+        <div className={cn("flex h-12 w-12 items-center justify-center rounded-xl transition-transform group-hover:scale-110 duration-300", colorMap[color])}>
+          <Icon className="h-6 w-6" />
+        </div>
+        <div className="space-y-1">
           <p className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/70">
             {title}
           </p>
-          <h3 className="mt-1 font-heading text-2xl font-extrabold text-on-surface">
+          <h3 className="font-heading text-3xl font-black text-on-surface">
             {value}
           </h3>
           {subtitle && (
-            <p className="mt-1 text-xs text-on-surface-variant font-medium">
+            <p className="text-xs text-on-surface-variant font-medium leading-relaxed">
               {subtitle}
             </p>
           )}
         </div>
-        <div className={cn("flex h-12 w-12 items-center justify-center rounded-xl", colorMap[color])}>
-          <Icon className="h-6 w-6" />
-        </div>
       </div>
 
       {trend && (
-        <div className="mt-4 flex items-center gap-2">
+        <div className="mt-4 flex items-center justify-center gap-2">
           <span className={cn(
             "rounded-full px-2 py-0.5 text-[10px] font-bold",
             trend.positive ? "bg-tertiary-container/50 text-on-tertiary-container" : "bg-error-container/30 text-error"
