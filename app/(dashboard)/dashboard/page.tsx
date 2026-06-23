@@ -43,6 +43,44 @@ const getComplianceNumericScore = (compliance: string) => {
   return 0
 }
 
+const getComplianceScoreFromKeterangan = (keterangan: string) => {
+  switch (keterangan) {
+    case "Submit via portal tepat waktu & data sinkron":
+    case "Dokumen lengkap, lampiran sesuai regulasi":
+    case "Respon sangat cepat (< 24 jam)":
+    case "Dihadiri GM/Manager, proaktif dalam diskusi":
+    case "Pemaparan data teknis sangat akurat & solutif":
+    case "Mengadakan sertifikasi gratis untuk teknisi lokal":
+    case "Menjadi narasumber utama & membawa vendor lokal":
+    case "Proaktif berbagi studi kasus pengeboran":
+    case "Koordinasi program lingkungan sangat baik":
+    case "Penyerapan tenaga kerja magang dari univ lokal":
+    case "Memberikan edukasi K3LL kepada tim teknis BPMA":
+    case "Koordinasi program pemberdayaan masyarakat sangat baik":
+      return 100
+    case "Submit tepat waktu, ada revisi minor":
+    case "Laporan diterima dengan catatan kecil":
+    case "Dibalas dalam 2-3 hari kerja":
+    case "Tanggapan diterima sesuai durasi standar":
+    case "Hadir diwakili staf teknis, cukup kooperatif":
+    case "Pemaparan cukup, ada tindak lanjut tambahan":
+      return 85
+    case "Keterlambatan submit > 24 jam":
+    case "Sering membutuhkan follow-up berkali-kali":
+    case "Hadir namun kontribusi data vendor masih minim":
+      return 50
+    case "Lampiran tidak lengkap, butuh revisi besar":
+    case "Data teknis tidak siap saat pemaparan":
+      return 40
+    case "Tidak ada balasan setelah 3 hari kerja":
+    case "Tidak hadir tanpa konfirmasi/berhalangan":
+    case "Belum membuka kuota magang lokal / tidak kooperatif":
+      return 0
+    default:
+      return 100
+  }
+}
+
 const getRatingStatus = (rating: string): "HARMONIOUS" | "STABLE" | "CRITICAL" => {
   if (rating === "Sangat Baik" || rating === "Cukup" || rating === "Harmonis") return "HARMONIOUS"
   if (rating === "Cukup") return "STABLE"
@@ -210,7 +248,10 @@ export default function DashboardPage() {
     })
 
     filteredInteractions.forEach(i => {
-      if (i.compliance_score !== null && i.compliance_score !== undefined) {
+      if (i.keterangan) {
+        totalComplianceNumeric += getComplianceScoreFromKeterangan(i.keterangan)
+        complianceCount++
+      } else if (i.compliance_score !== null && i.compliance_score !== undefined) {
         totalComplianceNumeric += Number(i.compliance_score)
         complianceCount++
       }

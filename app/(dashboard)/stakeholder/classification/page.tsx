@@ -117,7 +117,7 @@ export default function StakeholderClassification() {
           Hasil Klasifikasi Hubungan
         </h1>
         <p className="text-on-surface-variant font-medium mt-2 max-w-xl">
-          Berikut adalah hasil pemrosesan algoritma keputusan CART terhadap indikator hubungan kerja sama untuk **{stakeholder?.name}**.
+          Berikut adalah hasil pemrosesan algoritma keputusan CART terhadap indikator hubungan kerja sama untuk <strong className="font-bold text-on-surface">{stakeholder?.name || 'KKKS'}</strong>.
         </p>
       </div>
 

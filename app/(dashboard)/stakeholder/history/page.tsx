@@ -112,7 +112,7 @@ export default function StakeholderHistory() {
           Riwayat Data
         </h1>
         <p className="text-on-surface-variant font-medium mt-2 max-w-xl">
-          Lihat kembali data evaluasi periodik dan catatan aktivitas koordinasi **{stakeholder?.name}** yang telah diverifikasi oleh BPMA.
+          Lihat kembali data evaluasi periodik dan catatan aktivitas koordinasi <strong className="font-bold text-on-surface">{stakeholder?.name || 'KKKS'}</strong> yang telah diverifikasi oleh BPMA.
         </p>
       </div>
 

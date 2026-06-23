@@ -9,13 +9,52 @@ import {
   ArrowUpRight,
   TrendingUp,
   Activity,
-  Users
+  Users,
+  Filter
 } from "lucide-react"
 import { useProfile } from "@/hooks/use-profile"
 import { supabase } from "@/lib/supabase"
 import { cn } from "@/lib/utils"
 import { MetricCard } from "@/components/ui/metric-card"
 import { motion } from "framer-motion"
+
+const getComplianceScoreFromKeterangan = (keterangan: string) => {
+  switch (keterangan) {
+    case "Submit via portal tepat waktu & data sinkron":
+    case "Dokumen lengkap, lampiran sesuai regulasi":
+    case "Respon sangat cepat (< 24 jam)":
+    case "Dihadiri GM/Manager, proaktif dalam diskusi":
+    case "Pemaparan data teknis sangat akurat & solutif":
+    case "Mengadakan sertifikasi gratis untuk teknisi lokal":
+    case "Menjadi narasumber utama & membawa vendor lokal":
+    case "Proaktif berbagi studi kasus pengeboran":
+    case "Koordinasi program lingkungan sangat baik":
+    case "Penyerapan tenaga kerja magang dari univ lokal":
+    case "Memberikan edukasi K3LL kepada tim teknis BPMA":
+    case "Koordinasi program pemberdayaan masyarakat sangat baik":
+      return 100
+    case "Submit tepat waktu, ada revisi minor":
+    case "Laporan diterima dengan catatan kecil":
+    case "Dibalas dalam 2-3 hari kerja":
+    case "Tanggapan diterima sesuai durasi standar":
+    case "Hadir diwakili staf teknis, cukup kooperatif":
+    case "Pemaparan cukup, ada tindak lanjut tambahan":
+      return 85
+    case "Keterlambatan submit > 24 jam":
+    case "Sering membutuhkan follow-up berkali-kali":
+    case "Hadir namun kontribusi data vendor masih minim":
+      return 50
+    case "Lampiran tidak lengkap, butuh revisi besar":
+    case "Data teknis tidak siap saat pemaparan":
+      return 40
+    case "Tidak ada balasan setelah 3 hari kerja":
+    case "Tidak hadir tanpa konfirmasi/berhalangan":
+    case "Belum membuka kuota magang lokal / tidak kooperatif":
+      return 0
+    default:
+      return 100
+  }
+}
 
 export default function StakeholderDashboard() {
   const { profile, loading: profileLoading } = useProfile()
@@ -24,6 +63,10 @@ export default function StakeholderDashboard() {
   const [interactions, setInteractions] = useState<any[]>([])
   const [attendance, setAttendance] = useState<any[]>([])
   const [isLoading, setIsLoading] = useState(true)
+
+  // Filters
+  const [selectedYear, setSelectedYear] = useState<string>("Semua")
+  const [selectedMonth, setSelectedMonth] = useState<string>("Semua")
 
   useEffect(() => {
     async function fetchData() {
@@ -75,39 +118,79 @@ export default function StakeholderDashboard() {
 
   // Compute metrics dynamically
   const metrics = useMemo(() => {
-    const totalInteractions = interactions.length
+    const filteredSurveys = surveys.filter(s => {
+      const matchYear = selectedYear === "Semua" || String(s.year) === selectedYear
+      const matchMonth = selectedMonth === "Semua" || String(s.month).toLowerCase() === selectedMonth.toLowerCase()
+      return matchYear && matchMonth
+    })
+
+    const filteredInteractions = interactions.filter(i => {
+      const matchYear = selectedYear === "Semua" || String(i.tahun) === selectedYear
+      const matchMonth = selectedMonth === "Semua" || String(i.bulan).toLowerCase() === selectedMonth.toLowerCase()
+      return matchYear && matchMonth
+    })
+
+    const filteredAttendance = attendance.filter(a => {
+      if (!a.meetings?.date) return true
+      const mDate = new Date(a.meetings.date)
+      const matchYear = selectedYear === "Semua" || mDate.getFullYear().toString() === selectedYear
+      
+      const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
+      const mMonthName = monthNames[mDate.getMonth()]
+      const matchMonth = selectedMonth === "Semua" || mMonthName.toLowerCase() === selectedMonth.toLowerCase()
+      
+      return matchYear && matchMonth
+    })
+
+    const totalInteractions = filteredInteractions.length
     
-    // Calculate average compliance from surveys
+    // Calculate average compliance from filtered interactions
     let complianceSum = 0
     let complianceCount = 0
-    surveys.forEach(s => {
-      let score = 0
-      if (s.compliance === "Sangat Patuh" || s.compliance === "Patuh") score = 95
-      else if (s.compliance === "Cukup Patuh" || s.compliance === "Sedang") score = 75
-      else score = 50
-
-      complianceSum += score
-      complianceCount++
+    filteredInteractions.forEach(i => {
+      if (i.keterangan) {
+        complianceSum += getComplianceScoreFromKeterangan(i.keterangan)
+        complianceCount++
+      }
     })
     const avgCompliance = complianceCount > 0 ? Math.round(complianceSum / complianceCount) : 100
 
-    // Calculate meeting attendance rate
-    const totalMeetingsInvited = attendance.length
-    const meetingsAttended = attendance.filter(a => a.status === 'confirmed' || a.status === 'represented').length
-    const attendanceRate = totalMeetingsInvited > 0 ? Math.round((meetingsAttended / totalMeetingsInvited) * 100) : 100
+    // Calculate meeting attendance rate from Rapat interaction logs
+    const rapatInteractions = filteredInteractions.filter(i => i.jenis_interaksi === "Rapat")
+    const totalMeetingsInvited = rapatInteractions.length
+    const meetingsAttended = rapatInteractions.filter(i => i.keterangan !== "Tidak hadir tanpa konfirmasi/berhalangan").length
+    const attendanceRate = totalMeetingsInvited > 0 ? Math.round((meetingsAttended / totalMeetingsInvited) * 100) : 0
 
     // Get latest relationship status
     let latestStatus = "HARMONIS"
     let statusColor = "text-tertiary"
     let statusBg = "bg-tertiary/10 border-tertiary/20"
     
-    if (surveys.length > 0) {
-      const latestSurvey = surveys[0]
+    if (filteredSurveys.length > 0) {
+      const latestSurvey = filteredSurveys[0]
       if (latestSurvey.relationship_rating === "Kurang Baik" || latestSurvey.relationship_rating === "Kurang Harmonis") {
         latestStatus = "KURANG HARMONIS"
         statusColor = "text-error"
         statusBg = "bg-error/10 border-error/20"
       }
+    } else if (filteredInteractions.length > 0) {
+      const latestInt = filteredInteractions[0]
+      if (latestInt.status === "Kurang Harmonis") {
+        latestStatus = "KURANG HARMONIS"
+        statusColor = "text-error"
+        statusBg = "bg-error/10 border-error/20"
+      }
+    }
+
+    let periodLabel = "Semua Periode"
+    if (selectedYear !== "Semua" || selectedMonth !== "Semua") {
+      const monthPart = selectedMonth !== "Semua" ? selectedMonth + " " : ""
+      const yearPart = selectedYear !== "Semua" ? selectedYear : ""
+      periodLabel = `${monthPart}${yearPart}`
+    } else if (surveys.length > 0) {
+      periodLabel = `Terakhir: ${surveys[0].month} ${surveys[0].year}`
+    } else if (interactions.length > 0) {
+      periodLabel = `Terakhir: ${interactions[0].bulan} ${interactions[0].tahun}`
     }
 
     return {
@@ -118,9 +201,12 @@ export default function StakeholderDashboard() {
       statusColor,
       statusBg,
       totalMeetingsInvited,
-      meetingsAttended
+      meetingsAttended,
+      periodLabel,
+      filteredSurveys,
+      filteredInteractions
     }
-  }, [surveys, interactions, attendance])
+  }, [surveys, interactions, attendance, selectedYear, selectedMonth])
 
   if (profileLoading || isLoading) {
     return (
@@ -160,7 +246,7 @@ export default function StakeholderDashboard() {
             Selamat Datang, <span className="text-primary">{profile?.full_name || 'Rekan Stakeholder'}</span>
           </h1>
           <p className="text-on-surface-variant font-medium mt-2 max-w-xl">
-            Pantau ringkasan hubungan kerja sama, riwayat interaksi, dan hasil evaluasi performa **{stakeholder?.name}** secara real-time.
+            Pantau ringkasan hubungan kerja sama, riwayat interaksi, dan hasil evaluasi performa <strong className="font-bold text-on-surface">{stakeholder?.name || 'KKKS'}</strong>.
           </p>
         </div>
         
@@ -169,9 +255,66 @@ export default function StakeholderDashboard() {
             <ShieldCheck size={28} />
           </div>
           <div>
-            <p className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/60">Status Keharmonisan</p>
+            <p className="text-[9px] font-black uppercase tracking-widest text-on-surface-variant/60">Status ({metrics.periodLabel})</p>
             <p className={cn("text-lg font-black uppercase", metrics.statusColor)}>{metrics.latestStatus}</p>
           </div>
+        </div>
+      </div>
+
+      {/* Filter Panel */}
+      <div className="bg-surface-container-low p-6 rounded-[2rem] border border-outline-variant/10 flex flex-wrap gap-4 items-center justify-between">
+        <div className="flex items-center gap-2 text-primary">
+          <Filter className="h-5 w-5" />
+          <span className="text-sm font-bold uppercase tracking-tight">Filter Periode</span>
+        </div>
+
+        <div className="flex flex-wrap gap-4 items-center">
+          {/* Year Filter */}
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-bold text-on-surface-variant">Tahun:</span>
+            <select 
+              className="bg-white border border-outline-variant/10 rounded-xl px-4 py-2 text-xs font-bold text-on-surface outline-none focus:ring-2 focus:ring-primary/20 transition-all cursor-pointer"
+              value={selectedYear}
+              onChange={(e) => setSelectedYear(e.target.value)}
+            >
+              <option>Semua</option>
+              <option>2024</option>
+              <option>2025</option>
+              <option>2026</option>
+            </select>
+          </div>
+
+          {/* Month Filter */}
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-bold text-on-surface-variant">Bulan:</span>
+            <select 
+              className="bg-white border border-outline-variant/10 rounded-xl px-4 py-2 text-xs font-bold text-on-surface outline-none focus:ring-2 focus:ring-primary/20 transition-all cursor-pointer"
+              value={selectedMonth}
+              onChange={(e) => setSelectedMonth(e.target.value)}
+            >
+              <option>Semua</option>
+              <option>Januari</option>
+              <option>Februari</option>
+              <option>Maret</option>
+              <option>April</option>
+              <option>Mei</option>
+              <option>Juni</option>
+              <option>Juli</option>
+              <option>Agustus</option>
+              <option>September</option>
+              <option>Oktober</option>
+              <option>November</option>
+              <option>Desember</option>
+            </select>
+          </div>
+
+          {/* Reset button */}
+          <button 
+            onClick={() => { setSelectedYear("Semua"); setSelectedMonth("Semua"); }}
+            className="flex items-center gap-1.5 px-3 py-2 bg-surface-container-high hover:bg-outline-variant/20 rounded-xl text-xs font-bold text-on-surface transition-all cursor-pointer active:scale-95"
+          >
+            Reset
+          </button>
         </div>
       </div>
 
@@ -180,14 +323,14 @@ export default function StakeholderDashboard() {
         <MetricCard 
           title="Tingkat Kepatuhan"
           value={`${metrics.avgCompliance}%`}
-          subtitle="Berdasarkan data survei terakhir"
+          subtitle="Berdasarkan log interaksi terbaru"
           icon={FileText}
           color="tertiary"
         />
         <MetricCard 
           title="Kehadiran Rapat"
-          value={`${metrics.attendanceRate}%`}
-          subtitle={`${metrics.meetingsAttended} dari ${metrics.totalMeetingsInvited} undangan rapat`}
+          value={metrics.totalMeetingsInvited > 0 ? `${metrics.attendanceRate}%` : "-"}
+          subtitle={metrics.totalMeetingsInvited > 0 ? `${metrics.meetingsAttended} dari ${metrics.totalMeetingsInvited} rapat` : "Belum ada agenda rapat"}
           icon={Calendar}
           color="tertiary"
         />
@@ -215,8 +358,8 @@ export default function StakeholderDashboard() {
             </div>
 
             <div className="space-y-6 pt-4">
-              {surveys.length > 0 ? (
-                surveys.slice(0, 4).map((survey) => (
+              {metrics.filteredSurveys.length > 0 ? (
+                metrics.filteredSurveys.slice(0, 4).map((survey) => (
                   <div key={survey.id} className="space-y-2">
                     <div className="flex justify-between text-xs font-bold text-on-surface">
                       <span>{survey.month} {survey.year}</span>
@@ -259,8 +402,8 @@ export default function StakeholderDashboard() {
             </div>
 
             <div className="space-y-4">
-              {interactions.length > 0 ? (
-                interactions.slice(0, 3).map((item) => (
+              {metrics.filteredInteractions.length > 0 ? (
+                metrics.filteredInteractions.slice(0, 3).map((item) => (
                   <div key={item.id} className="p-4 bg-surface-container rounded-2xl border border-transparent flex flex-col gap-1.5">
                     <div className="flex justify-between items-center">
                       <span className="px-2 py-0.5 rounded bg-white text-[9px] font-black text-primary border border-primary/10 uppercase">

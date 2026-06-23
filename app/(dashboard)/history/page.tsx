@@ -15,7 +15,8 @@ import {
   FileText,
   AlertCircle,
   MessageSquare,
-  Users
+  Users,
+  Trash2
 } from "lucide-react"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
@@ -25,6 +26,8 @@ export default function HistoryPage() {
   const [historyItems, setHistoryItems] = useState<any[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [deleteItem, setDeleteItem] = useState<any | null>(null)
+  const [isDeleting, setIsDeleting] = useState(false)
 
   useEffect(() => {
     async function fetchHistory() {
@@ -48,6 +51,27 @@ export default function HistoryPage() {
 
     fetchHistory()
   }, [])
+
+  const handleDeleteConfirm = async () => {
+    if (!deleteItem) return
+    try {
+      setIsDeleting(true)
+      const { error } = await supabase
+        .from('interaction_data')
+        .delete()
+        .eq('id', deleteItem.id)
+
+      if (error) throw error
+
+      setHistoryItems(prev => prev.filter(item => item.id !== deleteItem.id))
+      setDeleteItem(null)
+    } catch (err: any) {
+      console.error("Error deleting history item:", err)
+      alert("Gagal menghapus data: " + err.message)
+    } finally {
+      setIsDeleting(false)
+    }
+  }
 
   const getInteractionIcon = (jenis: string) => {
     switch (jenis) {
@@ -163,9 +187,13 @@ export default function HistoryPage() {
                             <p className="text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-tight">{item.jenis_interaksi} • {item.detail_aktivitas}</p>
                           </div>
                         </div>
-                        <div className="h-8 w-8 rounded-full border border-outline-variant/10 flex items-center justify-center text-on-surface-variant group-hover:bg-primary group-hover:text-on-primary transition-all">
-                          <ArrowRight size={14} />
-                        </div>
+                        <button
+                          onClick={() => setDeleteItem(item)}
+                          className="h-8 w-8 rounded-full border border-error/15 flex items-center justify-center text-error/60 hover:text-on-error hover:bg-error transition-all cursor-pointer active:scale-95"
+                          title="Hapus log interaksi"
+                        >
+                          <Trash2 size={14} />
+                        </button>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 p-4 bg-surface-container-low rounded-xl">
@@ -191,6 +219,64 @@ export default function HistoryPage() {
           )}
         </div>
       </div>
+
+      {/* Delete Confirmation Modal */}
+      {deleteItem && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="w-full max-w-md overflow-hidden rounded-[2rem] border border-outline-variant/10 bg-surface-container-lowest p-6 shadow-2xl relative animate-in fade-in duration-200"
+          >
+            <div className="flex items-start gap-4 mb-6">
+              <div className="h-12 w-12 rounded-2xl bg-error/10 flex items-center justify-center text-error flex-shrink-0">
+                <AlertCircle size={24} />
+              </div>
+              <div>
+                <h3 className="font-heading text-lg font-bold text-on-background">Hapus Log Interaksi?</h3>
+                <p className="text-sm text-on-surface-variant mt-1 leading-relaxed">
+                  Tindakan ini akan menghapus log interaksi <strong>{deleteItem.stakeholders?.name || 'KKKS'}</strong> secara permanen. Hal ini dapat mengubah status kestabilan hubungan kelembagaan yang dihitung.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-surface-container-low p-4 rounded-2xl text-xs space-y-2 mb-6">
+              <div className="flex justify-between">
+                <span className="text-on-surface-variant">Stakeholder:</span>
+                <span className="font-bold text-on-surface">{deleteItem.stakeholders?.name || 'KKKS'}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-on-surface-variant">Aktivitas:</span>
+                <span className="font-bold text-on-surface">{deleteItem.jenis_interaksi} - {deleteItem.detail_aktivitas}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-on-surface-variant">Periode:</span>
+                <span className="font-bold text-on-surface">{deleteItem.bulan || ''} {deleteItem.tahun || ''}</span>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-end gap-3">
+              <button
+                type="button"
+                disabled={isDeleting}
+                onClick={() => setDeleteItem(null)}
+                className="px-5 py-2.5 rounded-xl text-sm font-bold text-on-surface-variant hover:bg-surface-container-high transition-all active:scale-95 disabled:opacity-50"
+              >
+                Batal
+              </button>
+              <button
+                type="button"
+                disabled={isDeleting}
+                onClick={handleDeleteConfirm}
+                className="flex items-center gap-2 rounded-xl bg-error px-6 py-2.5 text-sm font-bold text-on-error shadow-lg shadow-error/20 hover:opacity-90 transition-all active:scale-95 disabled:opacity-50"
+              >
+                {isDeleting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
+                {isDeleting ? "Menghapus..." : "Ya, Hapus Data"}
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      )}
 
       {/* Decorative Gradient */}
       <div className="fixed inset-0 -z-20 pointer-events-none isolate opacity-10">
