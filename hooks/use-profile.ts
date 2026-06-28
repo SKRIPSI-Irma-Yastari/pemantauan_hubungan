@@ -16,11 +16,14 @@ export function useProfile() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    let isMounted = true
+
     async function getProfile() {
       try {
-        const { data: { user } } = await supabase.auth.getUser()
+        const { data: { session } } = await supabase.auth.getSession()
+        const user = session?.user
 
-        if (user) {
+        if (user && isMounted) {
           const { data, error } = await supabase
             .from("profiles")
             .select("*")
@@ -28,16 +31,20 @@ export function useProfile() {
             .single()
 
           if (error) throw error
-          setProfile(data)
+          if (isMounted) setProfile(data)
         }
       } catch (error) {
         console.error("Error fetching profile:", error)
       } finally {
-        setLoading(false)
+        if (isMounted) setLoading(false)
       }
     }
 
     getProfile()
+
+    return () => {
+      isMounted = false
+    }
   }, [])
 
   return { profile, loading }

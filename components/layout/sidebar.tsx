@@ -11,7 +11,7 @@ import {
   History, 
   Settings, 
   LogOut,
-  Library,
+  Droplet,
   UploadCloud,
   CalendarDays,
   MessageSquare,
@@ -32,9 +32,9 @@ const bpmaNavItems = [
 
 const stakeholderNavItems = [
   { name: "Dashboard KKKS", href: "/stakeholder/dashboard", icon: LayoutDashboard },
-  { name: "Hasil Klasifikasi", href: "/stakeholder/classification", icon: Network },
   { name: "Riwayat Data", href: "/stakeholder/history", icon: LineChart },
   { name: "Profil Akun", href: "/stakeholder/profile", icon: Users },
+  { name: "Logout", href: "#", icon: LogOut, isLogout: true },
 ]
 
 import { supabase } from "@/lib/supabase"
@@ -46,6 +46,9 @@ export function Sidebar() {
   const { profile, loading } = useProfile()
 
   const handleLogout = async () => {
+    const confirmLogout = window.confirm("Apakah Anda yakin ingin keluar?")
+    if (!confirmLogout) return
+
     await supabase.auth.signOut()
     router.push("/login")
     router.refresh()
@@ -60,14 +63,14 @@ export function Sidebar() {
         <div className="px-4 mb-10">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-on-primary shadow-lg shadow-primary/20">
-              <Library className="h-6 w-6" />
+              <Droplet className="h-5 w-5 fill-current" />
             </div>
             <div>
               <h1 className="font-heading text-xl font-extrabold leading-none tracking-tight text-primary">
                 BPMA
               </h1>
               <p className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/70">
-                Institutional Luminary
+                Monitoring System
               </p>
             </div>
           </div>
@@ -83,6 +86,18 @@ export function Sidebar() {
             </div>
           ) : (
             navItems.map((item) => {
+              if ('isLogout' in item && item.isLogout) {
+                return (
+                  <button
+                    key={item.name}
+                    onClick={handleLogout}
+                    className="group flex w-full items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium text-error hover:bg-error-container/10 transition-all cursor-pointer active:scale-95 text-left"
+                  >
+                    <item.icon className="h-5 w-5 text-error/60 group-hover:text-error transition-colors" />
+                    {item.name}
+                  </button>
+                )
+              }
               const isActive = pathname === item.href
               return (
                 <Link

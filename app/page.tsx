@@ -7,6 +7,7 @@ import {
   BarChart3, 
   Users, 
   Globe, 
+  Droplet,
   Building2, 
   Activity,
   ClipboardCheck,
@@ -32,7 +33,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="h-10 w-10 bg-primary rounded-xl flex items-center justify-center text-on-primary shadow-lg shadow-primary/20">
-              <Globe size={22} strokeWidth={2.5} />
+              <Droplet size={20} className="fill-current" />
             </div>
             <div>
               <p className="text-sm font-black uppercase tracking-[0.2em] text-on-background leading-tight">Siperta</p>
@@ -341,7 +342,7 @@ export default function LandingPage() {
           <div className="space-y-6">
             <div className="flex items-center gap-3 justify-center md:justify-start">
                <div className="h-8 w-8 bg-primary rounded-lg flex items-center justify-center text-on-primary">
-                  <Globe size={18} strokeWidth={2.5} />
+                  <Droplet size={15} className="fill-current" />
                </div>
                <span className="text-sm font-black uppercase tracking-widest text-on-background">Siperta</span>
             </div>

@@ -413,7 +413,7 @@ export default function DashboardPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Card 1: Classification Distribution Chart */}
-        <section className="lg:col-span-8 rounded-2xl bg-surface-container-lowest p-6 shadow-sm border border-outline-variant/5 flex flex-col justify-between">
+        <section className="lg:col-span-8 rounded-[2rem] bg-primary/[0.03] p-6 shadow-sm border border-primary/10 flex flex-col justify-between">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 text-sm">
             <h3 className="font-heading text-lg font-bold text-on-surface">
               Distribusi Klasifikasi Hubungan
@@ -485,7 +485,7 @@ export default function DashboardPage() {
         </section>
 
         {/* Card 2: Signature Stability Gauge Card */}
-        <div className="lg:col-span-4 rounded-2xl bg-surface-container-lowest p-6 shadow-sm border border-outline-variant/5 relative overflow-hidden group flex flex-col justify-center items-center">
+        <div className="lg:col-span-4 rounded-[2rem] bg-secondary/[0.03] p-6 shadow-sm border border-secondary/10 relative overflow-hidden group flex flex-col justify-center items-center">
           <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl group-hover:bg-primary/10 transition-colors" />
           <StabilityGauge score={metrics.stabilityScore} status={metrics.stabilityStatus} />
         </div>

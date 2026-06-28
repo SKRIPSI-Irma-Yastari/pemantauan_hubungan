@@ -17,6 +17,15 @@ import { supabase } from "@/lib/supabase"
 import { cn } from "@/lib/utils"
 import { MetricCard } from "@/components/ui/metric-card"
 import { motion } from "framer-motion"
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer
+} from "recharts"
 
 const getComplianceScoreFromKeterangan = (keterangan: string) => {
   switch (keterangan) {
@@ -94,19 +103,54 @@ export default function StakeholderDashboard() {
         setStakeholder(shRes.data)
 
         const shName = shRes.data.name
+        console.log("=== DEBUG STAKEHOLDER ===")
+        console.log("Stakeholder ID:", profile.stakeholder_id)
+        console.log("Stakeholder Name (shName):", shName)
+        
+        const allSurveysRes = await supabase.from('surveys').select('kkks, year, month')
+        console.log("All Surveys in DB:", allSurveysRes.data)
+        let surveysData = []
+        let interactionsData = []
+        let attendanceData = []
+        let errorMsg = null
 
-        // 2. Fetch surveys, interactions, and attendance in parallel
-        const [surveysRes, interactionsRes, attendanceRes] = await Promise.all([
-          supabase.from('surveys').select('*').eq('kkks', shName).order('year', { ascending: false }).order('month', { ascending: false }),
-          supabase.from('interaction_data').select('*').eq('stakeholder_id', profile.stakeholder_id).order('created_at', { ascending: false }),
-          supabase.from('attendance').select('*, meetings(*)').eq('stakeholder_id', profile.stakeholder_id)
-        ])
+        try {
+          const sRes = await supabase.from('surveys').select('*')
+          if (sRes.error) throw sRes.error
+          surveysData = (sRes.data || [])
+            .filter((s) => s.kkks && s.kkks.trim().toLowerCase() === shName.trim().toLowerCase())
+            .sort((a, b) => {
+              if (b.year !== a.year) return b.year - a.year
+              return b.month.localeCompare(a.month)
+            })
+        } catch (e: any) {
+          console.error("Error fetching surveys:", e)
+          errorMsg = `Surveys Error: ${e.message}`
+        }
 
-        setSurveys(surveysRes.data || [])
-        setInteractions(interactionsRes.data || [])
-        setAttendance(attendanceRes.data || [])
+        try {
+          const iRes = await supabase.from('interaction_data').select('*').eq('stakeholder_id', profile.stakeholder_id).order('created_at', { ascending: false })
+          if (iRes.error) throw iRes.error
+          interactionsData = iRes.data || []
+        } catch (e: any) {
+          console.error("Error fetching interactions:", e)
+          errorMsg = errorMsg ? `${errorMsg} | Interactions Error: ${e.message}` : `Interactions Error: ${e.message}`
+        }
 
-      } catch (err) {
+        try {
+          const aRes = await supabase.from('attendance').select('*, meetings(*)').eq('stakeholder_id', profile.stakeholder_id)
+          if (aRes.error) throw aRes.error
+          attendanceData = aRes.data || []
+        } catch (e: any) {
+          console.error("Error fetching attendance:", e)
+          errorMsg = errorMsg ? `${errorMsg} | Attendance Error: ${e.message}` : `Attendance Error: ${e.message}`
+        }
+
+        setSurveys(surveysData)
+        setInteractions(interactionsData)
+        setAttendance(attendanceData)
+
+      } catch (err: any) {
         console.error("Error fetching stakeholder dashboard data:", err)
       } finally {
         setIsLoading(false)
@@ -261,6 +305,7 @@ export default function StakeholderDashboard() {
         </div>
       </div>
 
+
       {/* Filter Panel */}
       <div className="bg-surface-container-low p-6 rounded-[2rem] border border-outline-variant/10 flex flex-wrap gap-4 items-center justify-between">
         <div className="flex items-center gap-2 text-primary">
@@ -347,7 +392,7 @@ export default function StakeholderDashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left Column: Progress Chart/Trend */}
         <div className="lg:col-span-7 space-y-8">
-          <section className="bg-surface-container-lowest rounded-[2.5rem] p-8 border border-outline-variant/10 shadow-sm relative overflow-hidden">
+          <section className="bg-primary/[0.03] rounded-[2.5rem] p-8 border border-primary/10 shadow-sm relative overflow-hidden">
             <div className="absolute top-0 right-0 p-8 opacity-5">
               <TrendingUp size={120} />
             </div>
@@ -357,35 +402,73 @@ export default function StakeholderDashboard() {
               <p className="text-xs text-on-surface-variant font-medium mt-1">Perkembangan tingkat kepatuhan berdasarkan survei per periode.</p>
             </div>
 
-            <div className="space-y-6 pt-4">
+            <div className="h-[240px] w-full mt-4">
               {metrics.filteredSurveys.length > 0 ? (
-                metrics.filteredSurveys.slice(0, 4).map((survey) => (
-                  <div key={survey.id} className="space-y-2">
-                    <div className="flex justify-between text-xs font-bold text-on-surface">
-                      <span>{survey.month} {survey.year}</span>
-                      <span className="text-primary">{survey.compliance}</span>
-                    </div>
-                    <div className="h-2 w-full bg-surface-container rounded-full overflow-hidden">
-                      <div 
-                        className={cn(
-                          "h-full rounded-full transition-all duration-500",
-                          survey.compliance === "Sangat Patuh" || survey.compliance === "Patuh" 
-                            ? "bg-tertiary" 
-                            : "bg-primary"
-                        )}
-                        style={{ 
-                          width: survey.compliance === "Sangat Patuh" 
-                            ? "100%" 
-                            : survey.compliance === "Patuh" 
-                            ? "85%" 
-                            : "60%" 
-                        }}
-                      />
-                    </div>
-                  </div>
-                ))
+                <ResponsiveContainer width="100%" height="100%">
+                  <AreaChart
+                    data={metrics.filteredSurveys
+                      .slice(0, 6)
+                      .reverse()
+                      .map((s) => {
+                        let score = 100
+                        if (s.compliance === "Patuh") score = 85
+                        else if (s.compliance === "Cukup Patuh" || s.compliance === "Cukup") score = 70
+                        else if (s.compliance === "Kurang Patuh" || s.compliance === "Kurang") score = 40
+                        else if (s.compliance === "Tidak Patuh" || s.compliance === "Tidak") score = 0
+                        return {
+                          name: `${s.month.substring(0, 3)} ${s.year}`,
+                          Kepatuhan: score,
+                          status: s.compliance,
+                        }
+                      })}
+                    margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
+                  >
+                    <defs>
+                      <linearGradient id="colorKepatuhan" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="var(--color-primary)" stopOpacity={0.2}/>
+                        <stop offset="95%" stopColor="var(--color-primary)" stopOpacity={0}/>
+                      </linearGradient>
+                    </defs>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--color-outline-variant)" opacity={0.1} />
+                    <XAxis 
+                      dataKey="name" 
+                      tickLine={false} 
+                      axisLine={false}
+                      tick={{ fill: 'currentColor', opacity: 0.5, fontSize: 10, fontWeight: 'bold' }}
+                    />
+                    <YAxis 
+                      domain={[0, 100]} 
+                      tickLine={false} 
+                      axisLine={false}
+                      tick={{ fill: 'currentColor', opacity: 0.5, fontSize: 10, fontWeight: 'bold' }}
+                    />
+                    <Tooltip
+                      content={({ active, payload }) => {
+                        if (active && payload && payload.length) {
+                          const data = payload[0].payload;
+                          return (
+                            <div className="bg-surface-container-lowest p-3 rounded-xl border border-outline-variant/10 shadow-lg text-xs">
+                              <p className="font-bold text-on-surface mb-1">{data.name}</p>
+                              <p className="font-medium text-primary">Skor: {data.Kepatuhan}%</p>
+                              <p className="text-[10px] text-on-surface-variant font-bold uppercase mt-1">Status: {data.status}</p>
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Area 
+                      type="monotone" 
+                      dataKey="Kepatuhan" 
+                      stroke="var(--color-primary)" 
+                      strokeWidth={2}
+                      fillOpacity={1} 
+                      fill="url(#colorKepatuhan)" 
+                    />
+                  </AreaChart>
+                </ResponsiveContainer>
               ) : (
-                <div className="text-center py-10 text-on-surface-variant/40 font-bold uppercase tracking-widest text-[10px]">
+                <div className="h-full flex items-center justify-center text-center text-on-surface-variant/40 font-bold uppercase tracking-widest text-[10px]">
                   Belum ada data evaluasi kepatuhan.
                 </div>
               )}

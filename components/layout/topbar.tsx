@@ -14,6 +14,9 @@ export function TopBar() {
   const [isProfileOpen, setIsProfileOpen] = useState(false)
 
   const handleLogout = async () => {
+    const confirmLogout = window.confirm("Apakah Anda yakin ingin keluar?")
+    if (!confirmLogout) return
+
     await supabase.auth.signOut()
     router.push("/login")
   }

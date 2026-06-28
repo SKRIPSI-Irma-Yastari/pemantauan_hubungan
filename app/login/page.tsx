@@ -4,7 +4,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import { 
-  Globe, 
+  Droplet, 
   Mail, 
   Lock, 
   ArrowRight, 
@@ -70,12 +70,10 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-6 relative overflow-hidden">
-      {/* Dynamic Background */}
-      <div className="fixed inset-0 -z-10 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--color-primary)_0%,_transparent_70%)] opacity-[0.03]" />
-        <div className="absolute -top-24 -left-24 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px]" />
-        <div className="absolute -bottom-24 -right-24 w-[600px] h-[600px] bg-tertiary/5 rounded-full blur-[150px]" />
+    <div className="min-h-screen flex flex-col items-center justify-center p-6 relative overflow-hidden bg-on-background">
+      {/* Premium Oil & Gas Background Image with Overlay */}
+      <div className="absolute inset-0 -z-10 bg-cover bg-center transition-all duration-700 animate-fade-in" style={{ backgroundImage: 'url("/login_bg_oil_gas.png")' }}>
+        <div className="absolute inset-0 bg-gradient-to-tr from-black/90 via-black/70 to-primary/45 backdrop-blur-[2px]" />
       </div>
 
       <motion.div
@@ -88,15 +86,15 @@ export default function LoginPage() {
         <div className="text-center mb-10">
           <Link href="/" className="inline-flex items-center gap-3 group mb-6">
             <div className="h-12 w-12 bg-primary rounded-2xl flex items-center justify-center text-on-primary shadow-xl shadow-primary/20 group-hover:scale-110 transition-transform">
-              <Globe size={26} strokeWidth={2.5} />
+              <Droplet size={24} className="fill-current" />
             </div>
             <div className="text-left">
-              <p className="text-lg font-black uppercase tracking-[0.2em] text-on-background leading-tight">Siperta</p>
-              <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-primary leading-tight">Institutional Engine</p>
+              <p className="text-lg font-black uppercase tracking-[0.2em] text-white leading-tight">Siperta</p>
+              <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-white/60 leading-tight">Institutional Engine</p>
             </div>
           </Link>
-          <h1 className="text-3xl font-heading font-extrabold text-on-background tracking-tight">Selamat Datang Kembali</h1>
-          <p className="text-on-surface-variant text-sm mt-2 font-medium opacity-70">Masuk ke portal internal untuk memantau data strategis.</p>
+          <h1 className="text-3xl font-heading font-extrabold text-white tracking-tight">Selamat Datang Kembali</h1>
+          <p className="text-white/70 text-sm mt-2 font-medium">Masuk ke portal internal untuk memantau data strategis.</p>
         </div>
 
         {/* Login Card */}
@@ -188,12 +186,12 @@ export default function LoginPage() {
 
         {/* Footer Actions */}
         <div className="mt-8 flex items-center justify-center gap-6">
-          <Link href="/" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors">
+          <Link href="/" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-white/80 hover:text-white transition-colors">
             <Home size={14} />
             Kembali ke Beranda
           </Link>
-          <div className="h-4 w-px bg-outline-variant/20" />
-          <p className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/40 leading-none">
+          <div className="h-4 w-px bg-white/20" />
+          <p className="text-[10px] font-black uppercase tracking-widest text-white/40 leading-none">
             © 2024 Institutional Engine
           </p>
         </div>
